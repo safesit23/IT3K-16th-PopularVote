@@ -1,13 +1,14 @@
 import React from 'react'
+import Login from './../components/Login'
 
-class Index extends React.Component {
+class componentName extends React.Component {
   render () {
     return (
       <div>
-        <h1>Hello world</h1>
+        <Login />
       </div>
     )
   }
 }
 
-export default Index
+export default componentName
