@@ -1,0 +1,18 @@
+{
+  "name": "IT3K-16th-PopularVote",
+  "version": "1.0.0",
+  "description": "vote ti3k",
+  "main": "index.js",
+  "repository": "https://github.com/safesit23/IT3K-16th-PopularVote.git",
+  "author": "mild20091931@gmail.com",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "dev": "npm-run-all --parallel dev:api dev:front-end",
+    "dev:api": "cd api && php artisan serve",
+    "dev:front-end": "cd front-end && yarn dev"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}
