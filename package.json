@@ -10,7 +10,11 @@
   "scripts": {
     "dev": "npm-run-all --parallel dev:api dev:front-end",
     "dev:api": "cd api && php artisan serve",
-    "dev:front-end": "cd front-end && yarn dev"
+    "dev:front-end": "cd front-end && yarn dev",
+    "dev:npm": "npm-run-all --parallel dev:api dev:front-end-npm",
+    "dev:front-end-npm": "cd front-end && npm run dev"
+
+
   },
   "devDependencies": {
     "npm-run-all": "^4.1.5"
