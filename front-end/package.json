@@ -4,11 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
     "antd": "^3.12.1",
     "axios": "^0.18.0",
     "next": "^7.0.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-facebook-login": "^4.1.1",
     "reactstrap": "^7.0.2",
     "socket.io": "^2.2.0",
     "styled-components": "^4.1.3"
