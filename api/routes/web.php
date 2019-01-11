@@ -14,3 +14,16 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/api/users/{user}', function(App\User $user){
+    return $user->email;
+});
+
+Route::get('/testing', function(){
+    $user = new App\User();
+    $user->name = "Aof";
+    $user->email = "abc@def.com";
+    $user->password = "12345678";
+    $user->save();
+    return response()->json($user);
+});
