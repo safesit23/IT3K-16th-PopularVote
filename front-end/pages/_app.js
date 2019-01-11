@@ -1,7 +1,8 @@
-import App, {Container} from 'next/app'
-import Head from 'next/head'
 import React from 'react'
+import App, { Container } from 'next/app'
 // import 'antd/dist/antd.css'
+import GlobalStyle from '../components/Core/GlobalStyle'
+
 
 export default class MyApp extends App {
   static async getInitialProps ({ Component, router, ctx }) {
@@ -11,17 +12,17 @@ export default class MyApp extends App {
       pageProps = await Component.getInitialProps(ctx)
     }
 
-    return {pageProps}
+    return { pageProps }
   }
 
   render () {
-    const {Component, pageProps} = this.props
+    const { Component, pageProps } = this.props
+
     return (
-    <Container>
-      <Head>
-      <title>IT3K-PopularVote</title>
-      </Head>
-      <Component {...pageProps} />
-    </Container>)
+      <Container>
+        <GlobalStyle />
+        <Component {...pageProps} />
+      </Container>
+    )
   }
 }

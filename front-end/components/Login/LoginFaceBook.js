@@ -1,21 +1,26 @@
 import React from 'react'
 import Router from 'next/router'
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
+import { Button } from 'reactstrap';
+import AuthService from '../../service/AuthService'
+import RegisterService from '../../service/RegisterService'
 
 const responseFacebook = async (response) => {
+  console.log(response)
   await AuthService.login(response)
 }
 const changetoRegisterPage = async () => {
   const profile = await RegisterService.getProfile()
-  if (profile.data.confirm_register === 1) {
-    Router.push({
-      pathname: '/regiscomplete'
-    })
-  } else {
-    Router.push({
-      pathname: '/register'
-    })
-  }
+  console.log(profile)
+  // if (profile.data.confirm_register === 1) {
+  //   Router.push({
+  //     pathname: '/regiscomplete'
+  //   })
+  // } else {
+  //   Router.push({
+  //     pathname: '/register'
+  //   })
+  // }
 }
 class LoginFaceBook extends React.Component {
   componentDidMount () {
