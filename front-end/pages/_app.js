@@ -1,6 +1,7 @@
 import App, {Container} from 'next/app'
 import Head from 'next/head'
 import React from 'react'
+import 'antd/dist/antd.css'
 
 export default class MyApp extends App {
   static async getInitialProps ({ Component, router, ctx }) {
