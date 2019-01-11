@@ -7,6 +7,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body{
     font-family:'Sarabun', sans-serif !important;
+    height: 100vh;
   }
 `
 
