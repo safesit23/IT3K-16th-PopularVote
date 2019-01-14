@@ -19,6 +19,10 @@ class CreateCompetitorsTable extends Migration
             $table->string('university');
             $table->timestamps();
         });
+
+        Schema::table('countings', function (Blueprint $table) {
+            $table->foreign('competitor_id')->references('idCompetitor')->on('competitors');
+        });
     }
 
     /**

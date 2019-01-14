@@ -24,7 +24,7 @@ class CreateCountingsTable extends Migration
             $table->foreign('provider_id')->references('provider_id')->on('users')
                 ->onDelete('cascade');;
 
-            $table->foreign('competitor_id')->references('idCompetitor')->on('competitors');
+            //$table->foreign('competitor_id')->references('idCompetitor')->on('competitors');
         });
     }
 
