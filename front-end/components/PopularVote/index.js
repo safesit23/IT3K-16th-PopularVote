@@ -1,11 +1,12 @@
 import React from 'react'
+import { Button } from 'reactstrap'
 
-class Vote extends React.Component {
-  render () {
-    return {
-
-    }
+class PopularVote extends React.Component {
+  render() {
+    return (
+      <div>this is dev</div>
+    )
   }
 }
 
-export default Vote
+export default PopularVote
