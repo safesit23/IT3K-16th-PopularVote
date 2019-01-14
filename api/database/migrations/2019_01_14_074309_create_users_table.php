@@ -13,6 +13,8 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        Schema::defaultStringLength(191);
+
         Schema::create('Competitor', function (Blueprint $table) {
             $table->increments('idCompetitor');
             $table->string('name');
