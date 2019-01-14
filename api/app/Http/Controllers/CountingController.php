@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 class CountingController extends Controller
 {
     public function vote(Request $request) {
-        
         $this->validate($request, [
             'count' => 'required',
             'idCompetitor' => 'required'
