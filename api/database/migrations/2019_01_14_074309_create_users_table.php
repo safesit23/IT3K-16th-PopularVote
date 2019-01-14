@@ -24,8 +24,8 @@ class CreateUsersTable extends Migration
         Schema::create('User', function (Blueprint $table) {
             $table->string('provider_id');
             $table->enum('round', ['1', '2']);
-            $table->unsignedInteger('idCompetitor');
-            $table->integer('count');
+            $table->unsignedInteger('idCompetitor')->nullable();
+            $table->integer('count')->default(0);
 
             $table->primary(['provider_id', 'round']);
             $table->foreign('idCompetitor')->references('idCompetitor')->on('Competitor');
