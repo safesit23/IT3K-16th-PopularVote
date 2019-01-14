@@ -12,10 +12,6 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::post('login', 'Api\Auth\LoginController@login');
-Route::post('refresh', 'Api\Auth\LoginController@refresh');
+Route::post('login', 'AuthenController@login');
 
-Route::middleware('auth:api')->group(function(){
-    Route::post('vote', 'CountingController@vote');
-    Route::post('logout', 'Api\Auth\LoginController@logout');
-});
+Route::post('vote', 'VoteController@vote');
