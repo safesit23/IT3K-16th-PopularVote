@@ -4,16 +4,15 @@ import Cookies from './CookieService'
 const AuthService = {
   login: async (request) => {
     try {
-      await api.post('/auth/login', {
-        'provider_name': 'facebook',
+      await api.post('/api/login', {
         'provider_id': request.userID,
         'accessToken': request.accessToken,
-        'role': 'itim_applicant'
       })
         .then(respons => {
           if (respons) {
+            console.log(respons)
             Cookies.setCookie('tokenJWT', respons.data.token)
-            Cookies.setCookie('wip_Id', respons.data.wip_id)
+            Cookies.setCookie('provider_id', respons.data.wip_id)
             location.reload(true)
           } else {
           }

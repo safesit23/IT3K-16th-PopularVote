@@ -1,9 +1,10 @@
 import React from 'react'
 import Login from './../components/Login'
 import styled from 'styled-components'
+import BgColor from '../config/colors'
 
 const Bg = styled.div`
-  background-color:#E9B6B7;
+  background-color:${BgColor.bgColor};
   height: 100vh;
 `
 class componentName extends React.Component {

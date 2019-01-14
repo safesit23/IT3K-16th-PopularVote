@@ -12,15 +12,15 @@ const responseFacebook = async (response) => {
 const changetoRegisterPage = async () => {
   const profile = await RegisterService.getProfile()
   console.log(profile)
-  // if (profile.data.confirm_register === 1) {
-  //   Router.push({
-  //     pathname: '/regiscomplete'
-  //   })
-  // } else {
-  //   Router.push({
-  //     pathname: '/register'
-  //   })
-  // }
+  if (profile.data.confirm_register === 1) {
+    Router.push({
+      pathname: '/popularvote'
+    })
+  } else {
+    Router.push({
+      pathname: '/index'
+    })
+  }
 }
 class LoginFaceBook extends React.Component {
   componentDidMount () {
