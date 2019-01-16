@@ -1,55 +1,39 @@
 import React from 'react'
+import { Button as AntButton, message } from 'antd'
 import { Container, Row, Col, Button } from 'reactstrap'
 import Logo from '../Core/logo'
-<<<<<<< HEAD
-import styled from 'styled-components'
-import { Button } from 'reactstrap';
-// import Button from '../Core/Button'
-// import LoginFaceBook from './LoginFaceBook'
-import Color from '../../config/fonts'
-
-const PageContainer = styled(Container)`
-  background-color: balck;
-  height : 1000px;
-`
-=======
-import { IT3K } from '../Core/Text'
+import { IT3K, Subtitle } from '../Core/Text'
 import LoginFaceBook from './LoginFaceBook'
->>>>>>> 77b3e4d15fc6e63de494c33c76e95115812ef0ba
 
 class Login extends React.Component {
   render() {
     return (
-      <PageContainer fluid>
+      <Container fluid>
       <Container>
-<<<<<<< HEAD
-        <Row className="mt-5 d-flex justify-content-between align-items-center">
-          <Col>
-=======
         <Row >
           <Col className="d-flex justify-content-center">
->>>>>>> 77b3e4d15fc6e63de494c33c76e95115812ef0ba
             <Logo />
           </Col>
         </Row>
-<<<<<<< HEAD
-        <Row className="mt-5 d-flex justify-content-between align-items-center">
-          <Col>
-            <Button color="primary">primary</Button>{'  '}
-=======
         <Row>
-          <Col className="d-flex justify-content-center">
+          <Col xs='12' className="d-flex justify-content-center">
             <IT3K>IT3KINGS#16</IT3K>
+          </Col>
+          <Col xs='12' className="d-flex justify-content-center">
+            <Subtitle>VOTING</Subtitle>
+            <Button>ดูผลการแข่งขัน</Button>
           </Col>
         </Row>
         <Row >
           <Col className="d-flex justify-content-center">
             <LoginFaceBook />
->>>>>>> 77b3e4d15fc6e63de494c33c76e95115812ef0ba
+          </Col>
+          <Col className="d-flex justify-content-center">
+            <AntButton type="primary" onClick={() => message.success('Ok!')}>Hi</AntButton>
           </Col>
         </Row>
       </Container>
-      </PageContainer>
+      </Container>
     )
   }
 }
