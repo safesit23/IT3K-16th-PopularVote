@@ -21,7 +21,7 @@
     }
     ```
      *provider_id และ  round ได้มากจาก frontend ส่งมาเป็น ```Json ``` 
-      ##### กรณีไม่มีปัญหาในการโหวด จะแสดงสถานีส่งค่ากลับเป็น json
+      ##### กรณีไม่มีปัญหาในการ login จะแสดงสถานีส่งค่ากลับเป็น json
       ``` sh
       {
     "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NDc2NDUwODMsImlhdCI6MTU0NzYzNzg4Mywic3ViIjp7InByb3ZpZGVyX2lkIjoiMTIzNDU2NzgiLCJyb3VuZCI6IjEiLCJpZENvbXBldGl0b3IiOm51bGwsImNvdW50IjowfX0.SXTOeduU8rOvoRMpecfDsl77LXrDJ54exX6vob1a7AU"
