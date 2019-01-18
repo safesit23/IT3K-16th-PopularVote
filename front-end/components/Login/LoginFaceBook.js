@@ -3,24 +3,20 @@ import Router from 'next/router'
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import { Button } from 'reactstrap';
 import AuthService from '../../service/AuthService'
-import RegisterService from '../../service/RegisterService'
+import Cookie from '../../service/CookieService' 
 
 const responseFacebook = async (response) => {
   console.log(response)
   await AuthService.login(response)
 }
 const changetoRegisterPage = async () => {
-  const profile = await RegisterService.getProfile()
-  console.log(profile)
-  if (profile.data.confirm_register === 1) {
+  if(Cookie.gettokenJWTCookie()){
+    console.log('Hi !!!')
     Router.push({
-      pathname: '/popularvote'
-    })
-  } else {
-    Router.push({
-      pathname: '/index'
+      pathname:'/select'
     })
   }
+  
 }
 class LoginFaceBook extends React.Component {
   componentDidMount () {
