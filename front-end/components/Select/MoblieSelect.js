@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 import { Container, Row, Col } from 'reactstrap'
 import styled from 'styled-components'
-import Pic from './Picture';
+import Pic from '../Core/Picture';
 import Popup from './PopupConfirm'
 
 const Name = ['นาย จันทร์ ทองดีกว่า', 'นาย จันทร์ ทองดีกว่าที่สุด', 'นายอังคาร ทองดีกว่าที่สุด', 'นาย พุธ ทองดีกว่าที่สุด', '5', '6'];
