@@ -1,5 +1,6 @@
 import api from '../utils/apiAuthService'
 import Cookies from './CookieService'
+import SendResult from './SendResult';
 
 const AuthService = {
   login: async (request) => {
@@ -19,8 +20,13 @@ const AuthService = {
     } catch (error) {
 
     }
+  },
+  sendResult: async (request) => {
+    await api.post('/vote',{
+      'idCompetitor' : request.id,
+      'count' : request.count
+    })
   }
-
 }
 
 export default AuthService

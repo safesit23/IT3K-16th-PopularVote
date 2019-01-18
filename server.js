@@ -7,9 +7,9 @@ const port = 9000
 io.on('connection', function (socket) {
 
   console.log('connect')
-  socket.on('setTime', (time) => {
-    console.log('client is subscribing to timer with interval ', time);
-    io.sockets.emit('time', time);
+  socket.on('changePath', (pathName) => {
+    console.log('path ', pathName);
+    io.sockets.emit('pathName', pathName);
   });
   socket.on('addminstopTime', () => {
     console.log('stop')

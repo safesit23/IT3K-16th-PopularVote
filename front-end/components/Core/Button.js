@@ -33,6 +33,7 @@ export const ButtonVote = styled(DefaultButton)`
   width: 15vh;
   margin-top : 10%;
   border : 10px solid;
+  cursor : pointer;
 `
 
 export default ButtonPrimary

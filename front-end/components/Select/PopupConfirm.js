@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'reactstrap'
 import styled from 'styled-components'
 import Router from 'next/router'
 
+
 const Popup = styled.div`
   position: fixed;
   width: 100%;
@@ -44,14 +45,23 @@ const ConfirmBtn = styled.button`
 
 class PopupConfirm extends React.Component {
 
-  changePath = () =>{
-    Router.push({
-      pathname : '/playvoting',
-      query: { id: `${this.props.id}`,name : `${this.props.name}` }
-    })
+  state = {
+    path : ''
+  }
+  componentWillMount () {
+    this.changePath()
   }
 
+  changePath = async () =>{
+      Router.push({
+        pathname : '/waiting',
+        // pathname : '/playvoting',
+        query: { id: `${this.props.id}`,name : `${this.props.name}` }
+      })
+  }
+  
   render() {
+    console.log(this.state.path,'path name');
     console.log(this.props.id)
     return (
       <Popup>
