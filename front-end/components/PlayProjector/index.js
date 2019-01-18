@@ -10,7 +10,9 @@ class Play extends React.Component{
     render(){
         return(
             <Container fluid>
-                Play Projector Page
+                <Container>
+                Play Projector
+                </Container>
             </Container>
         )
     }
