@@ -24,4 +24,11 @@ export const ButtonSecondary = styled(DefaultButton)`
   }
 `
 
+export const ButtonVote = styled(DefaultButton)`
+  font-size: ${fonts.paragraph};
+  background-color: ${colors.color1};
+  color: #fff;
+  border-radius: 50%;
+`
+
 export default ButtonPrimary
