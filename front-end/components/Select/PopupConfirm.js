@@ -44,7 +44,7 @@ const ConfirmBtn = styled.button`
 
 class PopupConfirm extends React.Component {
 
-  changePath(){
+  changePath = () =>{
     Router.push({
       pathname : '/playvoting'
     })
@@ -57,7 +57,7 @@ class PopupConfirm extends React.Component {
           <CloseButton className="align-self-end float-right" onClick={this.props.closePopup}>X</CloseButton>
           <h5 className="d-flex justify-content-center mt-4"> ต้องการเลืกอก </h5>
           <p className=" d-flex justify-content-center">{this.props.name}</p>
-          <ConfirmBtn className="mb-0" id={this.props.id} onClick={this.changePath()}>ยืนยัน</ConfirmBtn>
+          <ConfirmBtn className="mb-0" id={this.props.id} onClick= {() => this.changePath()} >ยืนยัน</ConfirmBtn>
         </PuopupInner>
       </Popup>
     )
