@@ -6,39 +6,41 @@ import {
     Button,
   } from 'reactstrap';
 
+const Landing = styled(Container)`
+  padding : 50px;
+`
 class AdminLogin extends React.Component{
     render(){
         return(
-            <Container fluid>
-            <Container>
-                <h2>Sign In</h2>
-        <Form className="form">
-          <Col>
-            <FormGroup>
-              <Label>Email</Label>
-              <Input
-                type="email"
-                name="email"
-                id="exampleEmail"
-                placeholder="myemail@email.com"
+          <Container fluid>
+          <Landing>
+            <h2>ADMIN</h2>
+            <Form className="form">
+              <Col>
+                <FormGroup>
+                  <Label>ID</Label>
+                  <Input
+                    type="email"
+                    name="email"
+                    id="exampleEmail"
+                    placeholder="email@mail.com"
+                  />
+                </FormGroup>
+              </Col>
+              <Col>
+                <FormGroup>
+                  <Label for="examplePassword">Password</Label>
+                  <Input
+                  type="password"
+                  id="examplePassword"
+                  placeholder="********"
                 />
-            </FormGroup>
-          </Col>
-          <Col>
-            <FormGroup>
-              <Label for="examplePassword">Password</Label>
-              <Input
-                type="password"
-                name="password"
-                id="examplePassword"
-                placeholder="********"
-                />
-            </FormGroup>
-          </Col>
-          <Button>Submit</Button>
-        </Form>
-                </Container>
-            </Container>
+              </FormGroup>
+            </Col>
+            <Button>Sign In</Button>
+            </Form>
+        </Landing>
+      </Container>
         )
     }
 }
