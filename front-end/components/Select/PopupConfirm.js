@@ -46,11 +46,13 @@ class PopupConfirm extends React.Component {
 
   changePath = () =>{
     Router.push({
-      pathname : '/playvoting'
+      pathname : '/playvoting',
+      query: { id: `${this.props.id}`,name : `${this.props.name}` }
     })
   }
 
   render() {
+    console.log(this.props.id)
     return (
       <Popup>
         <PuopupInner>

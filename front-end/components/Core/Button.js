@@ -28,7 +28,11 @@ export const ButtonVote = styled(DefaultButton)`
   font-size: ${fonts.paragraph};
   background-color: ${colors.color1};
   color: #fff;
-  border-radius: 50%;
+  border-radius: 70%;
+  height: 15vh;
+  width: 15vh;
+  margin-top : 10%;
+  border : 10px solid;
 `
 
 export default ButtonPrimary
