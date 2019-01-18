@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-import { Button, Container, Row, Col } from 'reactstrap'
+import { Container, Row, Col } from 'reactstrap'
 import styled from 'styled-components'
+import Pic from './Picture';
 
 const Name = ['นาย จันทร์ ทองดีกว่า', 'นาย จันทร์ ทองดีกว่าที่สุด', 'นายอังคาร ทองดีกว่าที่สุด', 'นาย พุธ ทองดีกว่าที่สุด', '5', '6'];
 
@@ -13,6 +14,7 @@ const Hr = styled.div`
 export default class DynamicSlides extends Component {
   state = {
     slides: [1, 2, 3, 4, 5, 6],
+    select: 0
   }
 
   click() {
@@ -21,6 +23,13 @@ export default class DynamicSlides extends Component {
       slides:
         slides.length === 6 ? [1, 2, 3, 4, 5, 6, 7, 8, 9] : [1, 2, 3, 4, 5, 6],
     });
+  }
+
+  select = (slide) => {
+    console.log(slide)
+    this.setState({
+      select: slide
+    })
   }
 
   render() {
@@ -35,15 +44,16 @@ export default class DynamicSlides extends Component {
     return (
       <Container>
         <Row className="d-flex justify-content-center">
-          <h2 className="mt-5">Select</h2>
+          <h2 className="mt-3">Select</h2>
         </Row>
         <Slider className="mt-5" {...settings}>
-          {this.state.slides.map(function (slide) {
+          {this.state.slides.map((slide) => {
             return (
               <Col>
-              Test : {slide}
-                <div className="d-flex justify-content-center" key={slide}>
-                  <img src={`/static/img/${slide}.png`} />
+                <div className="d-flex justify-content-center" key={slide} >
+                  <button onClick={() => this.select(slide)}>
+                    <Pic pic={slide} />
+                  </button>
                 </div>
                 <div className="d-flex justify-content-center mt-5">
                   <Hr />
@@ -55,7 +65,6 @@ export default class DynamicSlides extends Component {
             );
           })}
         </Slider>
-        {this.state.position}
       </Container>
     );
   }
