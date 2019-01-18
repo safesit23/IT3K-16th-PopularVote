@@ -4,6 +4,7 @@ import { Container, Row, Col, Button } from 'reactstrap'
 import Logo from '../Core/logo'
 import { IT3K, Subtitle } from '../Core/Text'
 import LoginFaceBook from './LoginFaceBook'
+import Router from 'next/router'
 
 class Login extends React.Component {
   render() {
