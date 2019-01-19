@@ -12,8 +12,8 @@ class Login extends React.Component {
       <Container fluid>
       <Container>
         <Row>
-          <Col sm={{ size: 'auto', offset: 10 }}>
-            <a><img src="static/img/info.png" /></a>
+          <Col xs={{ size: 'auto', offset: 11 }} className="pt-3">
+            <a onClick={() => message.success('InfoTest')}><img src="static/img/info.png" /></a>
           </Col>
         </Row>
         <Row >
@@ -25,17 +25,13 @@ class Login extends React.Component {
           <Col xs='12' className="d-flex justify-content-center">
             <IT3K>IT3KINGS#16</IT3K>
           </Col>
-          <Col xs='12' className="d-flex justify-content-center">
-            <Subtitle>VOTING</Subtitle>
-            <Button>ดูผลการแข่งขัน</Button>
+          <Col xs='12' className="d-flex justify-content-center pb-3">
+            <Subtitle>Popular Vote</Subtitle>
           </Col>
         </Row>
         <Row >
           <Col className="d-flex justify-content-center">
             <LoginFaceBook />
-          </Col>
-          <Col className="d-flex justify-content-center">
-            <AntButton type="primary" onClick={() => message.success('Ok!')}>Hi</AntButton>
           </Col>
         </Row>
       </Container>
