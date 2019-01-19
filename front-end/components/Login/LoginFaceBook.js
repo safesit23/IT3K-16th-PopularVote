@@ -1,14 +1,16 @@
 import React from 'react'
 import Router from 'next/router'
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
-import { Button } from 'reactstrap';
+import FacebookButton from './ButtonFacebook'
 import AuthService from '../../service/AuthService'
-import Cookie from '../../service/CookieService' 
+import Cookie from '../../service/CookieService'
+
 
 const responseFacebook = async (response) => {
   console.log(response)
   await AuthService.login(response)
 }
+
 const changetoRegisterPage = async () => {
   if(Cookie.gettokenJWTCookie()){
     console.log('Hi !!!')
@@ -16,7 +18,6 @@ const changetoRegisterPage = async () => {
       pathname:'/select'
     })
   }
-  
 }
 class LoginFaceBook extends React.Component {
   componentDidMount () {
@@ -31,7 +32,9 @@ class LoginFaceBook extends React.Component {
         appId="288315792032558"
         callback={responseFacebook}
         render={renderProps => (
-          <Button size="large" block type="primary" onClick={renderProps.onClick}>Login!</Button>
+          <FacebookButton size="large"color="primary" block onClick={renderProps.onClick}>
+          Login with Facebook
+          </FacebookButton>
         )}
       />
     )

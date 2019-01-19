@@ -5,7 +5,7 @@ import BgColor from '../config/colors'
 import Router from 'next/router'
 
 const Bg = styled.div`
-  background-color:${BgColor.bgColor};
+  background-image:${BgColor.background};
   height: 100vh;
 `
 class componentName extends React.Component {
