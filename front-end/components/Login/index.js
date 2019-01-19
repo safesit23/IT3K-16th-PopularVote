@@ -11,6 +11,11 @@ class Login extends React.Component {
     return (
       <Container fluid>
       <Container>
+        <Row>
+          <Col sm={{ size: 'auto', offset: 10 }}>
+            <a><img src="static/img/info.png" /></a>
+          </Col>
+        </Row>
         <Row >
           <Col className="d-flex justify-content-center">
             <Logo />
