@@ -1,6 +1,5 @@
 import api from '../utils/apiAuthService'
 import Cookies from './CookieService'
-import SendResult from './SendResult';
 
 const AuthService = {
   login: async (request) => {
