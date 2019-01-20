@@ -23,7 +23,7 @@ const Button = styled.button`
   background-color : transparent;
   border: 0;
 `
-export default class DynamicSlides extends Component {
+class DynamicSlides extends Component {
   state = {
     slides: [0, 1, 2, 3, 4, 5],
     select: 0,
@@ -125,3 +125,4 @@ export default class DynamicSlides extends Component {
     );
   }
 }
+export default DynamicSlides
