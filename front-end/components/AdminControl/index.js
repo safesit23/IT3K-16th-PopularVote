@@ -35,7 +35,7 @@ class AdminControl extends React.Component {
 
 	getPath = () => {
 		this.setState({
-			pathname : pathname[this.state.value-1]
+			pathname : pathname[this.state.value - 1]
 		})
 		this.changePath(this.state.pathname)
 	}
@@ -59,7 +59,6 @@ class AdminControl extends React.Component {
 							<Button>LOGOUT</Button>
 						</Col>
 					</Row>
-
 					<Row className="pl-4">
 						<Section xs="6" color="#FFEEE4">
 								<Title>SETTING</Title>
@@ -69,6 +68,7 @@ class AdminControl extends React.Component {
         				<Radio value={2}>Count Projector</Radio>
         				<Radio value={3}>Play Projector</Radio>
        					<Radio value={4}>Topic Projector</Radio>
+								 <Radio value={5}>Result</Radio>
       					</RadioGroup>
 								<button onClick={() => this.getPath()}>waiting Test</button>
 						</Section>

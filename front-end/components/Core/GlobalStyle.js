@@ -6,7 +6,7 @@ const GlobalStyle = createGlobalStyle`
     color: #fff !important;
   }
   body{
-    font-family:'AgencyGP','Kanit', sans-serif !important;
+    font-family:sans-serif,'Kanit','AgencyGP', !important;
     height: 100vh;
   }
 

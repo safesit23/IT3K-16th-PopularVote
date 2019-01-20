@@ -5,7 +5,7 @@ import BgColor from '../../config/colors'
 import styled from 'styled-components'
 import Pic from '../Core/Picture'
 import SendResult from '../../service/SendResult'
-import ENV from '../../config/envConfig'
+import Router from 'next/router'
 
 const Landing = styled(Container)`
   background-color:${BgColor.bgColor};
@@ -34,6 +34,13 @@ class Vote extends React.Component {
     })
   }
 
+  changePath = async () =>{
+    await Router.push({
+      pathname : '/result',
+      query: { count : `${this.state.count}` }
+    })
+  }
+
   componentDidMount() {
     const id = new URLSearchParams(window.location.search)
     this.getNameAndId(id.get('id'), id.get('name'))
@@ -58,7 +65,7 @@ class Vote extends React.Component {
         <Container>
           <Row>
             <Col className="text-center">
-              <h3>Score : {this.state.count}</h3>
+              <h3>คะแนน : {this.state.count}</h3>
             </Col>
           </Row>
           <Row>
@@ -74,7 +81,7 @@ class Vote extends React.Component {
               <ButtonVote onClick={() => this.vote()}>VOTE</ButtonVote>
             </Col>
             <Col className="d-flex justify-content-center">
-              <button onClick={() => this.sendResult(this.state.id,this.state.count)}>VOTE</button>
+              <button onClick={() => this.changePath(this.state.count)}>VOTE</button>
             </Col>
           </Row>
         </Container>
