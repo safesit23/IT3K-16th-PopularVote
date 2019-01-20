@@ -5,7 +5,6 @@ var io = require('socket.io')(http);
 const port = 9000
 
 io.on('connection', function (socket) {
-
   console.log('connect')
   socket.on('changePath', (pathName) => {
     console.log('path ', pathName);

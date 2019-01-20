@@ -20,10 +20,11 @@ const AuthService = {
 
     }
   },
-  sendResult: async (request) => {
+  sendResult: async (id,count) => {
+    console.log(id,' request',count)
     await api.post('/vote',{
-      'idCompetitor' : request.id,
-      'count' : request.count
+      'idCompetitor' : id,
+      'count' : count
     })
   }
 }

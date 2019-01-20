@@ -25,17 +25,11 @@ const Button = styled.button`
 `
 class DynamicSlides extends Component {
   state = {
-    slides: [0, 1, 2, 3, 4, 5],
+    slides: [1, 2, 3, 4, 5,6],
     select: 0,
     showPopup: false,
     position: 0,
     marginBar: 0
-  }
-
-  select = (slide) => {
-    this.setState({
-      select: slide
-    })
   }
 
   showPopup() {

@@ -17,7 +17,6 @@ class Vote extends React.Component {
     count: 0,
     id: 0,
     name: '',
-    result : []
   }
 
   vote = () => {
@@ -37,16 +36,16 @@ class Vote extends React.Component {
   componentDidMount() {
     const id = new URLSearchParams(window.location.search)
     this.getNameAndId(id.get('id'), id.get('name'))
-    // this.sendResult()
-    // this.vote()
   }
 
-  // sendResult () {
-  //   this.setState({
-  //     result : [this.state.count,this.state.id]
-  //   })
-  //   console.log(this.state.result)
-  // }
+  componentWillUnmount () {
+    console.log('willUn')
+  }
+
+  sendResult = async (id,count) => {
+    console.log('Count : ',this.state.count)
+    Auth.sendResult(id,count)
+  }
 
   render() {
     console.log(this.state.count)
@@ -69,6 +68,9 @@ class Vote extends React.Component {
           <Row>
             <Col className="d-flex justify-content-center">
               <ButtonVote onClick={() => this.vote()}>VOTE</ButtonVote>
+            </Col>
+            <Col className="d-flex justify-content-center">
+              <button onClick={() => this.sendResult(this.state.id,this.state.count)}>VOTE</button>
             </Col>
           </Row>
         </Container>
