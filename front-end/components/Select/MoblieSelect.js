@@ -29,7 +29,7 @@ export default class DynamicSlides extends Component {
     select: 0,
     showPopup: false,
     position: 0,
-    marginBar: '0'
+    marginBar: 0
   }
 
   select = (slide) => {
@@ -56,16 +56,13 @@ export default class DynamicSlides extends Component {
   position(slide) {
     console.log('sild : ', slide, ' marginBar :', this.state.marginBar)
     this.setState({
-      marginBar: `${16.6666667 * (slide + 1)}%`,
+      marginBar: `${16.6666667 * (slide)}%`,
     })
   }
 
   componentDidMount() {
-    this.position()
-    // this.setState({
-    //   marginBar: `${16.6666667 * 0}%`,
-    //   position: 1
-    // })
+    let slide = 0
+    this.position(slide)
   }
 
 
