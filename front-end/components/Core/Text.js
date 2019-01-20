@@ -15,6 +15,13 @@ export const IT3K = styled.h1`
   font-weight: bold;
   text-shadow: 4px 4px 1px rgba(0, 0, 0, 0.5);
 `
+
+export const Title = styled.h4`
+  font-family: 'AgencyGP', sans-serif;
+  font-size: ${config.Title};
+  color: ${props => props.color || "black"};
+`
+
 export const Subtitle = styled.p`
   font-family: 'Kanit', sans-serif;
   font-size: ${config.subtitle};

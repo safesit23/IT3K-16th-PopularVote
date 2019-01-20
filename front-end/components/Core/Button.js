@@ -5,10 +5,10 @@ import colors from '../../config/colors'
 
 const ButtonPrimary = styled(DefaultButton)`
   font-size: ${fonts.paragraph};
-  background-color: ${colors.color1};
+  background-color: ${colors.blackcurrant};
   color: #fff;
   &:hover{
-    background-color: ${colors.primaryDarker};
+    background-color: ${colors.blackcurrant};
     color: #fff;
   }
 `
