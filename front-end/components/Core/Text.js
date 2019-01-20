@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import config from '../../config/fonts'
 
 
-export const Headline = styled.h1`
+const Headline = styled.h1`
   font-family: 'AgencyGP', sans-serif;
   font-size: ${config.headline};
   font-weight: bold;
@@ -31,6 +31,7 @@ export const ParagraphBold = styled(Paragraph)`
   font-family: 'Kanit', sans-serif;
   font-weight: bold;  
   color: ${props => props.color || "white"};
+  font-size : ${config.headline}
 `
 
 export const Small = styled.h5`
