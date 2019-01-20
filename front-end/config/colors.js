@@ -1,7 +1,7 @@
 import React from 'react'
 
 const colors = {
-    color1 : '#E09F7D',
+    color1 : '#fff',
     color2 : '#EF5D60',
     color3 : '#E9B6B7',
     violet : '#311847',

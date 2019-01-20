@@ -17,7 +17,6 @@ class AdminControl extends React.Component {
 	}
 
 	componentDidMount () {
-		// this.changePath()
 		this.getPath()
 	}
 

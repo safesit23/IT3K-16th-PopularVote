@@ -11,7 +11,7 @@ const Logo = styled.img`
 export default class LogoIT3K extends Component {
     render() {
         return (
-            <Logo className="mt-5" src="static/img/logoIT3K.svg" alt="Logo IT3K #16"></Logo>
+            <Logo className="mt-2" src="static/img/logoIT3K.svg" alt="Logo IT3K #16"></Logo>
         );
     }
 }

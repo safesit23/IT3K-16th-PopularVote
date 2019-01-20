@@ -2,9 +2,9 @@ import React from 'react'
 import { Button as AntButton, message } from 'antd'
 import { Container, Row, Col, Button } from 'reactstrap'
 import Logo from '../Core/logo'
-import { IT3K, Subtitle } from '../Core/Text'
+import { IT3K,Headline } from '../Core/Text'
 import LoginFaceBook from './LoginFaceBook'
-import Router from 'next/router'
+import { ButtonIndex } from '../Core/Button'
 
 class Login extends React.Component {
   render() {
@@ -22,15 +22,15 @@ class Login extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col xs='12' className="d-flex justify-content-center">
-            <IT3K>IT3KINGS#16</IT3K>
+          <Col xs='12' className="d-flex justify-content-center mt-5">
+            <IT3K >IT 3KINGS #16</IT3K>
           </Col>
-          <Col xs='12' className="d-flex justify-content-center pb-3">
-            <Subtitle>Popular Vote</Subtitle>
+          <Col xs='12' className="d-flex justify-content-center">
+            <Headline color="#F3BBAB" className="text-center">Poppular Vote</Headline>
           </Col>
         </Row>
         <Row >
-          <Col className="d-flex justify-content-center">
+          <Col className="d-flex justify-content-center mt-2">
             <LoginFaceBook />
           </Col>
         </Row>

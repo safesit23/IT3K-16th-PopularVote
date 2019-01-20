@@ -6,8 +6,18 @@ const GlobalStyle = createGlobalStyle`
     color: #fff !important;
   }
   body{
-    font-family:'Sarabun', sans-serif !important;
+    font-family:'AgencyGP','Kanit', sans-serif !important;
     height: 100vh;
+  }
+
+  @font-face{
+    font-family: "AgencyGP";
+    src: url('/static/fonts/dY_AgencyGP.ttf') format('truetype');
+  }
+
+  @font-face{
+    font-family: "Kanit";
+    src: url('/static/fonts/Kanit-Thin.ttf') format('truetype');
   }
 `
 
