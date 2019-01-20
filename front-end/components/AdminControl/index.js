@@ -4,7 +4,8 @@ import { Container, Row, Col } from 'reactstrap'
 import Button from '../Core/Button'
 import socketIOClient from 'socket.io-client'
 import { Radio } from 'antd'
-import {Headline, Subtitle} from '../Core/Text'
+import {Headline, Title, Subtitle, Paragraph} from '../Core/Text'
+import Result from './Result'
 
 const Section = styled(Col)`
 	margin-left : 10px;
@@ -53,14 +54,14 @@ class AdminControl extends React.Component {
 						<Col xs="10">
 							<Headline>VOTE Control Panel</Headline>
 						</Col>
-						<Col xs={{size:2}}>
-						<Button>LOGOUT</Button>
+						<Col xs={{size:2}} className="d-flex justify-content-end">
+							<Button>LOGOUT</Button>
 						</Col>
 					</Row>
 
 					<Row className="pl-4">
 						<Section xs="6" color="#FFEEE4">
-								<Subtitle>SETTING</Subtitle>
+								<Title>SETTING</Title>
 								changePath : 
 								<RadioGroup onChange={this.onChange} value={this.state.value}>
         				<Radio value={1}>Play Vote</Radio>
@@ -71,24 +72,13 @@ class AdminControl extends React.Component {
 								<button onClick={() => this.getPath()}>waiting Test</button>
 						</Section>
 						<Section xs="5">
-							<Subtitle>USER</Subtitle>
+							<Title>USER</Title>
+							<Paragraph color="black">Current User : </Paragraph>
+							<Paragraph color="black">Ready User : </Paragraph>
+							<Paragraph color="black">Ended User : </Paragraph>
 						</Section>
 					</Row>
-
-					<Row className="pt-4 pl-4">
-						<Col xs="12" className="mb-2">
-							<Headline>Result</Headline>
-						</Col>
-						<Section xs="6" className="mb-2">
-							<Subtitle>WEBSITE</Subtitle>
-						</Section>
-						<Section xs="5" className="mb-2">
-							<Subtitle>IT3K</Subtitle>
-						</Section>
-						<Section xs="11" className="mb-2">
-							<Subtitle>Popular Vote</Subtitle>
-						</Section>
-					</Row>
+					<Result />
       </Container>
 		)
 	}
