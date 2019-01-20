@@ -24,11 +24,23 @@ const TitlePanel = (props) => (
 
 class Result extends React.Component {
 	state = {
-		A001: 1111,
-		A002: 2222
+		website: {
+			A001: [1100, 1111],
+			A002: [2200, 2222]
+		},
+		facebook: {
+			A001: [100, 10],
+			A002: [200, 20],
+		}
 	}
-	calculate() {
-		alert("Test Calculate")
+
+	fetchData() {
+		alert("FetchData")
+	}
+
+	calculateSumWebsite() {
+		let sum = [6]
+		return sum
 	}
 	render() {
 		return (
@@ -38,24 +50,31 @@ class Result extends React.Component {
 				</Col>
 
 				<Section xs="6" className="mb-2">
-					<TitlePanel name="Website" buttonName="bN" onClick={this.calculate} />
+					<TitlePanel name="Website" buttonName="FETCH" onClick={this.fetchData} />
 					<Row>
-						<Col xs="6">
+						<Col xs="4">
 							<Subtitle>Round 1</Subtitle>
 							<Paragraph color="black">
-								{this.state.A001}
-								{this.state.A002}
+								{this.state.website.A001[0]}<br />
+								{this.state.website.A002[0]}<br />
 							</Paragraph>
 						</Col>
-						<Col xs="6">
+						<Col xs="4">
 							<Subtitle>Round 2</Subtitle>
+							<Paragraph color="black">
+								{this.state.website.A001[1]}<br />
+								{this.state.website.A002[1]}<br />
+							</Paragraph>
 						</Col>
+						<Col xs="4">
+							<Subtitle>Total Sum</Subtitle>
 
+						</Col>
 					</Row>
 				</Section>
 
 				<Section xs="5" className="mb-2">
-					<TitlePanel name="Facebook IT3K" buttonName="bN" />
+					<TitlePanel name="Facebook IT3K" buttonName="Update" />
 					<Table>
 						<thead>
 							<th>Name</th>
@@ -71,7 +90,7 @@ class Result extends React.Component {
 					</Table>
 				</Section>
 				<Section xs="11" className="mb-2">
-					<TitlePanel name="PopularVote" buttonName="bN" />
+					<TitlePanel name="PopularVote" buttonName="Calculate" />
 
 				</Section>
 			</Row>
