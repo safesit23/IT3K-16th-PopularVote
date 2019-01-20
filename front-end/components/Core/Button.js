@@ -28,13 +28,13 @@ export const ButtonIndex = styled(DefaultButton)`
 
 export const ButtonVote = styled(DefaultButton)`
   font-size: ${fonts.paragraph};
-  background-color: ${colors.color1};
+  background-color: ${colors.voteBtn};
   color: #fff;
   border-radius: 70%;
   height: 15vh;
   width: 15vh;
   margin-top : 10%;
-  border : 10px solid;
+  border : #311847 10px solid;
   cursor : pointer;
 `
 

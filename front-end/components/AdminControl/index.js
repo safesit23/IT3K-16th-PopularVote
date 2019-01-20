@@ -6,6 +6,7 @@ import socketIOClient from 'socket.io-client'
 import { Radio } from 'antd'
 import {Headline, Title, Subtitle, Paragraph} from '../Core/Text'
 import Result from './Result'
+import ENV from '../../config/envConfig'
 
 const Section = styled(Col)`
 	margin-left : 10px;
@@ -15,9 +16,9 @@ const Section = styled(Col)`
 
 const RadioGroup = Radio.Group;
 
-const socket = socketIOClient('http://localhost:9000')
+const socket = socketIOClient(ENV.PATH_SOCKET)
 
-const pathname = ['playvoting','countprojector','playprojector','topicprojector']
+const pathname = ['playvoting','countprojector','playprojector','topicprojector','result']
 class AdminControl extends React.Component {
 	state = {
 		pathname: '',

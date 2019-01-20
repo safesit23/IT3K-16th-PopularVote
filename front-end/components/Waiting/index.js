@@ -3,13 +3,15 @@ import styled from 'styled-components'
 import { Container, Row, Col } from 'reactstrap'
 import socketIOClient from 'socket.io-client'
 import Router from 'next/router'
+import axios from 'axios'
+import ENV from '../../config/envConfig'
 
 const BgColor = styled(Container)`
     background-color : rgba(239, 93, 96, 0.35);
     height : 100vh;
     padding-top : 50vh;
 `
-const socket = socketIOClient('http://localhost:9000')
+const socket = socketIOClient(ENV.PATH_SOCKET)
 class Waiting extends React.Component {
 	state = {
 		path: '',
@@ -29,7 +31,7 @@ class Waiting extends React.Component {
 				path: path
 			})
 			Router.push({
-				pathname: `http://localhost:3000/${path}`,
+				pathname: `${ENV.PATH_BASIC}/${path}`,
 				query: { id: `${this.state.id}`,name : `${this.state.name}` }
 			})
 			console.log(path)

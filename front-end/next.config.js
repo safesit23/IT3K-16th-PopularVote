@@ -7,14 +7,15 @@ const evnconfig = {
   useFileSystemPublicRoutes: true,
   publicRuntimeConfig: {
     PATH_AUTH: process.env.PATH_AUTH,
-    PATH_REGISTANCE: process.env.PATH_REGISTANCE
+    PATH_REGISTANCE: process.env.PATH_REGISTANCE,
+    PATH_SOCKET:process.env.PATH_SOCKET,
+    PATH_BASIC : process.env.PATH_BASIC
   },
   serverRuntimeConfig: {
     JWT_SECRET: process.env.JWT_SECRET,
     REDIS_HOST: process.env.REDIS_HOST,
     REDIS_PORT: process.env.REDIS_PORT,
     REDIS_PASSWORD: process.env.REDIS_PASSWORD
-
   }
 }
 

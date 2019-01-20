@@ -5,6 +5,7 @@ import BgColor from '../../config/colors'
 import styled from 'styled-components'
 import Pic from '../Core/Picture'
 import SendResult from '../../service/SendResult'
+import ENV from '../../config/envConfig'
 
 const Landing = styled(Container)`
   background-color:${BgColor.bgColor};
@@ -40,6 +41,9 @@ class Vote extends React.Component {
 
   componentWillUnmount () {
     console.log('willUn')
+    let id = this.state.id
+    let count = this.state.count
+    this.sendResult(id,count)
   }
 
   sendResult = async (id,count) => {
