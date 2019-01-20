@@ -38,6 +38,7 @@ export const ParagraphBold = styled(Paragraph)`
   font-family: 'Kanit', sans-serif;
   font-weight: bold;  
   color: ${props => props.color || "white"};
+  font-size : ${config.headline};
 `
 
 export const Small = styled.h5`

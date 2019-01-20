@@ -3,6 +3,6 @@ import styled from 'styled-components'
 
 
 const Picture = (props) => (
-    <img src={`/static/img/${props.pic}.png`} />
+    <img positon={props.pic} src={`/static/img/${props.pic}.png`} />
 )
 export default Picture

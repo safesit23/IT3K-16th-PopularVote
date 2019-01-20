@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
   .ant-calendar-month-panel-selected-cell .ant-calendar-month-panel-month {
-    background: #00B2FF !important;
+    background: 'linear-gradient(270deg, #5F597B 0%, #B2605C 100%)' !important;
     color: #fff !important;
   }
   body{

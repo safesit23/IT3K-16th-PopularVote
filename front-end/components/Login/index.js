@@ -1,11 +1,9 @@
 import React from 'react'
 import { Button as AntButton, message } from 'antd'
-import { Container, Row, Col, Button } from 'reactstrap'
+import { Container, Row, Col } from 'reactstrap'
 import Logo from '../Core/logo'
 import { IT3K,Headline } from '../Core/Text'
 import LoginFaceBook from './LoginFaceBook'
-import { ButtonIndex } from '../Core/Button'
-
 class Login extends React.Component {
   render() {
     return (

@@ -4,31 +4,32 @@ import { Container, Row, Col } from 'reactstrap'
 import styled from 'styled-components'
 import Pic from '../Core/Picture';
 import Popup from './PopupConfirm'
+import { ParagraphBold, Subtitle, Paragraph } from '../Core/Text'
 
-const Name = ['นาย จันทร์ ทองดีกว่า', 'นาย จันทร์ ทองดีกว่าที่สุด', 'นายอังคาร ทองดีกว่าที่สุด', 'นาย พุธ ทองดีกว่าที่สุด', '5', '6'];
+const Name = ['นาย จันทร์ ทองดีกว่า', 'นาย จันทร์ ทองดีกว่าที่สุด', 'นายอังคาร ทองดีกว่าที่สุด', 'นาย พุธ ทองดีกว่าที่สุด', 'name5', '6'];
+const school = ['บางมด', 'พระนครเหนือ', 'ลาดกระบัง', 'บางมด', 'พระนครเหนือ', 'ลาดกระบัง'];
 
-const Hr = styled.div`
-  width: 80%;
-  border : solid 1px;
+const BoxHr = styled.div`
+  width: 100%;
+  border : rgba(0, 0, 0, 0.3) solid 0px;
+  border-radius : 10%;
+  height: 20%;
+  background-color:rgba(0, 0, 0, 0.3);
+  overflow:hidden;
 `
+
 
 const Button = styled.button`
   background-color : transparent;
   border: 0;
 `
-export default class DynamicSlides extends Component {
+class DynamicSlides extends Component {
   state = {
-    slides: [1, 2, 3, 4, 5, 6],
+    slides: [0, 1, 2, 3, 4, 5],
     select: 0,
-    showPopup : false
-  }
-
-  click() {
-    const { slides } = this.state;
-    this.setState({
-      slides:
-        slides.length === 6 ? [1, 2, 3, 4, 5, 6, 7, 8, 9] : [1, 2, 3, 4, 5, 6],
-    });
+    showPopup: false,
+    position: 0,
+    marginBar: 0
   }
 
   select = (slide) => {
@@ -36,13 +37,13 @@ export default class DynamicSlides extends Component {
       select: slide
     })
   }
-  
-  showPopup () {
+
+  showPopup() {
     this.setState({
-      showPopup : !this.state.showPopup
+      showPopup: !this.state.showPopup
     })
   }
-  
+
   togglePopup(slide) {
     console.log(slide)
     this.setState({
@@ -50,6 +51,20 @@ export default class DynamicSlides extends Component {
       select: slide
     });
   }
+
+
+  position(slide) {
+    console.log('sild : ', slide, ' marginBar :', this.state.marginBar)
+    this.setState({
+      marginBar: `${16.6666667 * (slide)}%`,
+    })
+  }
+
+  componentDidMount() {
+    let slide = 0
+    this.position(slide)
+  }
+
 
   render() {
     const settings = {
@@ -59,32 +74,45 @@ export default class DynamicSlides extends Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
+      arrows: false
     };
+
+    const Hr = styled.div`
+    width:16.6666667%;
+    border : #DD755B solid 1px;
+    height: 1vh;
+    background-color : #DD755B;
+    margin-left : ${this.state.marginBar};
+    `
     return (
       <Container>
-        <Row className="d-flex justify-content-center">
-          <h2 className="mt-3">Select</h2>
+        <Row className="d-flex justify-content-center p-4">
+          <ParagraphBold className="mt-3 text-center">เลือกผู้<br />
+            ที่ต้องการโหวต</ParagraphBold>
+        <BoxHr>
+          <Hr />
+        </BoxHr>
         </Row>
-        <Slider className="mt-5" {...settings}>
+        <Slider className="mt-3" {...settings} >
           {this.state.slides.map((slide) => {
             return (
-              <Col>
-                <div className="d-flex justify-content-center" key={slide} >
-                  <Button onClick={() => this.togglePopup(slide)}>
+              <Col onTouchEnd={() => this.position(slide)} >
+                <Row className="d-flex justify-content-center" key={slide} >
+                  <Button onClick={() => this.togglePopup(slide)} >
                     <Pic pic={slide} />
                   </Button>
-                </div>
-                <div className="d-flex justify-content-center mt-5">
-                  <Hr />
-                </div>
-                <div className="d-flex justify-content-center">
-                  <h2 className="mt-5" name={Name[slide]}>{Name[slide]}</h2>
-                </div>
+                </Row>
+                <Row className="d-flex justify-content-center">
+                  <Subtitle className="mt-4 h1" name={Name[slide]}>{Name[slide]}</Subtitle>
+                </Row>
+                <Row className="d-flex justify-content-center">
+                  <Paragraph className="mt-2" >{school[slide]}</Paragraph>
+                </Row>
               </Col>
             );
           })}
         </Slider>
-           {this.state.showPopup ? 
+        {this.state.showPopup ?
           <Popup
             text='Close Me'
             name={Name[this.state.select]}
@@ -97,3 +125,4 @@ export default class DynamicSlides extends Component {
     );
   }
 }
+export default DynamicSlides
