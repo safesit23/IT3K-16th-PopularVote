@@ -38,7 +38,7 @@ class DynamicSlides extends Component {
     })
   }
 
-  togglePopup(slide) {
+  togglePopup = async(slide) => {
     console.log(slide)
     this.setState({
       showPopup: !this.state.showPopup,
@@ -72,11 +72,11 @@ class DynamicSlides extends Component {
     };
 
     const Hr = styled.div`
-    width:16.6666667%;
-    border : #DD755B solid 1px;
-    height: 1vh;
-    background-color : #DD755B;
-    margin-left : ${this.state.marginBar};
+      width:16.6666667%;
+      border : #DD755B solid 1px;
+      height: 1vh;
+      background-color : #DD755B;
+      margin-left : ${this.state.marginBar};
     `
     return (
       <Container>
@@ -90,8 +90,8 @@ class DynamicSlides extends Component {
         <Slider className="mt-3" {...settings} >
           {this.state.slides.map((slide) => {
             return (
-              <Col onTouchEnd={() => this.position(slide)} >
-                <Row className="d-flex justify-content-center" key={slide} >
+              <Col>
+                <Row className="d-flex justify-content-center" key={slide} onTouchEnd={() => this.position(slide)} >
                   <Button onClick={() => this.togglePopup(slide)} >
                     <Pic pic={slide} />
                   </Button>

@@ -48,7 +48,6 @@ class Result extends React.Component {
 				<Col xs="12" className="mb-2">
 					<Headline>Result</Headline>
 				</Col>
-
 				<Section xs="6" className="mb-2">
 					<TitlePanel name="Website" buttonName="FETCH" onClick={this.fetchData} />
 					<Row>
