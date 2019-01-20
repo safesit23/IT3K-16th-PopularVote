@@ -20,13 +20,6 @@ const AuthService = {
 
     }
   },
-  sendResult: async (id,count) => {
-    console.log(id,' request',count)
-    await api.post('/vote',{
-      'idCompetitor' : id,
-      'count' : count
-    })
-  }
 }
 
 export default AuthService

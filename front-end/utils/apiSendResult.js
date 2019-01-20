@@ -4,7 +4,7 @@ import ENV from '../config/envConfig'
 
 const createInstance = () => {
   return axios.create({
-    baseURL: ENV.PATH_REGISTANCE,
+    baseURL: ENV.PATH_AUTH,
     headers: {
       'Authorization': `Bearer ${Cookies.gettokenJWTCookie()}`,
       'Content-Type': 'application/json'

@@ -4,7 +4,7 @@ import { ButtonVote } from '../Core/Button'
 import BgColor from '../../config/colors'
 import styled from 'styled-components'
 import Pic from '../Core/Picture'
-import Auth from '../../service/AuthService'
+import SendResult from '../../service/SendResult'
 
 const Landing = styled(Container)`
   background-color:${BgColor.bgColor};
@@ -44,7 +44,7 @@ class Vote extends React.Component {
 
   sendResult = async (id,count) => {
     console.log('Count : ',this.state.count)
-    Auth.sendResult(id,count)
+    SendResult.sendResult(id,count)
   }
 
   render() {
