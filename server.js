@@ -9,6 +9,7 @@ io.on('connection', function (socket) {
   socket.on('changePath', (pathName) => {
     console.log('path ', pathName);
     io.sockets.emit('pathName', pathName);
+    io.sockets.emit('pathNameResult', pathName);
   });
   socket.on('addminstopTime', () => {
     console.log('stop')
