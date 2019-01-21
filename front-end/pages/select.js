@@ -3,16 +3,10 @@ import styled from 'styled-components'
 import BgColor from '../config/colors'
 import SelectSlick from '../components/Select'
 
-const Bg = styled.div`
-  background-color:${BgColor.bgColor};
-  height: 100vh;
-`
 class Select extends React.Component {
-  render () {
+  render() {
     return (
-      <Bg>
-        <SelectSlick/>
-      </Bg>
+      <SelectSlick />
     )
   }
 }

@@ -4,15 +4,13 @@ import Topic from '../components/TopicProjector'
 import BgColor from '../config/colors'
 
 const Bg = styled.div`
-  background-color:${BgColor.bgColor};
+  background-color: ${BgColor.background};
   height: 100vh;
 `
 class TopicProjector extends React.Component {
-  render () {
+  render() {
     return (
-      <Bg>
-        <Topic />
-      </Bg>
+      <Topic />
     )
   }
 }
