@@ -25,7 +25,7 @@ const Button = styled.button`
 `
 class DynamicSlides extends Component {
   state = {
-    slides: [1, 2, 3, 4, 5,6],
+    slides: [1, 2, 3, 4, 5, 6],
     select: 0,
     showPopup: false,
     position: 0,
@@ -38,7 +38,7 @@ class DynamicSlides extends Component {
     })
   }
 
-  togglePopup = async(slide) => {
+  togglePopup = async (slide) => {
     console.log(slide)
     this.setState({
       showPopup: !this.state.showPopup,
@@ -83,9 +83,9 @@ class DynamicSlides extends Component {
         <Row className="d-flex justify-content-center p-4">
           <ParagraphBold className="mt-3 text-center">เลือกผู้<br />
             ที่ต้องการโหวต</ParagraphBold>
-        <BoxHr>
-          <Hr />
-        </BoxHr>
+          <BoxHr>
+            <Hr />
+          </BoxHr>
         </Row>
         <Slider className="mt-3" {...settings} >
           {this.state.slides.map((slide) => {

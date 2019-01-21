@@ -11,12 +11,13 @@ class Result extends React.Component {
 		count : 0
 	}
 	componentDidMount() {
-    const id = new URLSearchParams(window.location.search)
-    this.getCount(id.get('count'))
+		const count = new URLSearchParams(window.location.search)
+		console.log('Test Count : ',count.get('count'))
+    this.getCount(count.get('count'))
 	}
 
-	getCount =  (count) => {
-		this.setState({
+	getCount = async (count) => {
+		await this.setState({
 			count : count
 		})
 	} 

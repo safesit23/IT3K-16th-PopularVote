@@ -52,7 +52,7 @@ class PopupConfirm extends React.Component {
   changePath = async () =>{
       await Router.push({
         pathname : '/waiting',
-        query: { id: `${this.props.id}`,name : `${this.props.name}` }
+        query: { id: `${this.props.id}`,name : `${this.props.name}`}
       })
   }
   

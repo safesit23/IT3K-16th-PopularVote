@@ -18,7 +18,7 @@ class Waiting extends React.Component {
 		id: 0,
 		name : '',
 	}
-	componentWillMount() {
+	componentDidMount () {
 		const id = new URLSearchParams(window.location.search)
 		this.getCountAndId(id.get('id'),id.get('name'))
 		this.changePath()
@@ -32,7 +32,7 @@ class Waiting extends React.Component {
 			})
 			Router.push({
 				pathname: `${ENV.PATH_BASIC}/${path}`,
-				query: { id: `${this.state.id}`,name : `${this.state.name}` }
+				query: { id: `${this.state.id}`,name : `${this.state.name}`,count : 0}
 			})
 			console.log(path)
 		})
