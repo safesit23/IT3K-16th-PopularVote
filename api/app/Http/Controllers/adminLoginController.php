@@ -7,9 +7,10 @@ use Illuminate\Support\Facades\DB;
 
 class adminLoginController extends Controller
 {
-    public function Login(Request $request){
 
-        //$2y$10$Zz5cjTgv0.ZzWYh5XfosC.g5U6HRdMBPUFaKa1Qn2q7SbmJanILZ.
+    private $AdminSecret = "Nongmoonoum";
+
+    public function Login(Request $request){
         $this->validate($request, [
             'username' => 'required',
             'password' => 'required'
@@ -21,7 +22,21 @@ class adminLoginController extends Controller
            && Hash::check($request->password, $AdminIT3K->password))
            {
 
-            return response()->json($AdminIT3K, 200);
+            $jwt = new \Lindelius\JWT\JWT();
+            $jwt->exp = time() + (60 * 60 * 2); // expire after 2 hours
+            $jwt->iat = time();
+            $jwt->adminDate = array(
+                'Name' => "AdminIT3K",
+                'LoginTime' => date('o')
+            );
+
+            $adminToken = $jwt->encode($this->AdminSecret);
+
+            return response()->json([
+                'status' => 200,
+                'message' => "Login successful",
+                'token' => $adminToken
+            ], 200);
 
             } else {
 
@@ -31,14 +46,6 @@ class adminLoginController extends Controller
                 ], 401);
             }
       
-
-    //    if (Hash::check($request->password, $hashedPassword)) {
-    //         return response()->json(200);
-    //     } else {
-    //         return response()->json(401);
-    //     }
-
-
 
     }
 }
