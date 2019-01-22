@@ -27,7 +27,7 @@ class adminLoginController extends Controller
             $jwt->iat = time();
             $jwt->adminDate = array(
                 'Name' => "AdminIT3K",
-                'LoginTime' => date('o')
+                'LoginTime' => date('c')
             );
 
             $adminToken = $jwt->encode($this->AdminSecret);
