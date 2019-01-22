@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
         Schema::create('Competitor', function (Blueprint $table) {
             $table->increments('idCompetitor');
             $table->string('name');
+            $table->string('nickname');
             $table->string('university');
             $table->string('like');
             $table->string('share');
