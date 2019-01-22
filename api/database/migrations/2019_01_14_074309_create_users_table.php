@@ -19,6 +19,9 @@ class CreateUsersTable extends Migration
             $table->increments('idCompetitor');
             $table->string('name');
             $table->string('university');
+            $table->string('like');
+            $table->string('share');
+          
         });
 
         Schema::create('User', function (Blueprint $table) {
@@ -26,7 +29,6 @@ class CreateUsersTable extends Migration
             $table->enum('round', ['1', '2']);
             $table->unsignedInteger('idCompetitor')->nullable();
             $table->integer('count')->default(0);
-
             $table->primary(['provider_id', 'round']);
             $table->foreign('idCompetitor')->references('idCompetitor')->on('Competitor');
         });
@@ -34,9 +36,10 @@ class CreateUsersTable extends Migration
         Schema::create('Admin', function (Blueprint $table) {
             $table->string('username');
             $table->string('password');
-
             $table->primary(['username']);
         });
+
+       
     }
 
     /**
@@ -46,9 +49,10 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('competitor');
-        Schema::dropIfExists('user');
-        Schema::dropIfExists('admin');
+        Schema::dropIfExists('Competitor');
+        Schema::dropIfExists('User');
+        Schema::dropIfExists('Admin');
+        Schema::dropIfExists('FacebookScore');
         
     }
 }
