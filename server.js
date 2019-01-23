@@ -7,13 +7,13 @@ const port = 9000
 io.on('connection', function (socket) {
   console.log('connect')
   socket.on('changePath', (pathName) => {
-    console.log('path ', pathName);
+    console.log('Path User : ', pathName);
     io.sockets.emit('pathName', pathName);
     io.sockets.emit('pathNameResult', pathName);
   });
-  socket.on('addminstopTime', () => {
-    console.log('stop')
-    io.sockets.emit('stoptime')
+  socket.on('projectorPath', (pathNameProj) => {
+    console.log('Path Projector : ',pathNameProj);
+    io.sockets.emit('pathProjector',pathNameProj);
   })
 });
 
