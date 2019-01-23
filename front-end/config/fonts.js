@@ -4,4 +4,5 @@ export default {
   title: '20px',
   subtitle: '18px',
   paragraph: '16px',
+  timeout : '150px'
 }
