@@ -1,8 +1,26 @@
 import React from 'react'
 import styled from 'styled-components';
 import { Container, Row, Col } from 'reactstrap'
+import { Progress, Button } from 'antd';
 
+
+let intervalTime;
 class Play extends React.Component {
+
+	state = {
+		percent: 10,
+	}
+
+	componentDidMount() {
+		this.increase()
+	}
+
+	increase = () => {
+		intervalTime = setInterval(() => {
+			this.setState({ percent : this.state.percent - 1 });
+		}, 1000)
+	}
+
 	stopTimer() {
 		clearInterval(intervalTime);
 	}
@@ -11,8 +29,8 @@ class Play extends React.Component {
 		return (
 			<Container fluid>
 				<Container>
-					Play Projector
-        </Container>
+					<Progress type="circle" />
+				</Container>
 			</Container>
 		)
 	}
