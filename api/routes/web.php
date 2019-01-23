@@ -12,7 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return response()->json([
+        'status' => 404,
+        'message' => "Hello Welcome to backend IT3K"
+    ], 404);
 });
 
 Route::get('/api/users/{user}', function(App\User $user){

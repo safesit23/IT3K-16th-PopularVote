@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Container, Row, Col, Table } from 'reactstrap'
 import Button from '../Core/Button'
-import { InputNumber } from 'antd';
+import FacebookModal from './FbScoreModal'
 import { Headline, Title, Subtitle, Paragraph } from '../Core/Text'
 
 const Section = styled(Col)`
@@ -32,6 +32,7 @@ class Result extends React.Component {
 			A001: [100, 10],
 			A002: [200, 20],
 		}
+
 	}
 
 	fetchData() {
@@ -84,9 +85,11 @@ class Result extends React.Component {
 						<tr>
 							<td>Name 1</td>
 							<td>บางมด</td>
-							<td><InputNumber min={0} onChange={this.calculate} /></td>
+							<td>0</td>
+							<td>0</td>
 						</tr>
 					</Table>
+					<FacebookModal>Edit Data</FacebookModal>
 				</Section>
 				<Section xs="11" className="mb-2">
 					<TitlePanel name="PopularVote" buttonName="Calculate" />

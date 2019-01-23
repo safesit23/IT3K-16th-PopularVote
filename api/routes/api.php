@@ -20,3 +20,6 @@ header('Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS');
 Route::post('login', 'AuthenController@login');
 
 Route::post('vote', 'VoteController@vote');
+
+//admin
+Route::post('admin/login','adminLoginController@Login');
