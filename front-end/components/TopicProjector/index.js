@@ -16,20 +16,15 @@ const socket = socketIOClient(ENV.PATH_SOCKET)
 class TopicProjector extends React.Component {
 
 	changePath = async () => {
-		await socket.on('pathName', (path) => {
-			if(path === 'waitingprojector'){
-				this.setState({
-					path: path
-				})
-				Router.push({
-					pathname: `${ENV.PATH_BASIC}/${path}`,
-				})
-				console.log(path)
-			}
+		await socket.on('pathProjector', (path) => {
+			Router.push({
+				pathname: `${ENV.PATH_BASIC}/${path}`,
+			})
+			console.log('Cilent Path Project : ',path)
 		})
 	}
 
-	componentDidMount () {
+	componentDidMount() {
 		this.changePath()
 	}
 
