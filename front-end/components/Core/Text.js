@@ -34,6 +34,19 @@ export const Paragraph = styled.p`
   color: ${props => props.color || "white"};
 `
 
+export const ParagraphsmBold = styled.p`
+  font-family: 'Kanit', sans-serif;
+  font-size: ${config.sm_paragraph};
+  font-weight: bold; 
+  color: ${props => props.color || "black"};
+`
+
+export const Paragraphsm = styled.p`
+  font-family: 'Kanit', sans-serif;
+  font-size: ${config.sm_paragraph};
+  color: ${props => props.color || "black"};
+`
+
 export const ParagraphBold = styled(Paragraph)`
   font-family: 'Kanit', sans-serif;
   font-weight: bold;  
