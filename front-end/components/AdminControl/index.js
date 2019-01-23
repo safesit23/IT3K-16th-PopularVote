@@ -18,7 +18,7 @@ const RadioGroup = Radio.Group;
 
 const socket = socketIOClient(ENV.PATH_SOCKET)
 
-const pathname = ['playvoting', 'countprojector', 'playprojector', 'topicprojector', 'result']
+const pathname = ['playvoting', 'countprojector', 'playprojector', 'topicprojector','result','waitingprojector']
 class AdminControl extends React.Component {
 	state = {
 		pathname: '',
@@ -68,6 +68,7 @@ class AdminControl extends React.Component {
 								<Radio value={pathname[2]}>Play Projector</Radio>
 								<Radio value={pathname[3]}>Topic Projector</Radio>
 								<Radio value={pathname[4]}>Result</Radio>
+								<Radio value={pathname[5]}>Waiting projector</Radio>
 							</RadioGroup>
 							<input type="submit" value="hitme" />
 						</form>
