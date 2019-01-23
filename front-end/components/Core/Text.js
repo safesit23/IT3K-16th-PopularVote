@@ -54,6 +54,12 @@ export const ParagraphBold = styled(Paragraph)`
   font-size : ${config.headline};
 `
 
+export const Timeout = styled.h1`
+  font-family: 'Kanit', sans-serif;
+  font-size: ${config.timeout};
+  color: ${props => props.color || "black"};
+`
+
 export const Small = styled.h5`
   font-family: 'Kanit', sans-serif;
   font-size: ${config.small};

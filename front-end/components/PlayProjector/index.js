@@ -2,6 +2,10 @@ import React from 'react'
 import styled from 'styled-components';
 import { Container, Row, Col } from 'reactstrap'
 import { Progress, Button } from 'antd';
+import ENV from '../../config/envConfig'
+import socketIOClient from 'socket.io-client'
+
+const socket = socketIOClient(ENV.PATH_SOCKET)
 
 
 let intervalTime;
@@ -11,8 +15,13 @@ class Play extends React.Component {
 		percent: 10,
 	}
 
-	componentDidMount() {
+	componentDidMount = () => {
 		this.increase()
+		this.changePathToVote()
+	}
+
+	changePathToVote = async () => {
+		await socket.emit('changePath','playvoting')
 	}
 
 	increase = () => {
