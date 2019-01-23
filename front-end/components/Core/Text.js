@@ -3,7 +3,7 @@ import config from '../../config/fonts'
 
 
 export const Headline = styled.h1`
-  font-family: 'AgencyGP', sans-serif;
+  font-family: 'Kanit', sans-serif;
   font-size: ${config.headline};
   font-weight: bold;
   color: ${props => props.color || "black"};
