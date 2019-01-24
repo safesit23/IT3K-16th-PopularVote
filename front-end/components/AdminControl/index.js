@@ -21,6 +21,8 @@ const socket = socketIOClient(ENV.PATH_SOCKET)
 const pathname = [{ label: 'Play vote', value: 'playvoting' },
 { label: 'Result', value: 'result' }]
 
+const round = [{ label: 'Round 1', value: '1',},
+{ label: 'Round 2', value: '2',}  ]
 
 const options = [
 	{ label: 'Topic', value: 'topicprojector' },
@@ -35,9 +37,20 @@ class AdminControl extends React.Component {
 		pathname: '',
 		value: '',
 		value2: '',
+		round : '',
 	}
 
 	componentDidMount() {
+	}
+
+	getCount () {
+		socket.on('countUser',)
+	}
+	
+	getPath = (e) => {
+		e.preventDefault()
+		this.changePath(this.state.value)
+		this.changePathProjector(this.state.value2)
 	}
 
 	changePath = (pathname) => {
@@ -54,25 +67,37 @@ class AdminControl extends React.Component {
 		}
 	}
 
-
-	getPath = (e) => {
-		e.preventDefault()
-		console.log('Tetse.value : ', this.state.value)
-		this.changePath(this.state.value)
-		this.changePathProjector(this.state.value2)
-	}
-
 	onChange = (e) => {
 		console.log('radio checked', e.target.value);
 		this.setState({
 			value: e.target.value,
 		});
 	}
-
+	
 	onChange2 = (e) => {
 		console.log('radio2 checked', e.target.value);
 		this.setState({
 			value2: e.target.value,
+		});
+	}
+	
+	getRound = (e) => {
+		e.preventDefault()
+		console.log('Tetse.value : ', this.state.round)
+		this.changeRound(this.state.round)
+	}
+	
+	changeRound = (round) => {
+		console.log('Round : ', round)
+		if (round != null) {
+			socket.emit('getRound', round)
+		}
+	}
+
+	onChangeRound = (e) => {
+		console.log('radio2 checked', e.target.value);
+		this.setState({
+			round: e.target.value,
 		});
 	}
 
@@ -102,7 +127,15 @@ class AdminControl extends React.Component {
 							<br />
 							Path projector : {this.state.value2}
 							<br />
-							<input type="submit" value="hitme" />
+							<input type="submit" value="Change Path" />
+						</form>
+						<form onSubmit={this.getRound}>
+							Round : <br />
+							<RadioGroup options={round} onChange={this.onChangeRound} value={this.state.round} />
+							<br />
+							Round user : {this.state.round}
+							<br />
+							<input type="submit" value="Change round" />
 						</form>
 					</Section>
 					<Section xs="5">
