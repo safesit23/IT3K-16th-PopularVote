@@ -1,8 +1,8 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import Logo from "../Core/logohead";
-import { Subtitle, ParagraphsmBold, Paragraphsm } from "../Core/Text";
-import Pic from "../Core/Picture";
+import { TitleWh, ParagraphsmBold, Paragraphsm } from "../Core/Text";
+import { FacebookButton } from "../Core/Button"
 
 class HowToUse extends React.Component {
   render() {
@@ -17,12 +17,12 @@ class HowToUse extends React.Component {
             </Row>
             <Row>
               <Col className="d-flex justify-content-center mt-2">
-                <Subtitle className="text-white">ระบบโหวต ดาว-เดือน</Subtitle>
+                <TitleWh className="text-white">ระบบโหวต ดาว-เดือน</TitleWh>
               </Col>
             </Row>
           </Container>
 
-          <Subtitle>รูป scoll ขวา สูง 80px</Subtitle>
+          <TitleWh>รูป scoll ขวา สูง 80px</TitleWh>
           <Container>
             <Row>
               <Col>
@@ -41,6 +41,11 @@ class HowToUse extends React.Component {
                   4. กดปุ่มย้ำๆ เพื่อให้ส่งกำลังใจให้
                 </Paragraphsm>
               </Col>
+            </Row>
+            <Row>
+                <Col className="text-center mt-5">
+                    <FacebookButton size="small" color="primary">Login with Facebook</FacebookButton>
+                </Col>
             </Row>
           </Container>
         </Container>

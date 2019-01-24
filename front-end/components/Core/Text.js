@@ -21,6 +21,11 @@ export const Title = styled.h4`
   font-size: ${config.Title};
   color: ${props => props.color || "black"};
 `
+export const TitleWh = styled.h4`
+  font-family: 'Kanit', sans-serif;
+  font-size: ${config.Title};
+  color: ${props => props.color || "black"};
+`
 
 export const Subtitle = styled.p`
   font-family: 'Kanit', sans-serif;
@@ -63,6 +68,16 @@ export const Timeout = styled.h1`
 export const Small = styled.h5`
   font-family: 'Kanit', sans-serif;
   font-size: ${config.small};
+  color: ${props => props.color || "black"};
+`
+export const MNsubtitle = styled.h5`
+  font-family: 'Kanit', sans-serif;
+  font-size: ${config.mini_subtitle};
+  color: ${props => props.color || "black"};
+`
+export const MNparagraph = styled.h5`
+  font-family: 'Kanit', sans-serif;
+  font-size: ${config.mini_paragraph};
   color: ${props => props.color || "black"};
 `
 
