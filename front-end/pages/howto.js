@@ -4,7 +4,7 @@ import HowTo from "../components/HowTo";
 import BgColor from "../config/colors";
 
 const Bg = styled.div`
-  background-image: ${BgColor.background};
+  background-image: ${BgColor.backgroundnew};
   height: 100vh;
 `;
 
