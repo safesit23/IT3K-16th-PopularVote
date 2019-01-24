@@ -11,7 +11,8 @@ const colors = {
     color3 : '#E9B6B7',
     violet : '#311847',
     background : 'linear-gradient(270deg, #5F597B 0%, #B2605C 100%)',
-    voteBtn : '#EC4067'
+    voteBtn : '#EC4067',
+    backgroundnew: 'linear-gradient(150.6deg, #F3BBAB 0%, #C49AAB 100%)'
 }
 
 export default colors;
