@@ -28,6 +28,20 @@ class CompetitorSeeder extends Seeder
             'share' => "0"
             ],
             [
+            'name' => 'นายจักราช นิลละออ ',
+            'nickname' => 'เจมส์',
+            'university' => "บางมด",
+            'like' => "0",
+            'share' => "0"
+            ],       
+            [
+            'name' => 'นางสาวเกวลิน อินทรกำแหง',
+            'nickname' => 'เกรซ',
+            'university' => "บางมด",
+            'like' => "0",
+            'share' => "0"
+            ],       
+            [
             'name' => 'นายสิรภพ รักเกื้อ',
             'nickname' => 'เจ',
             'university' => "ลาดกระบัง",
@@ -40,21 +54,7 @@ class CompetitorSeeder extends Seeder
             'university' => "ลาดกระบัง",
             'like' => "0",
             'share' => "0"
-            ],
-            [
-            'name' => 'นางสาวเกวลิน อินทรกำแหง',
-            'nickname' => 'เกรซ',
-            'university' => "บางมด",
-            'like' => "0",
-            'share' => "0"
-            ],
-            [
-            'name' => 'นายจักราช นิลละออ ',
-            'nickname' => 'เจมส์',
-            'university' => "บางมด",
-            'like' => "0",
-            'share' => "0"
-            ]              
+            ]
         ]);
 
     }
