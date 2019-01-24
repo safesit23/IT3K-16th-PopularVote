@@ -11,11 +11,9 @@ class AuthenController extends Controller
     public function login(Request $request) {
         $this->validate($request, [
             'provider_id' => 'required',
-            'round' => 'required'
         ]);
         $user = \App\User::firstOrCreate([
-            "provider_id" => $request->provider_id,
-            "round" => $request->round,
+            "provider_id" => $request->provider_id
         ]);
 
         $jwt = new \Lindelius\JWT\JWT();
