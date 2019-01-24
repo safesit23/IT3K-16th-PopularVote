@@ -4,6 +4,7 @@ import { Container, Row, Col } from 'reactstrap'
 import Logo from '../Core/logo'
 import { IT3K,Headline } from '../Core/Text'
 import LoginFaceBook from './LoginFaceBook'
+import Gallery from './Gallery'
 class Login extends React.Component {
   render() {
     return (
@@ -20,12 +21,12 @@ class Login extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col xs='12' className="d-flex justify-content-center mt-5">
-            <IT3K >IT 3KINGS #16</IT3K>
-          </Col>
           <Col xs='12' className="d-flex justify-content-center">
             <Headline color="#F3BBAB" className="text-center">Poppular Vote</Headline>
           </Col>
+        </Row>
+        <Row fluid>
+          <Gallery />
         </Row>
         <Row >
           <Col className="d-flex justify-content-center mt-2">
