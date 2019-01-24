@@ -14,7 +14,6 @@ io.on('connection', function (socket) {
     console.log('Path User : ', pathName);
     io.sockets.emit('pathName', pathName);
     io.sockets.emit('pathNameResult', pathName);
-    // count += 1;
   });
   socket.on('projectorPath', (pathNameProj) => {
     console.log('Path Projector : ',pathNameProj);
