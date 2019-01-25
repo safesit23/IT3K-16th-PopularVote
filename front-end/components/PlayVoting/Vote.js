@@ -22,11 +22,12 @@ class Vote extends React.Component {
     count: 0,
     id: 0,
     name: '',
-    path: ''
+    path: '',
+    round: null
   }
 
   vote = () => {
-    // window.navigator.vibrate(200)
+    window.navigator.vibrate(200)
     this.setState({
       count: this.state.count + 1,
     })
@@ -48,17 +49,27 @@ class Vote extends React.Component {
       this.setState({
         path: path
       })
-      Router.replace({
-        pathname: `${ENV.PATH_BASIC}/${this.state.path}`,
-        query: { id: `${this.state.id}`, name: `${this.state.name}`, count : `${this.state.count}` }
-      })
+      // Router.replace({
+      //   pathname: `${ENV.PATH_BASIC}/${this.state.path}`,
+      //   query: { id: `${this.state.id}`, name: `${this.state.name}`, count : `${this.state.count}` }
+      // })
     })
+  }
+
+  getRound = () => {
+    socket.on('round',(newRound) => {
+      console.log('round : ----------',newRound)
+      this.setState({
+        round : newRound
+      })
+    });
   }
 
   componentDidMount() {
     const id = new URLSearchParams(window.location.search)
     this.getNameAndId(id.get('id'), id.get('name'),id.get('count'))
     this.changePath(this.state.count)
+    this.getRound()
   }
 
 
@@ -66,12 +77,13 @@ class Vote extends React.Component {
     console.log('willUn')
     let id = this.state.id
     let count = this.state.count
-    this.sendResult(id, count)
+    let round = this.state.round
+    this.sendResult(id, count,round)
   }
 
-  sendResult = async (id, count) => {
+  sendResult = async (id, count,round) => {
     console.log('Count : ', this.state.count)
-    SendResult.sendResult(id, count)
+    SendResult.sendResult(id, count,round)
   }
 
   render() {
