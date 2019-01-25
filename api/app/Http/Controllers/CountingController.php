@@ -6,42 +6,53 @@ use Illuminate\Http\Request;
 
 class CountingController extends Controller
 {
-    public function vote(Request $request) {
+    private $encode_key = "IT3K-naja";
+    
+    public function RoundResult(Request $request){
+
+        $auth = $request->header('authorization');
+        $token = substr($auth, 7);
+        $decodedJwt = \Lindelius\JWT\JWT::decode($token);
+        $decodedJwt->verify($this->encode_key);
+
+
         $this->validate($request, [
-            'count' => 'required',
-            'idCompetitor' => 'required'
+            'provider_id' => 'required',
+            'round' => 'required'
         ]);
 
-        $user = \Auth::user();
-        $provider_id = $user->provider_id;
-        $currentRound = \App\CurrentRound::find(1)->round;
 
-        $competitor = \App\Competitor::where('idCompetitor', request('idCompetitor'))->first();
-        if(!$competitor) {
-            return response()->json([
-                "status" => 400,
-                "message" => "competitor not found"
-            ], 400);
-        }
+        $user = \App\User::where('provider_id', '=', $request->provider_id)->where('round','=',$request->round)->first();
 
-        $counting = \App\Counting::firstOrCreate([
-            "provider_id" => $provider_id,
-            "round" => $currentRound,
-            "score" => request('count'),
-            "competitor_id" => request('idCompetitor')
-        ]);
+        if($user){
 
-        if(!$counting) {
             return response()->json([
-                "status" => 200,
-                "message" => "vote success"
-            ]);
-        }else{
-            return response()->json([
-                "status" => 400,
-                "message" => "cannot vote"
-            ], 400);
-        }
-        // return response()->json($user);
+                'status' => 200,
+                'message' => "OK",
+                'data' => [
+                    'provider_id' => $user->provider_id,
+                    'round' => $user->round,
+                    'count' => $user->count,
+                ],
+            ], 200);
+
+        } 
+
+
+        return response()->json(401);
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
+
 }
