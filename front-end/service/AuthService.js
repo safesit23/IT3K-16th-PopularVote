@@ -6,7 +6,6 @@ const AuthService = {
     try {
       await api.post('/login', {
         'provider_id': request.userID,
-        'round': 1,
       })
         .then(respons => {
           if (respons) {
