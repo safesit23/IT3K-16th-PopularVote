@@ -13,7 +13,8 @@ class AuthenController extends Controller
             'provider_id' => 'required',
         ]);
         $user = \App\User::firstOrCreate([
-            "provider_id" => $request->provider_id
+            "provider_id" => $request->provider_id,
+            "round" => 1
         ]);
 
         $jwt = new \Lindelius\JWT\JWT();

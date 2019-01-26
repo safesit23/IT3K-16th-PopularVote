@@ -18,8 +18,10 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token,Authori
 header('Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS');
 
 Route::post('login', 'AuthenController@login');
-
 Route::post('vote', 'VoteController@vote');
 
 //admin
 Route::post('admin/login','adminLoginController@Login');
+
+//get count
+Route::post('CountResult','CountingController@RoundResult');
