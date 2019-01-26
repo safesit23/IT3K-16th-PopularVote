@@ -3,7 +3,7 @@ import Cookies from './CookieService'
 
 const CompetitorService = {
   getCompetitor: async () => {
-    console.log('get count ')
+    console.log('get competitor ')
     try{
       let data = await api.get('/competitor')
       return data
@@ -13,4 +13,4 @@ const CompetitorService = {
   },
 
 }
-export default SendResult
+export default CompetitorService
