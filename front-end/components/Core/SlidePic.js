@@ -38,7 +38,7 @@ class DynamicSlides extends Component {
               <Container>
               <Row className="d-flex justify-content-center" >
                 <Button >
-                  <Pic pic={slide} />
+                  <Pic pic={slide} widthPic='70vw'/>
                 </Button>
               </Row>
               </Container>
