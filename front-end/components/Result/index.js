@@ -1,27 +1,29 @@
 import React from 'react'
 import styled from 'styled-components';
 import { Container, Row, Col } from 'reactstrap'
+import ResultService from '../../service/ResultService'
 
 const Landing = styled(Container)`
     background-color : yellow;
 `
 
+
 class Result extends React.Component {
 	state = {
-		count : 0
+		count: 0
 	}
-	componentDidMount() {
-		const count = new URLSearchParams(window.location.search)
-		console.log('Test Count : ',count.get('count'))
-    this.getCount(count.get('count'))
+	componentDidMount = () => {
+		this.getResult()
+	}
+	getResult = async () => {
+		console.log('===========================')
+		let data = await ResultService.getResult()
+		await this.setState({
+			count: data.data.count
+		})
+		console.log('=====', data.data)
 	}
 
-	getCount = async (count) => {
-		await this.setState({
-			count : count
-		})
-	} 
-	
 	render() {
 		return (
 			<Landing fluid>
