@@ -24,4 +24,4 @@ Route::post('vote', 'VoteController@vote');
 Route::post('admin/login','adminLoginController@Login');
 
 //get count
-Route::post('CountResult','CountingController@RoundResult');
+Route::get('countresult','CountingController@RoundResult');
