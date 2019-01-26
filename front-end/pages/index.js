@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import BgColor from '../config/colors'
 
 const Bg = styled.div`
-  background-image:${BgColor.background};
+  background:${BgColor.background};
   height: 100vh;
 `
 class componentName extends React.Component {
