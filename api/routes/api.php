@@ -25,3 +25,7 @@ Route::post('admin/login','adminLoginController@Login');
 
 //get count
 Route::get('countresult','CountingController@RoundResult');
+
+Route::group(['middleware' => ['checkAuth']], function () {
+  Route::get('competitor', 'CompetitorController@getCompetitor');
+});
