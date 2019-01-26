@@ -33,7 +33,7 @@ class VoteController extends Controller
         $user->count = $request->count;
         $user->idCompetitor = $request->idCompetitor;
         $user->save();
-
+        
         return response()->json([
             "status" => 200,
             "message" => "OK vote complete bye bye IT3K EIEI"
