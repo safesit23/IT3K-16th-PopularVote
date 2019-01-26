@@ -8,9 +8,9 @@ class CardVote extends React.Component {
         <Card>
           <Row>
             <Col className="col-9">
+              <MNsubtitle className="m-2">Logo KMUTT</MNsubtitle>
               <Paragraphsm className="m-2">นายจันทร์ ทองดี</Paragraphsm>
               <MNparagraph className="m-2">ชื่อเล่น</MNparagraph>
-              <MNsubtitle className="m-2">Logo KMUTT</MNsubtitle>
             </Col>
             <Col className="col-3 text-right">
             photo
