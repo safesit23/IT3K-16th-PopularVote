@@ -17,12 +17,6 @@ class CountingController extends Controller
         $provider_id = $decodedJwt->sub->provider_id;
         $round = $decodedJwt->sub->round;
 
-        $this->validate($request, [
-            // 'provider_id' => 'required',
-            // 'round' => 'required'
-        ]);
-
-
         $user = \App\User::where('provider_id', '=', $provider_id)->where('round','=',$round)->first();
 
         if($user){
