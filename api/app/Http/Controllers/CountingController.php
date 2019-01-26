@@ -14,15 +14,16 @@ class CountingController extends Controller
         $token = substr($auth, 7);
         $decodedJwt = \Lindelius\JWT\JWT::decode($token);
         $decodedJwt->verify($this->encode_key);
-
+        $provider_id = $decodedJwt->sub->provider_id;
+        $round = $decodedJwt->sub->round;
 
         $this->validate($request, [
-            'provider_id' => 'required',
-            'round' => 'required'
+            // 'provider_id' => 'required',
+            // 'round' => 'required'
         ]);
 
 
-        $user = \App\User::where('provider_id', '=', $request->provider_id)->where('round','=',$request->round)->first();
+        $user = \App\User::where('provider_id', '=', $provider_id)->where('round','=',$round)->first();
 
         if($user){
 
@@ -37,22 +38,7 @@ class CountingController extends Controller
             ], 200);
 
         } 
-
-
         return response()->json(401);
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
 }
