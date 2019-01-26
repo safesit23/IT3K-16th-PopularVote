@@ -11,9 +11,6 @@ class Login extends React.Component {
     return (
       <Container fluid>
         <Container>
-          <Row>
-            
-          </Row>
           <Gallery />
           <Row className="d-flex justify-content-center mt-3">
             <LoginFaceBook />
