@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::defaultStringLength(191);
 
-        Schema::create('Competitor', function (Blueprint $table) {
+        Schema::create('competitor', function (Blueprint $table) {
             $table->increments('idCompetitor');
             $table->string('name');
             $table->string('nickname');
@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
           
         });
 
-        Schema::create('User', function (Blueprint $table) {
+        Schema::create('user', function (Blueprint $table) {
             $table->string('provider_id');
             $table->enum('round', ['1', '2']);
             $table->unsignedInteger('idCompetitor')->nullable();
@@ -34,7 +34,7 @@ class CreateUsersTable extends Migration
             $table->foreign('idCompetitor')->references('idCompetitor')->on('Competitor');
         });
 
-        Schema::create('Admin', function (Blueprint $table) {
+        Schema::create('admin', function (Blueprint $table) {
             $table->string('username');
             $table->string('password');
             $table->primary(['username']);
