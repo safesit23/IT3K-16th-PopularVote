@@ -4,6 +4,7 @@ import { Container, Row, Col } from 'reactstrap'
 import { Progress, Button } from 'antd';
 import ENV from '../../config/envConfig'
 import socketIOClient from 'socket.io-client'
+import Router from 'next/router'
 
 const socket = socketIOClient(ENV.PATH_SOCKET)
 
@@ -13,6 +14,7 @@ class Play extends React.Component {
 
 	state = {
 		percent: 10,
+		count : 15
 	}
 
 	componentDidMount = () => {
@@ -26,19 +28,29 @@ class Play extends React.Component {
 
 	increase = () => {
 		intervalTime = setInterval(() => {
-			this.setState({ percent : this.state.percent - 1 });
+			this.setState({ count : this.state.count - 1 });
+			this.stopTimer(this.state.count)
 		}, 1000)
 	}
 
-	stopTimer() {
-		clearInterval(intervalTime);
+	stopTimer(count) {
+		if(count === 0){
+			clearInterval(intervalTime);
+			Router.push({
+				pathname: `${ENV.PATH_BASIC}/timeoutprojector`
+			})
+			this.changePathToResult()
+		}
 	}
 
+	changePathToResult = async()=> {
+		await socket.emit('changePath','result')
+	}
 	render() {
 		return (
 			<Container fluid>
 				<Container>
-					<Progress type="circle" />
+					<h1>{this.state.count}</h1>
 				</Container>
 			</Container>
 		)
