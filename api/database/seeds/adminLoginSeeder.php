@@ -14,7 +14,7 @@ class adminLoginSeeder extends Seeder
     public function run()
     {
 
-        DB::table('Admin')->insert([
+        DB::table('admin')->insert([
             [
             'username' => "DevIT3K",
             'password' => Hash::make("BangmodEiEi")

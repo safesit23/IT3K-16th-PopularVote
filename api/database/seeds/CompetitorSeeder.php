@@ -12,7 +12,7 @@ class CompetitorSeeder extends Seeder
     public function run()
     {
 
-        DB::table('Competitor')->insert([
+        DB::table('competitor')->insert([
             [
             'name' => 'นายพิรุฬห์ลักษณ์ มโนรัตน์',
             'nickname' => 'พีรณัฐ',
