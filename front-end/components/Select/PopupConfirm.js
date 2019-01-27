@@ -28,44 +28,52 @@ const PuopupInner = styled.div`
 `
 
 const CloseButton = styled.button`
-  margin-right:0;
-  right: 0;
   background-color: transparent;
   border:0px;
 `
 
 const ConfirmBtn = styled.button`
+  background-color: transparent;
+  border:0px;
+    :hover{
     background-color: #311847;
     width: 100%;
     border:0px;
     color: #ffffff;
     height: 6vh;
     bottom: 0;
+    }
 `
 
 class PopupConfirm extends React.Component {
 
   state = {
-    path : ''
+    path: ''
   }
 
-  changePath = async () =>{
-      await Router.push({
-        pathname : '/waiting',
-        query: { id: `${this.props.id}`,name : `${this.props.name}`}
-      })
+  changePath = async () => {
+    await Router.push({
+      pathname: '/waiting',
+      query: { id: `${this.props.id}`, name: `${this.props.name}` }
+    })
   }
-  
+
   render() {
-    console.log(this.state.path,'path name');
+    console.log(this.state.path, 'path name');
     console.log(this.props.id)
     return (
       <Popup>
         <PuopupInner>
-          <CloseButton className="align-self-end float-right" onClick={this.props.closePopup}>X</CloseButton>
           <h5 className="d-flex justify-content-center mt-4"> ต้องการเลืกอก </h5>
-          <p className=" d-flex justify-content-center">{this.props.name}</p>
-          <ConfirmBtn className="mb-0" id={this.props.id} onClick= {() => this.changePath()} >ยืนยัน</ConfirmBtn>
+          <p className=" d-flex justify-content-center">{this.props.name} หรือไม่ ?</p>
+          <Row className=" d-flex justify-content-center" >
+            <Col>
+              <CloseButton className="align-self-end float-right" onClick={this.props.closePopup}>ยกเลิก</CloseButton>
+            </Col>
+            <Col>
+              <ConfirmBtn className="mb-0" id={this.props.id} onClick={() => this.changePath()} >ยืนยัน</ConfirmBtn>
+            </Col>
+          </Row>
         </PuopupInner>
       </Popup>
     )

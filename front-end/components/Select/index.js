@@ -5,6 +5,7 @@ import Logo from "../Core/logohead";
 import BgColor from "../../config/colors";
 import { Subtitle } from "../Core/Text";
 import CardVote from "../Core/Card"
+import Popup from './PopupConfirm'
 import CompetitorService from '../../service/CompetitorService'
 
 const Bg = styled.div`
@@ -20,18 +21,17 @@ const Button = styled.button`
 let competiotr_data = [];
 class Index extends React.Component {
   state = {
-    competitor: {}
+    competitor: {},
+    showPopup: false,
+    name :'',
+    id : 0,
   }
 
   async componentDidMount() {
     const data = await CompetitorService.getCompetitor()
     console.log('competiotr : ', data.data)
     await this.setDataCompetitor(data.data)
-    // this.getCompetitor()
   }
-
-  // getCompetitor = async () => {
-  // }
 
   showPopup() {
     this.setState({
@@ -39,11 +39,12 @@ class Index extends React.Component {
     })
   }
 
-  togglePopup = async (slide) => {
-    console.log(slide)
+  togglePopup = async (id,name) => {
+    console.log(id,name)
     this.setState({
       showPopup: !this.state.showPopup,
-      select: slide
+      id : id,
+      name : name
     });
   }
 
@@ -56,12 +57,9 @@ class Index extends React.Component {
         university: competiotr[index].university,
       })
     }
-    console.log('Compo', competiotr_data)
     this.setState({
       competitor: competiotr_data
     })
-
-    console.log(this.state.competitor)
   }
 
   render() {
@@ -84,13 +82,22 @@ class Index extends React.Component {
               <Col>
                 {competiotr_data.map((data) => {
                   return (
-                    <Button onClick={() => this.togglePopup(slide)} >
+                    <Button onClick={() => this.togglePopup(data.id,data.name)} >
                       <CardVote name={data.name} nickname={data.nickname} university={data.university} id={data.id} />
                     </Button>
                   )
                 })}
               </Col>
             </Row>
+            {this.state.showPopup ?
+              <Popup
+                text='Close Me'
+                id={this.state.id}
+                name={this.state.name}
+                closePopup={() => this.togglePopup()}
+              />
+              : null
+            }
           </Container>
         </Container>
       </Bg>
