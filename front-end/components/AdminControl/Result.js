@@ -4,6 +4,8 @@ import { Container, Row, Col, Table } from 'reactstrap'
 import Button from '../Core/Button'
 import FacebookModal from './FbScoreModal'
 import { Headline, Title, Subtitle, Paragraph } from '../Core/Text'
+import FbScoreService from '../../service/FacebookScoreService'
+import WebsiteScoreService from '../../service/WebScoreService'
 
 const Section = styled(Col)`
 	margin-left : 10px;
@@ -23,6 +25,7 @@ const TitlePanel = (props) => (
 )
 
 class Result extends React.Component {
+	
 	state = {
 		website: {
 			A001: [1100, 1111],
@@ -31,12 +34,31 @@ class Result extends React.Component {
 		facebook: {
 			A001: [100, 10],
 			A002: [200, 20],
-		}
-
+		},
+		sumFB: [0,0,0,0,0,0],
+		sumWebsite: [0,0,0,0,0,0],
+		total: [0,0,0,0,0,0]
 	}
 
-	fetchData() {
-		alert("FetchData")
+	componentDidMount = () => {
+		this.getResult()
+	}
+
+	getResult = async () => {
+		let dataFacebook = await FbScoreService.getFBScore()
+		let dataWebsite = await WebsiteScoreService.getWebScore()
+		await this.setState({
+			// website: dataWebsite.data
+		})
+		// console.log('=====', data.data)
+	}
+
+	fetchFBData() {
+		alert("Fetch Data from FB")
+	}
+
+	fetchWebsiteData(){
+		alert("Fetch Data from Website")
 	}
 
 	calculateSumWebsite() {
@@ -74,14 +96,16 @@ class Result extends React.Component {
 				</Section>
 
 				<Section xs="5" className="mb-2">
-					<TitlePanel name="Facebook IT3K" buttonName="Update" />
+					<TitlePanel name="Facebook IT3K" buttonName="Fetch DATA" onClick={this.editFacebook}/>
 					<Table>
 						<thead>
 							<th>Name</th>
 							<th>University</th>
 							<th>Like</th>
 							<th>Share</th>
+							<th>SUM</th>
 						</thead>
+
 						<tr>
 							<td>Name 1</td>
 							<td>บางมด</td>
@@ -89,7 +113,7 @@ class Result extends React.Component {
 							<td>0</td>
 						</tr>
 					</Table>
-					<FacebookModal>Edit Data</FacebookModal>
+					<FacebookModal buttonLabel="EDIT DATA"/>
 				</Section>
 				<Section xs="11" className="mb-2">
 					<TitlePanel name="PopularVote" buttonName="Calculate" />

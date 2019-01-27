@@ -13,9 +13,7 @@ COPY ./utils ./utils
 COPY .babelrc .
 COPY next.config.js .
 COPY package-lock.json .
-RUN npm install js-cookie --save
-RUN yarn add react-slick
 RUN yarn build
 
 EXPOSE 3000
-CMD ["yarn","start"]
+CMD ["yarn","start","--env=production"]
