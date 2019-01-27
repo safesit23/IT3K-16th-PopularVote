@@ -31,7 +31,7 @@ class CreateUsersTable extends Migration
             $table->unsignedInteger('idCompetitor')->nullable();
             $table->integer('count')->default(0);
             $table->primary(['provider_id', 'round']);
-            $table->foreign('idCompetitor')->references('idCompetitor')->on('Competitor');
+            $table->foreign('idCompetitor')->references('idCompetitor')->on('competitor');
         });
 
         Schema::create('admin', function (Blueprint $table) {
