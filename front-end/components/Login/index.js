@@ -6,6 +6,7 @@ import { IT3K, Headline } from '../Core/Text'
 import LoginFaceBook from './LoginFaceBook'
 import Gallery from '../Core/SlidePic'
 import Nav from '../Core/Nav'
+
 class Login extends React.Component {
   render() {
     return (
