@@ -27,32 +27,26 @@ class Vote extends React.Component {
   }
 
   vote = () => {
-    window.navigator.vibrate(200)
+    // window.navigator.vibrate(200)
     this.setState({
       count: this.state.count + 1,
     })
   }
 
-  getNameAndId(id, name,count) {
-    let countParam = parseInt(count)
+  getNameAndId(id, name) {
     this.setState({
       id: id,
       name: name,
-      count : countParam
     })
   }
 
   changePath = async (count) => {
     console.log(count, '   Test')
-    await socket.on('pathNameResult', (path) => {
+    await socket.on('pathName', (path) => {
       console.log('Path : ', path)
       this.setState({
         path: path
       })
-      // Router.replace({
-      //   pathname: `${ENV.PATH_BASIC}/${this.state.path}`,
-      //   query: { id: `${this.state.id}`, name: `${this.state.name}`, count : `${this.state.count}` }
-      // })
     })
   }
 
@@ -67,7 +61,7 @@ class Vote extends React.Component {
 
   componentDidMount() {
     const id = new URLSearchParams(window.location.search)
-    this.getNameAndId(id.get('id'), id.get('name'),id.get('count'))
+    this.getNameAndId(id.get('id'), id.get('name'))
     this.changePath(this.state.count)
     this.getRound()
   }
