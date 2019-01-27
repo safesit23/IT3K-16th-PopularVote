@@ -12,6 +12,11 @@ const Bg = styled.div`
   height: auto;
 `;
 
+const Button = styled.button`
+  background-color : transparent;
+  border: 0;
+`
+
 let competiotr_data = [];
 class Index extends React.Component {
   state = {
@@ -27,6 +32,20 @@ class Index extends React.Component {
 
   // getCompetitor = async () => {
   // }
+
+  showPopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    })
+  }
+
+  togglePopup = async (slide) => {
+    console.log(slide)
+    this.setState({
+      showPopup: !this.state.showPopup,
+      select: slide
+    });
+  }
 
   setDataCompetitor = async competiotr => {
     for (let index = 0; index < competiotr.length; index++) {
@@ -62,13 +81,15 @@ class Index extends React.Component {
               </Col>
             </Row>
             <Row>
-            <Col>
-              {competiotr_data.map((data) => {
-                return (
-                  <CardVote name={data.name} nickname={data.nickname} university={data.university} id={data.id}/>
-                )
-              })}
-            </Col>
+              <Col>
+                {competiotr_data.map((data) => {
+                  return (
+                    <Button onClick={() => this.togglePopup(slide)} >
+                      <CardVote name={data.name} nickname={data.nickname} university={data.university} id={data.id} />
+                    </Button>
+                  )
+                })}
+              </Col>
             </Row>
           </Container>
         </Container>
