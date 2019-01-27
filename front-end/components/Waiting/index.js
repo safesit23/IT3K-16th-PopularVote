@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { Container, Row, Col } from 'reactstrap'
 import socketIOClient from 'socket.io-client'
 import Router from 'next/router'
-import axios from 'axios'
 import ENV from '../../config/envConfig'
 
 const BgColor = styled(Container)`
@@ -27,13 +26,15 @@ class Waiting extends React.Component {
 
 	changePath = async () => {
 		await socket.on('pathName', (path) => {
-			this.setState({
-				path: path
-			})
-			Router.push({
-				pathname: `${ENV.PATH_BASIC}/${path}`,
-				query: { id: `${this.state.id}`,name : `${this.state.name}`,count : 0}
-			})
+			if(path != ''){
+				this.setState({
+					path: path
+				})
+				Router.push({
+					pathname: `${ENV.PATH_BASIC}/${path}`,
+					query: { id: `${this.state.id}`,name : `${this.state.name}`}
+				})
+			}
 			console.log(path)
 		})
 	}
@@ -50,7 +51,7 @@ class Waiting extends React.Component {
 			<BgColor fluid>
 				<Container>
 					<Row>
-						<h1>Waiting</h1>
+						<h1>{this.state.count != 0 ? 'โปรดรอสักครู่':this.state.count}</h1>
 					</Row>
 				</Container>
 			</BgColor>
