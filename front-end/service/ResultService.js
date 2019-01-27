@@ -17,7 +17,7 @@ const SendResult = {
   getResult: async () => {
     console.log('get count ')
     try{
-      let data = await api.get('/countresult')
+      let data = await api.get('/roundResult')
       return data.data
     }catch (error) {
         console.log('Error : ',error)

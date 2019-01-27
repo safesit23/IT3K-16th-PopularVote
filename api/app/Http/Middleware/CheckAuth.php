@@ -17,7 +17,6 @@ class CheckAuth
 
     public function handle($request, Closure $next)
     {
-        
         $auth = $request->header('authorization');
         $token = substr($auth, 7);
         $decodedJwt = \Lindelius\JWT\JWT::decode($token);
