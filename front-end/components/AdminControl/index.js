@@ -37,16 +37,22 @@ class AdminControl extends React.Component {
 		pathname: '',
 		value: '',
 		value2: '',
-		round : '',
+		round: '',
+		user: 0,
 	}
 
 	componentDidMount() {
+		this.getCount()
 	}
 
-	getCount () {
-		socket.on('countUser',)
+	getCount= () => {
+		socket.on('countUser', (user) => {
+			this.setState({
+				user: user
+			})
+		})
 	}
-	
+
 	getPath = (e) => {
 		e.preventDefault()
 		this.changePath(this.state.value)
@@ -68,34 +74,32 @@ class AdminControl extends React.Component {
 	}
 
 	onChange = (e) => {
-		console.log('radio checked', e.target.value);
+		e.preventDefault()
 		this.setState({
 			value: e.target.value,
 		});
 	}
-	
+
 	onChange2 = (e) => {
-		console.log('radio2 checked', e.target.value);
+		e.preventDefault()
 		this.setState({
 			value2: e.target.value,
 		});
 	}
-	
+
 	getRound = (e) => {
 		e.preventDefault()
-		console.log('Tetse.value : ', this.state.round)
 		this.changeRound(this.state.round)
 	}
-	
+
 	changeRound = (round) => {
-		console.log('Round : ', round)
 		if (round != null) {
 			socket.emit('getRound', round)
 		}
 	}
 
 	onChangeRound = (e) => {
-		console.log('radio2 checked', e.target.value);
+		e.preventDefault()
 		this.setState({
 			round: e.target.value,
 		});
@@ -140,9 +144,9 @@ class AdminControl extends React.Component {
 					</Section>
 					<Section xs="5">
 						<Title>USER</Title>
-						<Paragraph color="black">Current User : </Paragraph>
-						<Paragraph color="black">Ready User : </Paragraph>
-						<Paragraph color="black">Ended User : </Paragraph>
+						<Paragraph color="black">Current User : {this.state.user}</Paragraph>
+						<Paragraph color="black">User Selecting : 0 </Paragraph>
+						<Paragraph color="black">Ready User for vote : 0</Paragraph>
 					</Section>
 				</Row>
 				<Result />
