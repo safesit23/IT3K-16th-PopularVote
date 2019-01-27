@@ -18,13 +18,13 @@ export const IT3K = styled.h1`
 
 export const Title = styled.h4`
   font-family: 'AgencyGP', sans-serif;
-  font-size: ${config.Title};
+  font-size: ${config.title};
   color: ${props => props.color || "black"};
 `
 export const TitleWh = styled.h4`
   font-family: 'Kanit', sans-serif;
-  font-size: ${config.Title};
-  color: ${props => props.color || "black"};
+  font-size: ${config.title};
+  color: ${props => props.color || "white"};
 `
 
 export const Subtitle = styled.p`
@@ -39,17 +39,23 @@ export const Paragraph = styled.p`
   color: ${props => props.color || "white"};
 `
 
-export const ParagraphsmBold = styled.p`
+export const BodyBold = styled.p`
   font-family: 'Kanit', sans-serif;
-  font-size: ${config.sm_paragraph};
+  font-size: ${config.body};
   font-weight: bold; 
   color: ${props => props.color || "black"};
 `
 
-export const Paragraphsm = styled.p`
+export const Body = styled.p`
   font-family: 'Kanit', sans-serif;
-  font-size: ${config.sm_paragraph};
+  font-size: ${config.body};
   color: ${props => props.color || "black"};
+`
+
+export const BodyWhite = styled.p`
+  font-family: 'Kanit', sans-serif;
+  font-size: ${config.body};
+  color: ${props => props.color || "white"};
 `
 
 export const ParagraphBold = styled(Paragraph)`
@@ -65,19 +71,14 @@ export const Timeout = styled.h1`
   color: ${props => props.color || "black"};
 `
 
-export const Small = styled.h5`
+export const Caption = styled.h5`
   font-family: 'Kanit', sans-serif;
-  font-size: ${config.small};
+  font-size: ${config.caption};
   color: ${props => props.color || "black"};
 `
-export const MNsubtitle = styled.h5`
+export const SubCaption = styled.h5`
   font-family: 'Kanit', sans-serif;
-  font-size: ${config.mini_subtitle};
-  color: ${props => props.color || "black"};
-`
-export const MNparagraph = styled.h5`
-  font-family: 'Kanit', sans-serif;
-  font-size: ${config.mini_paragraph};
+  font-size: ${config.subcaption};
   color: ${props => props.color || "black"};
 `
 

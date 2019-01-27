@@ -4,8 +4,8 @@ export default {
   title: '20px',
   subtitle: '18px',
   paragraph: '16px',
-  sm_paragraph: '14px',
-  mini_subtitle: '12px',
-  mini_paragraph: '10px',
+  body: '14px',
+  caption: '12px',
+  subcaption: '10px',
   timeout : '150px'
 }
