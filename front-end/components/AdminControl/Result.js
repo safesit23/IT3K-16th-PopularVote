@@ -25,6 +25,12 @@ const TitlePanel = (props) => (
 	</Row>
 )
 
+const Card = styled(Col)`
+	background: #FFFFFF;
+	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.24);
+	border-radius: 9px;
+`
+
 class Result extends React.Component {
 	state = {
 		competitor: {},
@@ -103,6 +109,28 @@ class Result extends React.Component {
 		// }
 	}
 
+	calculateTotalFacebook(){
+		let total = 0;
+		for (let index = 0; index < this.state.score.length; index++) {
+			total = total+this.state.score[index].sumFb
+		}
+		console.log("Total FB = "+total)
+	}
+
+	calculateTotalWebsite(){
+		let total = 0;
+		for (let index = 0; index < this.state.score.length; index++) {
+			total = total+this.state.score[index].sumWebsite
+		}
+		console.log("Total FB = "+total)
+	}
+
+	calculateTotalPoint(id){
+		const fbPoint = (30*this.state.score[id].sumFb)/this.state.totalFacebook;
+		const webPoint = (60*this.state.score[id].sumWebsite)/this.state.totalWebsite;
+		console.log("Total Score = "+(fbPoint+webPoint))
+	}
+
 
 	render() {
 		return (
@@ -154,7 +182,12 @@ class Result extends React.Component {
 				</Section>
 				<Section xs="11" className="mb-2">
 					<TitlePanel name="PopularVote" buttonName="Calculate" />
-
+					<Paragraph color='black'>สัดส่วนการให้คะแนน : 30% จาก Facebook และ 70% จาก Website</Paragraph>
+					<Button onClick={this.calculateTotalFacebook}>ShowTotalFB</Button>
+					<Row>
+						<Card xs='3' className='mx-4'>
+						</Card>
+					</Row>
 				</Section>
 			</Row>
 		);
