@@ -91,11 +91,9 @@ class Vote extends React.Component {
             </Col>
           </Row>
         </Container>
-          <Row>
             <Col className="text-center mt-4">
               <TitleWh count={this.state.count}>คะแนนของคุณคือ {this.state.count} คะแนน</TitleWh>
             </Col>
-          </Row>
           <Row>
             <Col className="d-flex justify-content-center">
               <ButtonVote onClick={() => this.vote()}>PRESS</ButtonVote>
