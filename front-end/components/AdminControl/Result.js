@@ -87,7 +87,7 @@ class Result extends React.Component {
 		// console.log('=====', data.data)
 	}
 
-	fetchFBData() {
+	fetchFBData = () =>{
 		alert("Fetch Data from FB")
 	}
 
@@ -96,21 +96,19 @@ class Result extends React.Component {
 		alert("Fetch Data from Website")
 	}
 
-	calculateSumWebsite =()=> {
+	calculateSumWebsite = async ()=> {
 		console.log("Calculate Sum Func")
-		let scoreNew = this.state.score
 		for (let index = 0; index < this.state.score.length; index++) {
-			// scoreNew[index].sumWebsite = scoreNew[index].round1 = scoreNew[index].round2
 			let sum = this.state.score[index].round1 + this.state.score[index].round2
 			this.state.score[index]={
 				...this.state.score[index],
 				sumWebsite:sum
 			}
-			console.log(`Sum of ${index} is ${scoreNew[index].sumWebsite}`)
 		}
+		console.log("sum of 1 is"+this.state.score[0].sumWebsite)
 	}
 
-	calculateTotalFacebook(){
+	calculateTotalFacebook = () =>{
 		let total = 0;
 		for (let index = 0; index < this.state.score.length; index++) {
 			total = total+this.state.score[index].sumFb
@@ -118,7 +116,7 @@ class Result extends React.Component {
 		console.log("Total FB = "+total)
 	}
 
-	calculateTotalWebsite(){
+	calculateTotalWebsite = ()=>{
 		let total = 0;
 		for (let index = 0; index < this.state.score.length; index++) {
 			total = total+this.state.score[index].sumWebsite
@@ -126,7 +124,7 @@ class Result extends React.Component {
 		console.log("Total FB = "+total)
 	}
 
-	calculateTotalPoint(id){
+	calculateTotalPoint = (id)=>{
 		const fbPoint = (30*this.state.score[id].sumFb)/this.state.totalFacebook;
 		const webPoint = (60*this.state.score[id].sumWebsite)/this.state.totalWebsite;
 		console.log("Total Score = "+(fbPoint+webPoint))
