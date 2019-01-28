@@ -91,22 +91,23 @@ class Result extends React.Component {
 		alert("Fetch Data from FB")
 	}
 
-	fetchWebsiteData(){
-		this.calculateSumWebsite()
+	fetchWebsiteData=()=>{
+	this.calculateSumWebsite()
 		alert("Fetch Data from Website")
 	}
 
-	calculateSumWebsite() {
+	calculateSumWebsite =()=> {
 		console.log("Calculate Sum Func")
-		// let scoreNew = this.state.score
-		// for (let index = 0; index < this.state.score.length; index++) {
-		// 	scoreNew[index].sumWebsite = scoreNew[index].round1 = scoreNew[index].round2
-		// 	// let sum = this.state.score[index].round1 + this.state.score[index].round1
-		// 	console.log(`Sum of ${index} is ${scoreNew[index].sumWebsite}`)
-		// 	this.setState({
-		// 		score : scoreNew
-		// 	})
-		// }
+		let scoreNew = this.state.score
+		for (let index = 0; index < this.state.score.length; index++) {
+			// scoreNew[index].sumWebsite = scoreNew[index].round1 = scoreNew[index].round2
+			let sum = this.state.score[index].round1 + this.state.score[index].round2
+			this.state.score[index]={
+				...this.state.score[index],
+				sumWebsite:sum
+			}
+			console.log(`Sum of ${index} is ${scoreNew[index].sumWebsite}`)
+		}
 	}
 
 	calculateTotalFacebook(){
@@ -184,6 +185,7 @@ class Result extends React.Component {
 					<TitlePanel name="PopularVote" buttonName="Calculate" />
 					<Paragraph color='black'>สัดส่วนการให้คะแนน : 30% จาก Facebook และ 70% จาก Website</Paragraph>
 					<Button onClick={this.calculateTotalFacebook}>ShowTotalFB</Button>
+					<Button onClick={this.calculateTotalWebsite}>ShowTotalWebsite</Button>
 					<Row>
 						<Card xs='3' className='mx-4'>
 						</Card>
