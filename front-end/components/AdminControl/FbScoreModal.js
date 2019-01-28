@@ -17,9 +17,15 @@ class FacebookScoreModal extends React.Component {
         6: [0, 0],
       },
     };
-
     this.toggle = this.toggle.bind(this);
   }
+
+  onChange = (e,id,type) => {
+		e.preventDefault()
+		this.setState.facebook({
+			id : [type].e.target.value,
+		});
+	}
 
   toggle() {
     this.sendFBScore()
@@ -35,7 +41,7 @@ class FacebookScoreModal extends React.Component {
   render() {
     return (
       <div>
-        <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel}</Button>
+        <Button color="danger" size="sm" onClick={this.toggle}>{this.props.buttonLabel}</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>FACEBOOK IT3K</ModalHeader>
           <ModalBody>
@@ -49,7 +55,7 @@ class FacebookScoreModal extends React.Component {
 						<tr>
 							<td>Name 1</td>
 							<td>บางมด</td>
-							<td><InputNumber min={0}/></td>
+							<td><InputNumber min={0} onChange={this.onChange} value={this.state.value}/></td>
 							<td><InputNumber min={0} /></td>
 						</tr>
 					</Table>
