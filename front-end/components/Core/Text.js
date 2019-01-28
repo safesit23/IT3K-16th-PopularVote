@@ -8,6 +8,14 @@ export const Headline = styled.h1`
   font-weight: bold;
   color: ${props => props.color || "black"};
 `
+
+export const HeadlineWh = styled.h1`
+  font-family: 'Kanit', sans-serif;
+  font-size: ${config.headline};
+  font-weight: bold;
+  color: ${props => props.color || "white"};
+`
+
 export const IT3K = styled.h1`
   font-family: 'AgencyGP', sans-serif;
   font-size:${config.IT3K};
@@ -21,6 +29,7 @@ export const Title = styled.h4`
   font-size: ${config.title};
   color: ${props => props.color || "black"};
 `
+
 export const TitleWh = styled.h4`
   font-family: 'Kanit', sans-serif;
   font-size: ${config.title};
@@ -76,6 +85,7 @@ export const Caption = styled.h5`
   font-size: ${config.caption};
   color: ${props => props.color || "black"};
 `
+
 export const SubCaption = styled.h5`
   font-family: 'Kanit', sans-serif;
   font-size: ${config.subcaption};
