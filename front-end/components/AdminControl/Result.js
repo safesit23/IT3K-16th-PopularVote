@@ -92,20 +92,20 @@ class Result extends React.Component {
 	}
 
 	fetchWebsiteData=()=>{
-	this.calculateSumWebsite()
+		this.calculateSumWebsite()
 		alert("Fetch Data from Website")
 	}
 
 	calculateSumWebsite = async ()=> {
-		console.log("Calculate Sum Func")
+		console.log("Calculate Sum Website Func")
 		for (let index = 0; index < this.state.score.length; index++) {
 			let sum = this.state.score[index].round1 + this.state.score[index].round2
 			this.state.score[index]={
 				...this.state.score[index],
 				sumWebsite:sum
 			}
+			console.log(`sum of ${index} is ${this.state.score[index].sumWebsite}`)
 		}
-		console.log("sum of 1 is"+this.state.score[0].sumWebsite)
 	}
 
 	calculateTotalFacebook = () =>{
