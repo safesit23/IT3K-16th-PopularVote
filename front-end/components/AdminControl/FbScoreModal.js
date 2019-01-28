@@ -8,22 +8,23 @@ class FacebookScoreModal extends React.Component {
     super(props);
     this.state = {
       modal: false,
-      facebook: {
-        1: [0, 0],
-        2: [0, 0],
-        3: [0, 0],
-        4: [0, 0],
-        5: [0, 0],
-        6: [0, 0],
-      },
+      facebook:[{
+        id: 1,
+        like:0,
+        share: 0,
+      },{
+        id: 2,
+        like:0,
+        share: 0,
+      }]
     };
     this.toggle = this.toggle.bind(this);
   }
 
   onChange = (e,id,type) => {
 		e.preventDefault()
-		this.setState.facebook({
-			id : [type].e.target.value,
+		this.setState.facebook[id]({
+			type : e.target.value,
 		});
 	}
 
