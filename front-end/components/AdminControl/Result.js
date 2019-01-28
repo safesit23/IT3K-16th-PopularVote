@@ -6,6 +6,7 @@ import FacebookModal from './FbScoreModal'
 import { Headline, Title, Subtitle, Paragraph } from '../Core/Text'
 import FbScoreService from '../../service/FacebookScoreService'
 import WebsiteScoreService from '../../service/WebScoreService'
+import CompetitorService from '../../service/CompetitorService'
 
 const Section = styled(Col)`
 	margin-left : 10px;
@@ -25,24 +26,48 @@ const TitlePanel = (props) => (
 )
 
 class Result extends React.Component {
-	
 	state = {
-		website: {
-			A001: [1100, 1111],
-			A002: [2200, 2222]
-		},
-		facebook: {
-			A001: [100, 10],
-			A002: [200, 20],
-		},
-		sumFB: [0,0,0,0,0,0],
-		sumWebsite: [0,0,0,0,0,0],
-		total: [0,0,0,0,0,0]
+		competitor: {},
+		score:[{
+			id: 1,
+			round1: 1100,
+			round2: 1000,
+			sumWebsite: 0,
+			like:100,
+			share: 10,
+			sumFb: 0
+		},{
+			id: 2,
+			round1: 2200,
+			round2: 2000,
+			sumWebsite: 0,
+			like:200,
+			share: 20,
+			sumFb: 0
+		}]
+
 	}
 
-	componentDidMount = () => {
-		this.getResult()
-	}
+	// async componentDidMount() {
+  //   const dataCompetitor = await CompetitorService.getCompetitor()
+  //   console.log('competiotr : ', dataCompetitor.data)
+	// 	await this.setDataCompetitor(dataCompetitor.data)
+	// 	// this.getResult()
+  // }
+
+	// setDataCompetitor = async competiotr => {
+  //   for (let index = 0; index < competiotr.length; index++) {
+  //     competiotr_data.push({
+  //       id: competiotr[index].idCompetitor,
+  //       name: competiotr[index].name,
+  //       nickname: competiotr[index].nickname,
+  //       university: competiotr[index].university,
+  //     })
+  //   }
+  //   this.setState({
+  //     competitor: competiotr_data
+  //   })
+  // }
 
 	getResult = async () => {
 		let dataFacebook = await FbScoreService.getFBScore()
@@ -58,12 +83,21 @@ class Result extends React.Component {
 	}
 
 	fetchWebsiteData(){
+		this.calculateSumWebsite()
 		alert("Fetch Data from Website")
 	}
 
 	calculateSumWebsite() {
-		let sum = [6]
-		return sum
+		console.log("Calculate Sum Func")
+		// let scoreNew = this.state.score
+		// for (let index = 0; index < this.state.score.length; index++) {
+		// 	scoreNew[index].sumWebsite = scoreNew[index].round1 = scoreNew[index].round2
+		// 	// let sum = this.state.score[index].round1 + this.state.score[index].round1
+		// 	console.log(`Sum of ${index} is ${scoreNew[index].sumWebsite}`)
+		// 	this.setState({
+		// 		score : scoreNew
+		// 	})
+		// }
 	}
 	render() {
 		return (
@@ -72,31 +106,28 @@ class Result extends React.Component {
 					<Headline>Result</Headline>
 				</Col>
 				<Section xs="6" className="mb-2">
-					<TitlePanel name="Website" buttonName="FETCH" onClick={this.fetchData} />
-					<Row>
-						<Col xs="4">
-							<Subtitle>Round 1</Subtitle>
-							<Paragraph color="black">
-								{this.state.website.A001[0]}<br />
-								{this.state.website.A002[0]}<br />
-							</Paragraph>
-						</Col>
-						<Col xs="4">
-							<Subtitle>Round 2</Subtitle>
-							<Paragraph color="black">
-								{this.state.website.A001[1]}<br />
-								{this.state.website.A002[1]}<br />
-							</Paragraph>
-						</Col>
-						<Col xs="4">
-							<Subtitle>Total Sum</Subtitle>
+					<TitlePanel name="Website" buttonName="FETCH" onClick={this.fetchWebsiteData} />
+					<Table>
+						<thead>
+							<th>Name</th>
+							<th>University</th>
+							<th>Round 1</th>
+							<th>Round 2</th>
+							<th>SUM</th>
+						</thead>
 
-						</Col>
-					</Row>
+						<tr>
+							<td>Name 1</td>
+							<td>บางมด</td>
+							<td>{this.state.score[0].round1}</td>
+							<td>{this.state.score[0].round2}</td>
+							<td>{this.state.score[0].sumWebsite}</td>
+						</tr>
+					</Table>
 				</Section>
 
 				<Section xs="5" className="mb-2">
-					<TitlePanel name="Facebook IT3K" buttonName="Fetch DATA" onClick={this.editFacebook}/>
+					<TitlePanel name="Facebook IT3K" buttonName="FETCH" onClick={this.fetchFBData}/>
 					<Table>
 						<thead>
 							<th>Name</th>
@@ -109,6 +140,7 @@ class Result extends React.Component {
 						<tr>
 							<td>Name 1</td>
 							<td>บางมด</td>
+							<td>0</td>
 							<td>0</td>
 							<td>0</td>
 						</tr>
