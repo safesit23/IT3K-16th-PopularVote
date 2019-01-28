@@ -113,7 +113,7 @@ class AdminControl extends React.Component {
 					<Col xs="10">
 						<Headline>VOTE Control Panel</Headline>
 					</Col>
-					<Col xs={{ size: 2 }} className="d-flex justify-content-end">
+					<Col xs={{ size: 1 }} className="d-flex justify-content-end">
 						<Button>LOGOUT</Button>
 					</Col>
 				</Row>
