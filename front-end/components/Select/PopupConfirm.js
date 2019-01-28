@@ -64,7 +64,7 @@ class PopupConfirm extends React.Component {
     return (
       <Popup>
         <PuopupInner>
-          <h5 className="d-flex justify-content-center mt-4"> ต้องการเลืกอก </h5>
+          <h5 className="d-flex justify-content-center mt-4"> ต้องการเลือก </h5>
           <p className=" d-flex justify-content-center">{this.props.name} หรือไม่ ?</p>
           <Row className=" d-flex justify-content-center" >
             <Col>
