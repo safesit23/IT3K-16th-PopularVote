@@ -1,15 +1,16 @@
-import React from 'react'
-import styled from 'styled-components'
-import BgColor from '../config/colors'
-// import SelectSlickold from '../components/Select'
-import SelectSlick from '../components/Select'
+import React from "react";
+import SelectSlick from "../components/Select";
+import Nav from "../components/Core/Nav";
 
 class Select extends React.Component {
   render() {
     return (
-      <SelectSlick />
-    )
+      <div>
+        <Nav />
+        <SelectSlick />
+      </div>
+    );
   }
 }
 
-export default Select
+export default Select;
