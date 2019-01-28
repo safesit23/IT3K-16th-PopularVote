@@ -33,8 +33,9 @@ export const ButtonVote = styled(DefaultButton)`
   border-radius: 70%;
   height: 15vh;
   width: 15vh;
-  margin-top : 10%;
-  border : #311847 10px solid;
+  margin-top : 8%;
+  border : #8e176f solid 5px;
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.3);
   cursor : pointer;
 `
 
