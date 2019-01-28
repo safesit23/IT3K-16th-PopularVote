@@ -35,7 +35,8 @@ class Result extends React.Component {
 			sumWebsite: 0,
 			like:100,
 			share: 10,
-			sumFb: 0
+			sumFb: 0,
+			totalScore: 0
 		},{
 			id: 2,
 			round1: 2200,
@@ -43,9 +44,11 @@ class Result extends React.Component {
 			sumWebsite: 0,
 			like:200,
 			share: 20,
-			sumFb: 0
-		}]
-
+			sumFb: 0,
+			totalScore: 0
+		}],
+		totalFacebook: 0,
+		totalWebsite: 0
 	}
 
 	// async componentDidMount() {
@@ -99,6 +102,8 @@ class Result extends React.Component {
 		// 	})
 		// }
 	}
+
+
 	render() {
 		return (
 			<Row className="pt-4 pl-4">
