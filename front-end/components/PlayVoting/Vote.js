@@ -8,13 +8,13 @@ import SendResult from '../../service/ResultService'
 import Router from 'next/router'
 import ENV from '../../config/envConfig'
 import socketIOClient from 'socket.io-client'
+import { TitleWh } from "../Core/Text";
 
 const socket = socketIOClient(ENV.PATH_SOCKET)
 
 const Landing = styled(Container)`
   background-color:${BgColor.bgColor};
   height: 100vh;
-  padding : 50px;
 `
 
 class Vote extends React.Component {
@@ -86,24 +86,21 @@ class Vote extends React.Component {
       <Landing fluid>
         <Container>
           <Row>
-            <Col className="text-center">
-              <h3 count={this.state.count}>คะแนน : {this.state.count}</h3>
-            </Col>
-          </Row>
-          <Row>
-            <Col className="d-flex justify-content-center mt-4">
+            <Col className="mt-4 pl-5 pr-5" >
               <Pic pic={this.state.id} />
             </Col>
-            <Col className="d-flex justify-content-center mt-4">
-              <h5>{this.state.name}</h5>
+          </Row>
+        </Container>
+          <Row>
+            <Col className="text-center mt-4">
+              <TitleWh count={this.state.count}>คะแนนของคุณคือ {this.state.count} คะแนน</TitleWh>
             </Col>
           </Row>
           <Row>
             <Col className="d-flex justify-content-center">
-              <ButtonVote onClick={() => this.vote()}>VOTE</ButtonVote>
+              <ButtonVote onClick={() => this.vote()}>PRESS</ButtonVote>
             </Col>
           </Row>
-        </Container>
       </Landing>
     )
   }
