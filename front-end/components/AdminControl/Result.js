@@ -109,6 +109,8 @@ class Result extends React.Component {
 			console.log(`sumFB of ${index+1} is ${this.state.score[index].sumFb}`)
 		}
 	}
+
+	//คำนวณผลรวมคะแนน website ของแต่ละคน
 	calculateSumWebsite = async ()=> {
 		console.log("Calculate Sum Website Func")
 		for (let index = 0; index < this.state.score.length; index++) {
