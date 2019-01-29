@@ -21,8 +21,8 @@ const socket = socketIOClient(ENV.PATH_SOCKET)
 const pathname = [{ label: 'Play vote', value: 'playvoting' },
 { label: 'Result', value: 'result' }]
 
-const round = [{ label: 'Round 1', value: '1',},
-{ label: 'Round 2', value: '2',}  ]
+const round = [{ label: 'Round 1', value: 1, },
+{ label: 'Round 2', value: 2, }]
 
 const options = [
 	{ label: 'Topic', value: 'topicprojector' },
@@ -37,7 +37,7 @@ class AdminControl extends React.Component {
 		pathname: '',
 		value: '',
 		value2: '',
-		round: '',
+		round: 0,
 		user: 0,
 	}
 
@@ -45,8 +45,9 @@ class AdminControl extends React.Component {
 		this.getCount()
 	}
 
-	getCount= () => {
-		socket.on('countUser', (user) => {
+
+	getCount = async () => {
+		await socket.on('countUser', (user) => {
 			this.setState({
 				user: user
 			})
@@ -61,14 +62,14 @@ class AdminControl extends React.Component {
 
 	changePath = (pathname) => {
 		console.log('Path name : ', pathname)
-		if (pathname != null) {
+		if (pathname != '') {
 			socket.emit('changePath', pathname)
 		}
 	}
 
 	changePathProjector = (projectorPath) => {
 		console.log('Projector Path : ', projectorPath)
-		if (projectorPath != null) {
+		if (projectorPath != '') {
 			socket.emit('projectorPath', projectorPath)
 		}
 	}
@@ -93,7 +94,7 @@ class AdminControl extends React.Component {
 	}
 
 	changeRound = (round) => {
-		if (round != null) {
+		if (round != '') {
 			socket.emit('getRound', round)
 		}
 	}
@@ -120,7 +121,17 @@ class AdminControl extends React.Component {
 				<Row className="pl-4">
 					<Section xs="6" color="#FFEEE4">
 						<Title>SETTING</Title>
+						<form onSubmit={this.getRound}>
+							<h5>Round</h5>
+							<RadioGroup options={round} onChange={this.onChangeRound} value={this.state.round} />
+							<br />
+							Round user : {this.state.round}
+							<br />
+							<input type="submit" value="Change round" />
+						</form>
+						<hr />
 						<form onSubmit={this.getPath}>
+							<h5>Path</h5>
 							Change Path : <br />
 							<RadioGroup options={pathname} onChange={this.onChange} value={this.state.value} />
 							<br />
@@ -132,14 +143,6 @@ class AdminControl extends React.Component {
 							Path projector : {this.state.value2}
 							<br />
 							<input type="submit" value="Change Path" />
-						</form>
-						<form onSubmit={this.getRound}>
-							Round : <br />
-							<RadioGroup options={round} onChange={this.onChangeRound} value={this.state.round} />
-							<br />
-							Round user : {this.state.round}
-							<br />
-							<input type="submit" value="Change round" />
 						</form>
 					</Section>
 					<Section xs="5">
