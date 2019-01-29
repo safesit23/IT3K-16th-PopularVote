@@ -163,14 +163,17 @@ class Result extends React.Component {
 							<th>Round 2</th>
 							<th>SUM</th>
 						</thead>
-
-						<tr>
-							<td>Name 1</td>
-							<td>บางมด</td>
-							<td>{this.state.score[0].round1}</td>
-							<td>{this.state.score[0].round2}</td>
-							<td>{this.state.score[0].sumWebsite}</td>
-						</tr>
+						{
+							this.state.score.map((data,i)=>(
+								<tr>
+									<td>{data.id}</td>
+									<td>{data.id}</td>
+									<td>{this.state.score[i].round1}</td>
+									<td>{this.state.score[i].round2}</td>
+									<td>{this.state.score[i].sumWebsite}</td>
+								</tr>
+							))
+						}
 					</Table>
 				</Section>
 
@@ -184,14 +187,17 @@ class Result extends React.Component {
 							<th>Share</th>
 							<th>SUM</th>
 						</thead>
-
-						<tr>
-							<td>Name 1</td>
-							<td>บางมด</td>
-							<td>0</td>
-							<td>0</td>
-							<td>0</td>
-						</tr>
+						{
+							this.state.score.map((data,i)=>(
+								<tr>
+									<td>{data.id}</td>
+									<td>{data.id}</td>
+									<td>{this.state.score[i].like}</td>
+									<td>{this.state.score[i].share}</td>
+									<td>{this.state.score[i].sumFb}</td>
+								</tr>
+							))
+						}
 					</Table>
 					<FacebookModal buttonLabel="EDIT DATA"/>
 				</Section>
