@@ -96,6 +96,7 @@ class Result extends React.Component {
 		alert("Fetch Data from Website")
 	}
 
+	//คำนวณผลรวมคะแนน Facebook ของแต่ละคน
 	calculateSumWebsite = async ()=> {
 		console.log("Calculate Sum Website Func")
 		for (let index = 0; index < this.state.score.length; index++) {
@@ -108,6 +109,7 @@ class Result extends React.Component {
 		}
 	}
 
+	//หาผลรวมคะแนนทั้งหมดของ Facebook
 	calculateTotalFacebook = () =>{
 		let total = 0;
 		for (let index = 0; index < this.state.score.length; index++) {
@@ -116,6 +118,7 @@ class Result extends React.Component {
 		console.log("Total FB = "+total)
 	}
 
+	//หาผลรวมคะแนนทั้งหมดของ Website
 	calculateTotalWebsite = ()=>{
 		let total = 0;
 		for (let index = 0; index < this.state.score.length; index++) {
@@ -124,6 +127,7 @@ class Result extends React.Component {
 		console.log("Total FB = "+total)
 	}
 
+	//Function หาคะแนนที่ได้ของบุคคล
 	calculateTotalPoint = (id)=>{
 		const fbPoint = (30*this.state.score[id].sumFb)/this.state.totalFacebook;
 		const webPoint = (60*this.state.score[id].sumWebsite)/this.state.totalWebsite;
