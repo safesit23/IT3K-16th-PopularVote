@@ -33,7 +33,7 @@ class Waiting extends React.Component {
           path: path
         });
         Router.push({
-          pathname: `${ENV.PATH_BASIC}${path}`,
+          pathname: `${ENV.PATH_BASIC}/${path}`,
           query: { id: `${this.state.id}`, name: `${this.state.name}` }
         });
       }

@@ -18,7 +18,7 @@ class TopicProjector extends React.Component {
 	changePath = async () => {
 		await socket.on('pathProjector', (path) => {
 			Router.push({
-				pathname: `${ENV.PATH_BASIC}${path}`,
+				pathname: `${ENV.PATH_BASIC}/${path}`,
 			})
 			console.log('Cilent Path Project : ',path)
 		})
