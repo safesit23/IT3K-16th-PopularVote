@@ -19,13 +19,13 @@ class Result extends React.Component {
   componentDidMount = () => {
     this.getResult();
   };
+
   getResult = async () => {
-    console.log("===========================");
     let data = await ResultService.getResult();
     await this.setState({
       count: data.data.count
     });
-    console.log("=====", data.data);
+    console.log('test : ',data)
   };
 
   render() {

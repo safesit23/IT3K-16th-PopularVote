@@ -41,7 +41,6 @@ class Vote extends React.Component {
   }
 
   changePath = async (count) => {
-    console.log(count, '   Test')
     await socket.on('pathName', (path) => {
       console.log('Path : ', path)
       this.setState({

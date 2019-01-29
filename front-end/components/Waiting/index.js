@@ -28,7 +28,7 @@ class Waiting extends React.Component {
 
   changePath = async () => {
     await socket.on("pathName", path => {
-      if (path != "") {
+      if (path != '') {
         this.setState({
           path: path
         });
