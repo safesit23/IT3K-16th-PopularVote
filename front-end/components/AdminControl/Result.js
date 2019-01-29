@@ -105,7 +105,7 @@ class Result extends React.Component {
 				...this.state.score[index],
 				sumWebsite:sum
 			}
-			console.log(`sum of ${index} is ${this.state.score[index].sumWebsite}`)
+			console.log(`sumWeb of ${index+1} is ${this.state.score[index].sumWebsite}`)
 		}
 	}
 
