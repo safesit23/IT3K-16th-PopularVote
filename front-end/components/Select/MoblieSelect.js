@@ -4,7 +4,7 @@ import { Container, Row, Col } from 'reactstrap'
 import styled from 'styled-components'
 import Pic from '../Core/Picture';
 import Popup from './PopupConfirm'
-import { ParagraphBold, Subtitle, Paragraph } from '../Core/Text'
+import { ParagraphBold, Subtitle, ParagraphWh } from '../Core/Text'
 
 const Name = ['นาย จันทร์ ทองดีกว่า', 'นาย จันทร์ ทองดีกว่าที่สุด', 'นายอังคาร ทองดีกว่าที่สุด', 'นาย พุธ ทองดีกว่าที่สุด', 'name5', '6'];
 const school = ['บางมด', 'พระนครเหนือ', 'ลาดกระบัง', 'บางมด', 'พระนครเหนือ', 'ลาดกระบัง'];
@@ -100,7 +100,7 @@ class DynamicSlides extends Component {
                   <Subtitle className="mt-4 h1" name={Name[slide]}>{Name[slide]}</Subtitle>
                 </Row>
                 <Row className="d-flex justify-content-center">
-                  <Paragraph className="mt-2" >{school[slide]}</Paragraph>
+                  <ParagraphWh className="mt-2" >{school[slide]}</ParagraphWh>
                 </Row>
               </Col>
             );

@@ -30,6 +30,12 @@ export const Title = styled.h4`
   color: ${props => props.color || "black"};
 `
 
+export const TitleBl = styled.h4`
+  font-family: 'Kanit', sans-serif;
+  font-size: ${config.title};
+  color: ${props => props.color || "black"};
+`
+
 export const TitleWh = styled.h4`
   font-family: 'Kanit', sans-serif;
   font-size: ${config.title};
@@ -40,9 +46,22 @@ export const Subtitle = styled.p`
   font-family: 'Kanit', sans-serif;
   font-size: ${config.subtitle};
   color: ${props => props.color || "black"};
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+`
+
+export const SubtitleWh = styled.p`
+  font-family: 'Kanit', sans-serif;
+  font-size: ${config.subtitle};
+  color: ${props => props.color || "white"};
 `
 
 export const Paragraph = styled.p`
+  font-family: 'Kanit', sans-serif;
+  font-size: ${config.paragraph};
+  color: ${props => props.color || "black"};
+`
+
+export const ParagraphWh = styled.p`
   font-family: 'Kanit', sans-serif;
   font-size: ${config.paragraph};
   color: ${props => props.color || "white"};

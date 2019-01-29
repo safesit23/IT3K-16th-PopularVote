@@ -47,4 +47,13 @@ export const FacebookButton = styled(DefaultButton)`
   border:0px;
 `
 
+export const ButtonBack = styled(DefaultButton)`
+  font-size: ${fonts.body};
+  background-color:#311847;
+  color: ${colors.color1};
+  border: 0px;
+  font-family : 'Kanit' ;
+  width: 80%;
+`
+
 export default ButtonPrimary
