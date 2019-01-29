@@ -57,26 +57,26 @@ class Result extends React.Component {
 		totalWebsite: 0
 	}
 
-	// async componentDidMount() {
-  //   const dataCompetitor = await CompetitorService.getCompetitor()
-  //   console.log('competiotr : ', dataCompetitor.data)
-	// 	await this.setDataCompetitor(dataCompetitor.data)
-	// 	// this.getResult()
-  // }
+// 	async componentDidMount() {
+//     const dataCompetitor = await CompetitorService.getCompetitor()
+//     console.log('competiotr : ', dataCompetitor.data)
+// 		await this.setDataCompetitor(dataCompetitor.data)
+// 		// this.getResult()
+//   }
 
-	// setDataCompetitor = async competiotr => {
-  //   for (let index = 0; index < competiotr.length; index++) {
-  //     competiotr_data.push({
-  //       id: competiotr[index].idCompetitor,
-  //       name: competiotr[index].name,
-  //       nickname: competiotr[index].nickname,
-  //       university: competiotr[index].university,
-  //     })
-  //   }
-  //   this.setState({
-  //     competitor: competiotr_data
-  //   })
-  // }
+// 	setDataCompetitor = async competiotr => {
+//     for (let index = 0; index < competiotr.length; index++) {
+//       competiotr_data.push({
+//         id: competiotr[index].idCompetitor,
+//         name: competiotr[index].name,
+//         nickname: competiotr[index].nickname,
+//         university: competiotr[index].university,
+//       })
+//     }
+//     this.setState({
+//       competitor: competiotr_data
+//     })
+//   }
 
 	getResult = async () => {
 		let dataFacebook = await FbScoreService.getFBScore()
