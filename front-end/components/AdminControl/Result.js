@@ -88,6 +88,7 @@ class Result extends React.Component {
 	}
 
 	fetchFBData = () =>{
+		this.calculateSumFacebook()
 		alert("Fetch Data from FB")
 	}
 
@@ -97,6 +98,17 @@ class Result extends React.Component {
 	}
 
 	//คำนวณผลรวมคะแนน Facebook ของแต่ละคน
+	calculateSumFacebook = async ()=> {
+		console.log("Calculate Sum Facebook Func")
+		for (let index = 0; index < this.state.score.length; index++) {
+			let sum = this.state.score[index].like + (this.state.score[index].share*3)
+			this.state.score[index]={
+				...this.state.score[index],
+				sumFb:sum
+			}
+			console.log(`sumFB of ${index+1} is ${this.state.score[index].sumFb}`)
+		}
+	}
 	calculateSumWebsite = async ()=> {
 		console.log("Calculate Sum Website Func")
 		for (let index = 0; index < this.state.score.length; index++) {
