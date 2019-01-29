@@ -181,7 +181,7 @@ class Result extends React.Component {
 				</Section>
 				<Section xs="11" className="mb-2">
 					<TitlePanel name="PopularVote" buttonName="Calculate" />
-					<Paragraph color='black'>สัดส่วนการให้คะแนน : 30% จาก Facebook และ 70% จาก Website</Paragraph>
+					<Paragraph >สัดส่วนการให้คะแนน : 30% จาก Facebook และ 70% จาก Website</Paragraph>
 					<Button onClick={this.calculateTotalFacebook}>ShowTotalFB</Button>
 					<Button onClick={this.calculateTotalWebsite}>ShowTotalWebsite</Button>
 					<Row>

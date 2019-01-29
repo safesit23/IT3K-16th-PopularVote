@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-import { Container, Row, Col } from 'reactstrap'
+import { Container, Row } from 'reactstrap'
 import styled from 'styled-components'
 import Pic from '../Core/Picture';
 import Popup from '../Select/PopupConfirm'
-import { ParagraphBold, Subtitle, Paragraph } from '../Core/Text'
 
 
 const Button = styled.button`

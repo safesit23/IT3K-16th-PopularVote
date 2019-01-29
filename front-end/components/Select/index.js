@@ -3,7 +3,7 @@ import { Container, Row, Col } from "reactstrap";
 import styled from "styled-components";
 import Logo from "../Core/logohead";
 import BgColor from "../../config/colors";
-import { Subtitle } from "../Core/Text";
+import { SubtitleWh } from "../Core/Text";
 import CardVote from "../Core/Card";
 import Popup from "./PopupConfirm";
 import CompetitorService from "../../service/CompetitorService";
@@ -75,9 +75,9 @@ class Index extends React.Component {
             </Row>
             <Row>
               <Col className="d-flex justify-content-center mt-2">
-                <Subtitle className="text-white">
+                <SubtitleWh>
                   เลือกผู้เข้าแข่งขันที่ต้องการโหวต
-                </Subtitle>
+                </SubtitleWh>
               </Col>
             </Row>
             <Row>

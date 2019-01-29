@@ -4,7 +4,7 @@ import { Container, Row, Col } from 'reactstrap'
 import Button from '../Core/Button'
 import socketIOClient from 'socket.io-client'
 import { Radio } from 'antd'
-import { Headline, Title, Subtitle, Paragraph } from '../Core/Text'
+import { Headline, Title, Paragraph } from '../Core/Text'
 import Result from './Result'
 import ENV from '../../config/envConfig'
 
@@ -144,9 +144,9 @@ class AdminControl extends React.Component {
 					</Section>
 					<Section xs="5">
 						<Title>USER</Title>
-						<Paragraph color="black">Current User : {this.state.user}</Paragraph>
-						<Paragraph color="black">User Selecting : 0 </Paragraph>
-						<Paragraph color="black">Ready User for vote : 0</Paragraph>
+						<Paragraph >Current User : {this.state.user}</Paragraph>
+						<Paragraph >User Selecting : 0 </Paragraph>
+						<Paragraph >Ready User for vote : 0</Paragraph>
 					</Section>
 				</Row>
 				<Result />
