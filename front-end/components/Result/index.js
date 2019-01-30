@@ -6,33 +6,65 @@ import Logo from "../Core/logohead";
 import BgColor from "../../config/colors";
 import { TitleWh } from "../Core/Text";
 import { ButtonBack } from '../Core/Button'
+import Pic from '../Core/Picture'
+import Cookie from '../../service/CookieService'
+import Router from 'next/router'
+import Footer from '../Core/Footer'
 
-const Bg = styled.div`
+const Bg = styled(Container)`
   background: ${BgColor.backgroundnew};
-  height: 92vh;
+  height: 100%;
 `;
+
 
 class Result extends React.Component {
   state = {
-    count: 0
+    count: 0,
+    picId: 0
   };
   componentDidMount = () => {
+    const data = new URLSearchParams(window.location.search)
+    this.getDataCompetitor(data.get('id'))
     this.getResult();
   };
+
   getResult = async () => {
-    console.log("===========================");
     let data = await ResultService.getResult();
-    await this.setState({
-      count: data.data.count
-    });
-    console.log("=====", data.data);
+    if(Cookie.gettokenJWTCookie()){
+      await this.setState({
+        count: data.data.count
+      });
+      console.log('test : ', data)
+      this.clearCookie()
+    }else{
+      Router.replace({
+        pathname : '/'
+      })
+    }
   };
+
+  getDataCompetitor = async (id) => {
+    if(Cookie.gettokenJWTCookie()){
+      this.setState({
+        picId: id
+      })
+    }else{
+      Router.replace({
+        pathname : '/'
+      })
+    }
+  }
+
+  clearCookie = async () => {
+    if(Cookie.gettokenJWTCookie()){
+      Cookie.removeJWTAndEmailCookie()
+    }
+  }
 
   render() {
     return (
-      <Bg>
-        <Container fluid>
-          <Container>
+      <Bg fluid>
+        <Container>
             <Row>
               <Col className="text-center">
                 <Logo />
@@ -43,9 +75,9 @@ class Result extends React.Component {
                 <TitleWh>ระบบโหวต ดาว - เดือน</TitleWh>
               </Col>
             </Row>
-            <Row>
-              <Col className="d-flex justify-content-center mt-2">
-                <h2>รูปภาพคนที่เลือกโหวต</h2>
+            <Row className="d-flex justify-content-center mt-2" >
+              <Col>
+                <Pic pic={this.state.picId} widthPic="100%" />
               </Col>
             </Row>
             <Row>
@@ -53,11 +85,11 @@ class Result extends React.Component {
                 <TitleWh>คะแนนของคุณคือ {this.state.count} คะแนน</TitleWh>
               </Col>
             </Row>
-            <Row className="d-flex justify-content-center">
-                <ButtonBack block size="large">กลับสู่หน้าหลัก</ButtonBack>
+            <Row className="d-flex justify-content-center mb-3">
+              <ButtonBack block size="large">กลับสู่หน้าหลัก</ButtonBack>
             </Row>
-          </Container>
         </Container>
+        <Footer/>
       </Bg>
     );
   }

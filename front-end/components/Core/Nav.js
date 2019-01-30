@@ -16,7 +16,7 @@ class Nav extends React.Component {
   render() {
     return (
       <Bg>
-        <Row>
+        <Row className="no-gutters">
           <Col className="text-left mt-3 mb-3 ml-3">
             <BodyWhite>IT 3KINGS #16</BodyWhite>
           </Col>

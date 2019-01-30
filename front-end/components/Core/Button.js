@@ -45,6 +45,7 @@ export const FacebookButton = styled(DefaultButton)`
   background-color: #24468A;
   color: ${colors.color1};
   border:0px;
+  visibility: ${props => props.show || 'hidden'};
 `
 
 export const ButtonBack = styled(DefaultButton)`

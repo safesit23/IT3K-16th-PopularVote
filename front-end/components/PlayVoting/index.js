@@ -5,7 +5,7 @@ import BgColor from "../../config/colors";
 
 const Bg = styled.div`
   background: ${BgColor.backgroundnew};
-  height: 92vh;
+  height: 100%;
 `;
 
 class PopularVote extends React.Component {

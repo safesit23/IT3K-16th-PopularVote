@@ -7,7 +7,6 @@ const GlobalStyle = createGlobalStyle`
   }
   body{
     font-family:sans-serif,'Kanit','AgencyGP', !important;
-    height: 100vh;
   }
 
   @font-face{

@@ -41,7 +41,6 @@ class Vote extends React.Component {
   }
 
   changePath = async (count) => {
-    console.log(count, '   Test')
     await socket.on('pathName', (path) => {
       console.log('Path : ', path)
       this.setState({
@@ -52,7 +51,6 @@ class Vote extends React.Component {
 
   getRound = () => {
     socket.on('round',(newRound) => {
-      console.log('round : ----------',newRound)
       this.setState({
         round : newRound
       })
@@ -68,7 +66,6 @@ class Vote extends React.Component {
 
 
   componentWillUnmount() {
-    console.log('willUn')
     let id = this.state.id
     let count = this.state.count
     let round = this.state.round
@@ -76,7 +73,6 @@ class Vote extends React.Component {
   }
 
   sendResult = async (id, count,round) => {
-    console.log('Count : ', this.state.count)
     SendResult.sendResult(id, count,round)
   }
 

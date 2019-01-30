@@ -11,37 +11,54 @@ const socket = socketIOClient(ENV.PATH_SOCKET)
 
 let round;
 
+const data = []
 
 const responseFacebook = async (response) => {
-  await AuthService.login(response,round)
+  let round = localStorage.getItem('round')
+  data.push({
+    userID:response.userID,
+    round: round
+  })
+  await AuthService.login(data)
 }
+
 const changetoRegisterPage = async () => {
-  if(Cookie.gettokenJWTCookie()){
+  if (Cookie.gettokenJWTCookie()) {
     console.log('Hi !!!')
     Router.push({
-      pathname:'/select'
+      pathname: '/select'
     })
   }
 }
+
+
 
 class LoginFaceBook extends React.Component {
   state = {
-    round : '',
+    round: 0,
+    showLoginBtn : false
   }
 
-  componentDidMount () {
+  componentDidMount() {
     changetoRegisterPage()
+    this.getRound()
   }
 
-  getRound = async () =>{
-    await socket.on('round',(newRound) => {
-      this.setState({
-        round : newRound
-      })
+  getRound = async () => {
+    await socket.on('round', (newRound) => {
+      if(newRound === 1 || newRound === 2){
+        this.setState({
+          round : newRound,
+          showLoginBtn : true
+        })
+      }
+      console.log(this.state.round)
+      localStorage.setItem('round',this.state.round)
     })
   }
 
-  render () {
+  
+  render() {
     return (
       <FacebookLogin
         scope="email"
@@ -50,8 +67,8 @@ class LoginFaceBook extends React.Component {
         appId="288315792032558"
         callback={responseFacebook}
         render={renderProps => (
-          <FacebookButton size="large" color="primary" block onClick={renderProps.onClick}>
-          Login with Facebook
+          <FacebookButton size="large" color="primary" block onClick={renderProps.onClick} show={this.state.showLoginBtn}>
+            Login with Facebook
           </FacebookButton>
         )}
       />
