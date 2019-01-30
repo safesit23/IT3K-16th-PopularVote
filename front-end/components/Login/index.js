@@ -6,6 +6,10 @@ import Gallery from "../Core/SlidePic";
 import { TitleWh } from "../Core/Text";
 import Logo from "../Core/logohead";
 import BgColor from "../../config/colors";
+import ENV from '../../config/envConfig'
+import socketIOClient from 'socket.io-client'
+
+const socket = socketIOClient(ENV.PATH_SOCKET);
 
 const Bg = styled.div`
   background: ${BgColor.backgroundnew};
@@ -13,6 +17,16 @@ const Bg = styled.div`
 `;
 
 class Login extends React.Component {
+
+  componentDidMount(){
+    this.countLogin()
+  }
+  
+  countLogin = async() => {
+    let countLogin = 1 
+    await socket.emit('countLogin',countLogin)
+  }
+
   render() {
     return (
       <Bg className="mb-4">

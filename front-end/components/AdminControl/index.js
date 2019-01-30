@@ -39,12 +39,60 @@ class AdminControl extends React.Component {
 		value2: '',
 		round: 0,
 		user: 0,
+		loginPage : 0,
+		selectPage : 0,
+		waitPage : 0,
+		votePage : 0,
+		resultPage : 0,
 	}
-
+	
 	componentDidMount() {
 		this.getCount()
+		this.getCountLogin()
+		this.getCountSelect()
+		this.getCountWait()
+		this.getCountPageVote()
 	}
 
+	getCountLogin = async() => {
+		await socket.on('getCountLogin',(count) => {
+			this.setState({
+				loginPage : count
+			})
+		})
+	}
+
+	getCountSelect = async() => {
+		await socket.on('getCountSelect',(count) => {
+			this.setState({
+				selectPage : count
+			})
+		})
+	}
+
+	getCountWait = async () => {
+		await socket.on('getCountWait',(count) => {
+			this.setState({
+				waitPage : count
+			})
+		})
+	} 
+
+	getCountPageVote = async () => {
+		await socket.on('getCountPageVote',(count) => {
+			this.setState({
+				votePage : count
+			})
+		})
+	} 
+
+	getCountPageResult = async () => {
+		await socket.on('getCountPageResult',(count) => {
+			this.setState({
+				resultPage : count
+			})
+		})
+	} 
 
 	getCount = async () => {
 		await socket.on('countUser', (user) => {
@@ -148,8 +196,11 @@ class AdminControl extends React.Component {
 					<Section xs="5">
 						<Title>USER</Title>
 						<Paragraph >Current User : {this.state.user}</Paragraph>
-						<Paragraph >User Selecting : 0 </Paragraph>
-						<Paragraph >Ready User for vote : 0</Paragraph>
+						<Paragraph >Login page : {this.state.loginPage} </Paragraph>
+						<Paragraph >Select page :  {this.state.selectPage}</Paragraph>
+						<Paragraph >Waiting	 page :  {this.state.waitPage}</Paragraph>
+						<Paragraph >Vote page :  {this.state.votePage}</Paragraph>
+						<Paragraph >Result	 page :  {this.state.resultPage}</Paragraph>
 					</Section>
 				</Row>
 				<Result />
