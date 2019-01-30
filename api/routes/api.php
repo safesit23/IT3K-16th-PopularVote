@@ -21,12 +21,13 @@ header('Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS');
 
 /* ========  Admin  ======== */
 Route::post('admin/login','adminLoginController@Login');
-
-/* ========  User  ======== */
-Route::get('roundResult','CountingController@RoundResult');
-Route::post('login', 'AuthenController@login');
-Route::post('vote', 'VoteController@vote');
-
 Route::group(['middleware' => ['checkAuth']], function () {
   Route::get('competitor', 'CompetitorController@getCompetitor');
 });
+
+
+/* ========  User  ======== */
+Route::post('login', 'AuthenController@login');
+Route::post('vote', 'VoteController@vote');
+Route::get('roundResult','CountingController@RoundResult');
+
