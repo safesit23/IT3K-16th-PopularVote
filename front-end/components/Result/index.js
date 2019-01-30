@@ -9,6 +9,7 @@ import { ButtonBack } from '../Core/Button'
 import Pic from '../Core/Picture'
 import Cookie from '../../service/CookieService'
 import Router from 'next/router'
+import Footer from '../Core/Footer'
 
 const Bg = styled(Container)`
   background: ${BgColor.backgroundnew};
@@ -88,6 +89,7 @@ class Result extends React.Component {
               <ButtonBack block size="large">กลับสู่หน้าหลัก</ButtonBack>
             </Row>
         </Container>
+        <Footer/>
       </Bg>
     );
   }

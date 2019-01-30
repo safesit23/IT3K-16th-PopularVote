@@ -6,6 +6,7 @@ import Router from "next/router";
 import ENV from "../../config/envConfig";
 import BgColor from "../../config/colors";
 import { HeadlineWh } from "../Core/Text";
+import Footer from '../Core/Footer'
 
 const Bg = styled(Container)`
   background: ${BgColor.backgroundnew};
@@ -62,6 +63,7 @@ class Waiting extends React.Component {
             <Col />
           </Row>
         </Container>
+        <Footer/>
       </Bg>
     );
   }

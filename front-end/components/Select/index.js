@@ -7,6 +7,7 @@ import { SubtitleWh } from "../Core/Text";
 import CardVote from "../Core/Card";
 import Popup from "./PopupConfirm";
 import CompetitorService from "../../service/CompetitorService";
+import FooterTest from '../Core/Footer'
 
 const Bg = styled.div`
   background: ${BgColor.backgroundnew};
@@ -108,6 +109,7 @@ class Index extends React.Component {
             ) : null}
           </Container>
         </Container>
+        <FooterTest/>
       </Bg>
     );
   }
