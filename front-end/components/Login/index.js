@@ -13,7 +13,7 @@ const socket = socketIOClient(ENV.PATH_SOCKET);
 
 const Bg = styled.div`
   background: ${BgColor.backgroundnew};
-  height: 92vh;
+  height: 100vh;
 `;
 
 class Login extends React.Component {
@@ -29,7 +29,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <Bg className="mb-4">
+      <Bg>
       <Container fluid>
         <Container>
           <Col className="text-center">

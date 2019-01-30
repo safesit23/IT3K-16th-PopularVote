@@ -19,10 +19,10 @@ class Select extends React.Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <Nav />
         <SelectSlick />
-      </div>
+      </React.Fragment>
     );
   }
 }

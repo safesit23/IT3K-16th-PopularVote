@@ -19,10 +19,10 @@ export default class result extends Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <Nav/>
         <Result />
-      </div>
+      </React.Fragment>
     )
   }
 }

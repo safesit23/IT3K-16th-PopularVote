@@ -18,10 +18,10 @@ class WaitingPage extends React.Component {
 	
 	render() {
 		return (
-			<div>
+			<React.Fragment>
 				<Nav/>
 				<Waiting />
-			</div>
+			</React.Fragment>
 		);
 	}
 }
