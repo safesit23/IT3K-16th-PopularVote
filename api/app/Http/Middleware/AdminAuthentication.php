@@ -6,6 +6,13 @@ use Closure;
 
 class AdminAuthentication
 {
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
     private $AdminSecret = "Nongmoonoum";
     public function handle($request, Closure $next)
     {
@@ -19,4 +26,5 @@ class AdminAuthentication
  
 }
 }
+
 
