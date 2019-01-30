@@ -23,6 +23,8 @@ header('Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS');
 Route::post('admin/login','adminLoginController@Login');
 Route::group(['middleware' => ['checkAuth']], function () {
   Route::get('competitor', 'CompetitorController@getCompetitor');
+  Route::put('admin/sendfacebookScore','adminController@FacebookScore');
+  Route::get('admin/websiteScore','adminController@WebsiteScore');
 });
 
 
