@@ -44,9 +44,9 @@ class Waiting extends React.Component {
 						{
 							this.state.positions.map((data) => {
 								return (
-									<div className="p-1">
-										<Pic pic={data} key={data} />
-									</div>
+									<Col className="p-1">
+										<Pic pic={data} key={data} widthPic='100%' />
+									</Col>
 								)
 							})
 						}
