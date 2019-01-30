@@ -8,12 +8,12 @@ import BgColor from "../../config/colors";
 import { HeadlineWh } from "../Core/Text";
 import Footer from '../Core/Footer'
 
-const Bg = styled(Container)`
+const Bg = styled.div`
   background: ${BgColor.backgroundnew};
-  height: 100vh;
-  padding-top: 40vh;
+  height: 90vh;
 `;
 const socket = socketIOClient(ENV.PATH_SOCKET);
+
 class Waiting extends React.Component {
   state = {
     path: "",
@@ -51,20 +51,22 @@ class Waiting extends React.Component {
 
   render() {
     return (
-      <Bg>
-        <Container>
-          <Row>
-            <Col />
-            <Col className="col-11 text-center">
-              <HeadlineWh>
-                {this.state.count != 0 ? "โปรดรอสักครู่..." : this.state.count}
-              </HeadlineWh>
-            </Col>
-            <Col />
-          </Row>
-        </Container>
-        <Footer/>
-      </Bg>
+      <React.Fragment>
+        <Bg>
+          <Container fluid > 
+            <Container  >
+              <Row >
+                <Col>
+                  <HeadlineWh className="text-center mt-5" >
+                    {this.state.count != 0 ? "โปรดรอสักครู่..." : this.state.count}
+                  </HeadlineWh>
+                </Col>
+              </Row>
+            </Container>
+          </Container>
+        </Bg>
+        <Footer mtop="-70%" />
+      </React.Fragment>
     );
   }
 }

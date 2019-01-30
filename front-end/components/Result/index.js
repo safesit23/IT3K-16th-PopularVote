@@ -11,7 +11,7 @@ import Cookie from '../../service/CookieService'
 import Router from 'next/router'
 import Footer from '../Core/Footer'
 
-const Bg = styled(Container)`
+const Bg = styled.div`
   background: ${BgColor.backgroundnew};
   height: 100%;
 `;
@@ -30,41 +30,42 @@ class Result extends React.Component {
 
   getResult = async () => {
     let data = await ResultService.getResult();
-    if(Cookie.gettokenJWTCookie()){
+    if (Cookie.gettokenJWTCookie()) {
       await this.setState({
         count: data.data.count
       });
       console.log('test : ', data)
       this.clearCookie()
-    }else{
+    } else {
       Router.replace({
-        pathname : '/'
+        pathname: '/'
       })
     }
   };
 
   getDataCompetitor = async (id) => {
-    if(Cookie.gettokenJWTCookie()){
+    if (Cookie.gettokenJWTCookie()) {
       this.setState({
         picId: id
       })
-    }else{
+    } else {
       Router.replace({
-        pathname : '/'
+        pathname: '/'
       })
     }
   }
 
   clearCookie = async () => {
-    if(Cookie.gettokenJWTCookie()){
+    if (Cookie.gettokenJWTCookie()) {
       Cookie.removeJWTAndEmailCookie()
     }
   }
 
   render() {
     return (
-      <Bg fluid>
-        <Container>
+      <Bg>
+        <Container fluid>
+          <Container>
             <Row>
               <Col className="text-center">
                 <Logo />
@@ -88,8 +89,9 @@ class Result extends React.Component {
             <Row className="d-flex justify-content-center mb-3">
               <ButtonBack block size="large">กลับสู่หน้าหลัก</ButtonBack>
             </Row>
+          </Container>
         </Container>
-        <Footer/>
+        <Footer />  
       </Bg>
     );
   }

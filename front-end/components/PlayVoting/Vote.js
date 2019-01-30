@@ -50,9 +50,9 @@ class Vote extends React.Component {
   }
 
   getRound = () => {
-    socket.on('round',(newRound) => {
+    socket.on('round', (newRound) => {
       this.setState({
-        round : newRound
+        round: newRound
       })
     });
   }
@@ -69,11 +69,11 @@ class Vote extends React.Component {
     let id = this.state.id
     let count = this.state.count
     let round = this.state.round
-    this.sendResult(id, count,round)
+    this.sendResult(id, count, round)
   }
 
-  sendResult = async (id, count,round) => {
-    SendResult.sendResult(id, count,round)
+  sendResult = async (id, count, round) => {
+    SendResult.sendResult(id, count, round)
   }
 
   render() {
@@ -87,14 +87,14 @@ class Vote extends React.Component {
             </Col>
           </Row>
         </Container>
-            <Col className="text-center mt-4">
-              <TitleWh count={this.state.count}>คะแนนของคุณคือ {this.state.count} คะแนน</TitleWh>
-            </Col>
-          <Row>
-            <Col className="d-flex justify-content-center">
-              <ButtonVote onClick={() => this.vote()}>PRESS</ButtonVote>
-            </Col>
-          </Row>
+        <Col className="text-center mt-4">
+          <TitleWh count={this.state.count}>คะแนนของคุณคือ {this.state.count} คะแนน</TitleWh>
+        </Col>
+        <Row>
+          <Col className="d-flex justify-content-center">
+            <ButtonVote onClick={() => this.vote()}>PRESS</ButtonVote>
+          </Col>
+        </Row>
       </Landing>
     )
   }

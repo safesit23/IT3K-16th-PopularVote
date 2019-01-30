@@ -2,10 +2,11 @@ import React from 'react'
 import Vote from './Vote'
 import styled from "styled-components";
 import BgColor from "../../config/colors";
+import Footer from '../Core/Footer'
 
 const Bg = styled.div`
   background: ${BgColor.backgroundnew};
-  height: 100%;
+  height: 100vh;
 `;
 
 class PopularVote extends React.Component {
@@ -13,7 +14,8 @@ class PopularVote extends React.Component {
   render() {
     return (
       <Bg>
-     <Vote/>
+        <Vote />
+        <Footer mtop="-70%"/>
       </Bg>
     )
   }
