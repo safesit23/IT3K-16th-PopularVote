@@ -17,14 +17,15 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token,Authorization');
 header('Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS');
 
-Route::post('login', 'AuthenController@login');
-Route::post('vote', 'VoteController@vote');
 
-//admin
+
+/* ========  Admin  ======== */
 Route::post('admin/login','adminLoginController@Login');
 
-//get count
+/* ========  User  ======== */
 Route::get('roundResult','CountingController@RoundResult');
+Route::post('login', 'AuthenController@login');
+Route::post('vote', 'VoteController@vote');
 
 Route::group(['middleware' => ['checkAuth']], function () {
   Route::get('competitor', 'CompetitorController@getCompetitor');
