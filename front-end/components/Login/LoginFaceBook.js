@@ -36,7 +36,7 @@ const changetoRegisterPage = async () => {
 class LoginFaceBook extends React.Component {
   state = {
     round: 0,
-    showLoginBtn : false
+    showLoginBtn : true
   }
 
   componentDidMount() {
