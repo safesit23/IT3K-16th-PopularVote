@@ -16,10 +16,8 @@ class CheckAuth
         $decodedJwt = \Lindelius\JWT\JWT::decode($token);
         $decodedJwt->verify($this->AdminSecret);
         $response = $next($request);
-    
-        return $response;
- 
-
-        
+        $provider_id = $decodedJwt->sub->provider_id;
+        $round = $decodedJwt->sub->round;
+        return $next($request); 
     }
 }
