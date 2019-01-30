@@ -1,5 +1,6 @@
 export default {
-  IT3K:'50px',
+  IT3K:'100px',
+  web: '72px',
   headline: '36px',
   title: '20px',
   subtitle: '18px',
