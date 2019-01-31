@@ -6,6 +6,7 @@ const Img = styled.img`
   width : 100%;
   z-index : -100;
   margin-top: ${props => props.mt || '-50%'};
+  
 `
 
 const BgColor = styled.div`

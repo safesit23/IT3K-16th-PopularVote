@@ -64,7 +64,6 @@ class Index extends React.Component {
   };
 
   render() {
-    const data = competiotr_data;
     return (
       <Bg>
         <Container fluid>
@@ -83,12 +82,13 @@ class Index extends React.Component {
             </Row>
             <Row>
               <Col>
-                {competiotr_data.map(data => {
+                {competiotr_data.map((data,i) => {
                   return (
-                    <Button
+                    <Button key={i}
                       onClick={() => this.togglePopup(data.id, data.name)}
                     >
-                      <CardVote
+                      <CardVote 
+                        key={i}
                         name={data.name}
                         nickname={data.nickname}
                         university={data.university}

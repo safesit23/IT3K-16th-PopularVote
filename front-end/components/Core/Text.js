@@ -49,6 +49,12 @@ export const TitleWh = styled.h4`
   color: ${props => props.color || "white"};
 `
 
+export const NumberWh = styled.h4`
+  font-family: 'Kanit', sans-serif;
+  font-size: ${config.number};
+  color: ${props => props.color || "white"};
+`
+
 export const Subtitle = styled.p`
   font-family: 'Kanit', sans-serif;
   font-size: ${config.subtitle};
