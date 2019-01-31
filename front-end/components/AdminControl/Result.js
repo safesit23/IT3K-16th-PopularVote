@@ -33,37 +33,19 @@ const Card = styled(Col)`
 class Result extends React.Component {
 	state = {
 		competitor: {},
-		score: [{
-			id: 1,
-			round1: 1100,
-			round2: 1000,
-			sumWebsite: 0,
-			like: 100,
-			share: 10,
-			sumFb: 0,
-			totalScore: 0
-		}, {
-			id: 2,
-			round1: 2200,
-			round2: 2000,
-			sumWebsite: 0,
-			like: 200,
-			share: 20,
-			sumFb: 0,
-			totalScore: 0
-		}],
+		score: [],
 		totalFacebook: 0,
 		totalWebsite: 0
 	}
 
 	async componentDidMount() {
 		const dataCompetitor = await CompetitorService.getCompetitor()
-		const dataWebsite = await AdminService.getWebScore()
-		const dataFacebook = await AdminService.getFBScore()
 		console.log('=>competitor : ', dataCompetitor)
-		console.log('=>Web : ',dataWebsite)
-		console.log('=>FB : ',dataFacebook)
 		await this.setDataCompetitor(dataCompetitor.data)
+		const dataWebsite = await AdminService.getWebScore()
+		console.log('=>Web : ',dataWebsite)
+		const dataFacebook = await AdminService.getFBScore()
+		console.log('=>FB : ',dataFacebook)
 		await this.setDataScore(dataWebsite.data, dataFacebook.data)
 		this.getResult()
 		await this.calculateSumWebsite()
@@ -74,9 +56,9 @@ class Result extends React.Component {
 		let score_data = []
 		for(let index=0;index<dataWebsite.length;index++){
 			score_data.push({
-				id: dataWebsite[index].id,
-				round1: dataWebsite[index].round1,
-				round2: dataWebsite[index].round2,
+				id: dataWebsite[index].idCompetitor,
+				round1: dataWebsite[index].round_1,
+				round2: dataWebsite[index].round_2,
 				sumWebsite: 0,
 				like: dataFacebook[index].like,
 				share: dataFacebook[index].share,
@@ -87,6 +69,7 @@ class Result extends React.Component {
 		this.setState({
 			score: score_data
 		})
+		console.log("STATE : ",this.state.score)
 	}
 
 		setDataCompetitor = async (competitor) => {
@@ -128,7 +111,7 @@ class Result extends React.Component {
 		console.log("Calculate Sum Facebook Func")
 		let scoreX = this.state.score
 		for (let index = 0; index < this.state.score.length; index++) {
-			let sum = scoreX[index].like + (scoreX[index].share * 3)
+			let sum = (+scoreX[index].like) + (+scoreX[index].share * 3)
 			scoreX[index] = {
 				...scoreX[index],
 				sumFb: sum
@@ -145,7 +128,7 @@ class Result extends React.Component {
 		console.log("Calculate Sum Website Func")
 		let scoreX = this.state.score
 		for (let index = 0; index < this.state.score.length; index++) {
-			let sum = scoreX[index].round1 + scoreX[index].round2
+			let sum = (+scoreX[index].round1) + (+scoreX[index].round2)
 			scoreX[index] = {
 				...scoreX[index],
 				sumWebsite: sum
@@ -183,12 +166,21 @@ class Result extends React.Component {
 
 	//Function หาคะแนนที่ได้ของบุคคล
 	calculateTotalPoint = (id) => {
-		const fbP = (30 * this.state.score[id].sumFb) / this.state.totalFacebook;
-		const fbPoint = fbP.toFixed(2)
-		const webP = (70 * this.state.score[id].sumWebsite) / this.state.totalWebsite;
-		const webPoint = webP.toFixed(2)
+		let fbP, fbPoint, webP, webPoint
+		if(this.state.score[id].sumFb!=0){
+			fbP = (30 * this.state.score[id].sumFb) / this.state.totalFacebook;
+			fbPoint = fbP.toFixed(2)
+		}else{
+			fbPoint = 0
+		}
+		if(this.state.score[id].sumWebsite!=0){
+			webP = (70 * this.state.score[id].sumWebsite) / this.state.totalWebsite;
+			webPoint = webP.toFixed(2)
+		}else{
+			webPoint = 0
+		}
 		const tP = (+fbPoint)+(+webPoint)
-		console.log(`tP of ${id} is ${fbPoint} + ${webPoint} =${tP}`)
+		console.log(`tP of ${this.state.competitor[id].nickname} is ${fbPoint} + ${webPoint} =${tP}`)
 		return tP
 	}
 
@@ -209,7 +201,7 @@ class Result extends React.Component {
 		this.setState({
 			score: scoreX
 		})
-		console.log(`Finish`)
+		console.log(`=======Finish========`)
 	}
 
 
