@@ -6,7 +6,7 @@ import Footer from '../Core/Footer'
 
 const Bg = styled.div`
   background: ${BgColor.backgroundnew};
-  height: 100vh;
+  height: 90vh;
 `;
 
 class PopularVote extends React.Component {
@@ -15,7 +15,7 @@ class PopularVote extends React.Component {
     return (
       <Bg>
         <Vote />
-        <Footer mtop="-70%"/>
+        <Footer mtop="-80%"/>
       </Bg>
     )
   }
