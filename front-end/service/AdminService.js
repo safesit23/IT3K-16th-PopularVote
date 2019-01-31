@@ -24,7 +24,7 @@ const AdminService = {
   sendFBScore: async (facebook) => {
     console.log(facebook)
     try{
-      await api.put('api/admin/sendFacebookScore',{
+      await api.put('/admin/sendFacebookScore',{
         'facebook' : facebook
       })
     }catch (error) {
@@ -35,7 +35,7 @@ const AdminService = {
   getFBScore: async () => {
     console.log('get FBScore')
     try{
-      let data = await api.get('api/admin/facebookScore')
+      let data = await api.get('/admin/facebookScore')
       return data
     }catch (error) {
         console.log('Error : ',error)
@@ -45,7 +45,7 @@ const AdminService = {
   getWebScore: async () => {
     console.log('get WebScore')
     try{
-      let data = await api.get('api/admin/websiteScore')
+      let data = await api.get('/admin/websiteScore')
       return data
     }catch (error) {
         console.log('Error : ',error)
