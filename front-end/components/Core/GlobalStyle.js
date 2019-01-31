@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
 
   @font-face{
     font-family: "Kanit";
-    src: url('/static/fonts/Kanit-Thin.ttf') format('truetype');
+    src: url('/static/fonts/kanit-regular.otf') format('truetype');
   }
 `
 
