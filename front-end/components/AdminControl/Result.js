@@ -225,8 +225,8 @@ class Result extends React.Component {
 						{
 							this.state.score.map((data, i) => (
 								<tr>
-									<td>{i}</td>
-									<td>{data.id}</td>
+									<td>{this.state.competitor[i].nickname}</td>
+									<td>{this.state.competitor[i].university}</td>
 									<td>{data.round1}</td>
 									<td>{data.round2}</td>
 									<td>{data.sumWebsite}</td>
@@ -251,8 +251,8 @@ class Result extends React.Component {
 						{
 							this.state.score.map((data, i) => (
 								<tr>
-									<td>{data.id}</td>
-									<td>{data.id}</td>
+									<td>{this.state.competitor[i].nickname}</td>
+									<td>{this.state.competitor[i].university}</td>
 									<td>{data.like}</td>
 									<td>{data.share}</td>
 									<td>{data.sumFb}</td>
