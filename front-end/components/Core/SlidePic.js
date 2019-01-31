@@ -21,7 +21,7 @@ class DynamicSlides extends Component {
 
   render() {
     const settings = {
-      dots: false,
+      dots: true,
       center: true,
       infinite: true,
       speed: 500,
@@ -34,12 +34,12 @@ class DynamicSlides extends Component {
     return (
       <Container fluid>
         <Slider className="mt-3" {...settings} >
-          {this.state.slides.map((slide) => {
+          {this.state.slides.map((slide,i) => {
             return (
-              <Container fluid>
-                <Row className="d-flex justify-content-center" >
-                  <Col>
-                    <Button >
+              <Container fluid  key={i}>
+                <Row >
+                  <Col className="d-flex justify-content-center"  >
+                    <Button>
                       <Pic pic={slide} widthPic='100%' />
                     </Button>
                   </Col>

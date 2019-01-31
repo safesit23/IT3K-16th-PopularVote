@@ -93,6 +93,11 @@ export const Body = styled.p`
   color: ${props => props.color || "black"};
 `
 
+export const Confirm = styled.p`
+  font-family: 'Kanit', sans-serif;
+  font-size: ${config.body};
+`
+
 export const BodyWhite = styled.p`
   font-family: 'Kanit', sans-serif;
   font-size: ${config.body};

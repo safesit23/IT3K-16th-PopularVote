@@ -14,7 +14,7 @@ const socket = socketIOClient(ENV.PATH_SOCKET)
 
 const Landing = styled(Container)`
   background-color:${BgColor.bgColor};
-  height: 100vh;
+  height: 100%;
 `
 
 class Vote extends React.Component {
