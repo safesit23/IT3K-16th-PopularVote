@@ -3,9 +3,10 @@ import styled from 'styled-components'
 import { Container, Row, Col, Table } from 'reactstrap'
 import Button from '../Core/Button'
 import FacebookModal from './FbScoreModal'
-import { Headline, Title, Subtitle, Paragraph } from '../Core/Text'
+import { Headline, Paragraph,SubCaption, TitleBl } from '../Core/Text'
 import AdminService from '../../service/AdminService'
 import CompetitorService from '../../service/CompetitorService'
+import Picture from '../Core/Picture'
 
 const Section = styled(Col)`
 	margin-left : 10px;
@@ -16,7 +17,7 @@ const Section = styled(Col)`
 const TitlePanel = (props) => (
 	<Row>
 		<Col className="d-flex align-items-center">
-			<Title>{props.name}</Title>
+			<TitleBl>{props.name}</TitleBl>
 		</Col>
 		<Col className="d-flex align-items-center justify-content-end">
 			<Button onClick={props.onClick}>{props.buttonName}</Button>
@@ -28,6 +29,12 @@ const Card = styled(Col)`
 	background: #FFFFFF;
 	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.24);
 	border-radius: 9px;
+`
+
+const PicInCard = styled(Col)`
+	background-image: url('/static/img/IMG_00${props => props.img|| "1"}.jpg');
+	background-size: cover;
+	background-repeat: repeat;
 `
 
 class Result extends React.Component {
@@ -47,7 +54,6 @@ class Result extends React.Component {
 		const dataFacebook = await AdminService.getFBScore()
 		console.log('=>FB : ',dataFacebook)
 		await this.setDataScore(dataWebsite.data, dataFacebook.data)
-		this.getResult()
 		await this.calculateSumWebsite()
 		await this.calculateSumFacebook()
 	}
@@ -69,7 +75,6 @@ class Result extends React.Component {
 		this.setState({
 			score: score_data
 		})
-		console.log("STATE : ",this.state.score)
 	}
 
 		setDataCompetitor = async (competitor) => {
@@ -87,23 +92,12 @@ class Result extends React.Component {
 	    })
 	  }
 
-	getResult = async () => {
-		let dataFacebook = await AdminService.getFBScore()
-		let dataWebsite = await AdminService.getWebScore()
-		await this.setState({
-			// website: dataWebsite.data
-		})
-		// console.log('=====', dataWebsite)
-	}
-
 	fetchFBData = () => {
 		this.calculateSumFacebook()
-		alert("Fetch Data from FB")
 	}
 
 	fetchWebsiteData = () => {
 		this.calculateSumWebsite()
-		alert("Fetch Data from Website")
 	}
 
 	//คำนวณผลรวมคะแนน Facebook ของแต่ละคน
@@ -266,13 +260,25 @@ class Result extends React.Component {
 				<Section xs="11" className="mb-2">
 					<TitlePanel name="PopularVote" buttonName="Calculate" onClick={this.calculateAll}/>
 					<Paragraph >สัดส่วนการให้คะแนน : 30% จาก Facebook และ 70% จาก Website</Paragraph>
-					<Button onClick={this.calculateTotalFacebook}>ShowTotalFB</Button>
-					<Button onClick={this.calculateTotalWebsite}>ShowTotalWebsite</Button>
-					<Row>
+					<Row className='d-flex justify-content-center'>
 					{
-							this.state.score.map((data) => (
-								<Card xs='3' className='mx-4'>
-									{data.id}{' '}{data.totalScore}
+							this.state.score.map((data,i) => (
+								<Card xs='5' lg='3' className='my-1 mx-2'>
+								<Row className='d-flex bd-highlight'>
+									<Col xs='6' className='py-2 bd-highlight'>
+										<Paragraph>{this.state.competitor[i].nickname}</Paragraph>
+										<SubCaption>
+											{this.state.competitor[i].name}<br />
+											{this.state.competitor[i].university}
+										</SubCaption>
+									</Col>
+									<Col xs='4' className='d-flex justify-content-center align-items-center bd-highlight'>
+										<TitleBl>{data.totalScore} %</TitleBl>
+									</Col>
+									<PicInCard xs='2' img={i+1}>
+
+									</PicInCard>
+								</Row>
 								</Card>
 							))
 						}
