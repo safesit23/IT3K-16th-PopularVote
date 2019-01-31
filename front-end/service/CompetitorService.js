@@ -3,9 +3,15 @@ import Cookies from './CookieService'
 
 const CompetitorService = {
   getCompetitor: async () => {
-    console.log('get competitor ')
     try{
       let data = await api.get('/competitor')
+      return data
+    }catch (error) {
+        console.log('Error : ',error)
+    }
+  },getCompetitorByAdmin: async () => {
+    try{
+      let data = await api.get('admin/competitor')
       return data
     }catch (error) {
         console.log('Error : ',error)
