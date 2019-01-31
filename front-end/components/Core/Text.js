@@ -16,6 +16,13 @@ export const HeadlineWh = styled.h1`
   color: ${props => props.color || "white"};
 `
 
+export const WebWh = styled.h1`
+  font-family: 'Kanit', sans-serif;
+  font-size: ${config.web};
+  font-weight: bold;
+  color: ${props => props.color || "white"};
+`
+
 export const IT3K = styled.h1`
   font-family: 'AgencyGP', sans-serif;
   font-size:${config.IT3K};
@@ -39,6 +46,12 @@ export const TitleBl = styled.h4`
 export const TitleWh = styled.h4`
   font-family: 'Kanit', sans-serif;
   font-size: ${config.title};
+  color: ${props => props.color || "white"};
+`
+
+export const NumberWh = styled.h4`
+  font-family: 'Kanit', sans-serif;
+  font-size: ${config.number};
   color: ${props => props.color || "white"};
 `
 

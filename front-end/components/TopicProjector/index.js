@@ -1,17 +1,17 @@
 import React from 'react'
-import { IT3K, Headline } from '../Core/Text'
-import { Container, Row, Col } from 'reactstrap'
 import BgColor from '../../config/colors'
 import styled from 'styled-components';
 import Topic from './Topic'
 import socketIOClient from 'socket.io-client'
 import ENV from '../../config/envConfig'
 import Router from 'next/router'
+import FooterTest from '../Core/Footer'
 
 const Bg = styled.div`
-  background-color : ${BgColor.violet};
-	height: 100vh;
+  background: ${BgColor.backgroundnew};
+  height: 100vh;
 `
+
 const socket = socketIOClient(ENV.PATH_SOCKET)
 class TopicProjector extends React.Component {
 
@@ -32,6 +32,7 @@ class TopicProjector extends React.Component {
 		return (
 			<Bg>
 				<Topic />
+				<FooterTest mtop='-67%'/>
 			</Bg>
 		)
 	}
