@@ -38,13 +38,19 @@ class Login extends React.Component {
               <Logo />
             </Col>
             <TitleWh className="text-center">ระบบโหวต ดาว - เดือน</TitleWh>
-            <Gallery />
-            <Row className="d-flex justify-content-center mt-3">
+            <Row>
+              <Col>
+                <Gallery />
+              </Col>
+            </Row>
+            <Row className="d-flex justify-content-center mt-5">
+            <Col>
               <LoginFaceBook />
+            </Col>
             </Row>
           </Container>
         </Container>
-        <FooterTest />
+        <FooterTest mtop='-50%' />
       </Bg>
     );
   }

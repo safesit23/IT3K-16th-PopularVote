@@ -21,7 +21,7 @@ class DynamicSlides extends Component {
 
   render() {
     const settings = {
-      dots: false,
+      dots: true,
       center: true,
       infinite: true,
       speed: 500,
@@ -37,8 +37,8 @@ class DynamicSlides extends Component {
           {this.state.slides.map((slide) => {
             return (
               <Container fluid>
-                <Row className="d-flex justify-content-center" >
-                  <Col>
+                <Row >
+                  <Col className="d-flex justify-content-center" >
                     <Button >
                       <Pic pic={slide} widthPic='100%' />
                     </Button>
