@@ -26,7 +26,7 @@ Route::group(['middleware' => ['checkAuth']], function () {
 Route::post('admin/login','adminLoginController@Login');
 Route::group(['middleware' => ['adminAuth']], function () {
   Route::put('admin/sendFacebookScore','adminController@FacebookScore');
-  Route::get('admin/getfacebookScore','adminController@getFacebookScore');
+  Route::get('admin/facebookScore','adminController@getFacebookScore');
   Route::get('admin/websiteScore','adminController@WebsiteScore');
 });
 
