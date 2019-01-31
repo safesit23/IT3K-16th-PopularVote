@@ -207,8 +207,8 @@ class Result extends React.Component {
 				<Col xs="12" className="mb-2">
 					<Headline>Result</Headline>
 				</Col>
-				<Section xs="6" className="mb-2">
-					<TitlePanel name="Website" buttonName="FETCH" onClick={this.fetchWebsiteData} />
+				<Section xs="10" lg="6" className="mb-2">
+					<TitlePanel name="Website" buttonName="FETCH" onClick={this.fetchData} />
 					<div className="table-responsive">
 					<Table className="table">
 						<thead>
@@ -234,8 +234,8 @@ class Result extends React.Component {
 					</div>
 				</Section>
 
-				<Section xs="5" className="mb-2">
-					<TitlePanel name="Facebook IT3K" buttonName="FETCH" onClick={this.fetchFBData} />
+				<Section xs="10" lg="5" className="mb-2">
+					<TitlePanel name="Facebook IT3K" buttonName="FETCH" onClick={this.fetchData} />
 					<div className="table-responsive">
 					<Table className="table">
 						<thead>
