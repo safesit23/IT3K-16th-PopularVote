@@ -16,7 +16,7 @@ class adminLoginController extends Controller
             'password' => 'required'
         ]);
 
-        $AdminIT3K = DB::table('Admin')->first();
+        $AdminIT3K = DB::table('admin')->first();
 
          if($request->username == $AdminIT3K->username 
            && Hash::check($request->password, $AdminIT3K->password))

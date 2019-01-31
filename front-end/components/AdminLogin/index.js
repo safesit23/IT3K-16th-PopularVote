@@ -56,7 +56,6 @@ class AdminLogin extends React.Component {
       <Container fluid>
         <Landing>
           <h2>ADMIN</h2>
-          {/* <form onSubmit={this.getAuthAdmin}> */}
           <Col>
             <Label>ID</Label>
             <Input

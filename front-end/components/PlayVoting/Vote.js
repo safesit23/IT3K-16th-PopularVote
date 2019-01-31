@@ -27,10 +27,10 @@ class Vote extends React.Component {
   }
 
   vote = () => {
-    window.navigator.vibrate(200)
     this.setState({
       count: this.state.count + 1,
     })
+    window.navigator.vibrate(200)
   }
 
   getNameAndId(id, name) {
