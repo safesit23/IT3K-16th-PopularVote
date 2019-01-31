@@ -7,6 +7,8 @@ import { Radio } from 'antd'
 import { Headline, Title, Paragraph } from '../Core/Text'
 import Result from './Result'
 import ENV from '../../config/envConfig'
+import Cookie from '../../service/CookieService'
+import Router from 'next/router'
 
 const Section = styled(Col)`
 	margin-left : 10px;
@@ -47,11 +49,17 @@ class AdminControl extends React.Component {
 	}
 	
 	componentDidMount() {
-		this.getCount()
-		this.getCountLogin()
-		this.getCountSelect()
-		this.getCountWait()
-		this.getCountPageVote()
+		if(Cookie.gettokenJWTCookie()){
+			this.getCount()
+			this.getCountLogin()
+			this.getCountSelect()
+			this.getCountWait()
+			this.getCountPageVote()
+		}else{
+			Router.push({
+				pathname: '/adminlogin'
+			})
+		}
 	}
 
 	getCountLogin = async() => {
@@ -154,8 +162,16 @@ class AdminControl extends React.Component {
 		});
 	}
 
-	render() {
+	logout() {
+		if(Cookie.gettokenJWTCookie()){
+			Cookie.removeJWTAndEmailCookie()
+			Router.push({
+				pathname : '/adminlogin'
+			})
+		}
+	}
 
+	render() {
 		return (
 			<Container fluid>
 				<Row className="pt-4 pl-4">
@@ -163,7 +179,7 @@ class AdminControl extends React.Component {
 						<Headline>VOTE Control Panel</Headline>
 					</Col>
 					<Col xs={{ size: 1 }} className="d-flex justify-content-end">
-						<Button>LOGOUT</Button>
+						<Button onClick={this.logout}>LOGOUT</Button>
 					</Col>
 				</Row>
 				<Row className="pl-4">

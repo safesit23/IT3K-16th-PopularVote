@@ -1,48 +1,85 @@
 import React from 'react'
 import styled from 'styled-components';
 import {
-    Container, Col, Form,
-    FormGroup, Label, Input,
-    Button,
-  } from 'reactstrap';
+  Container, Col, Form,
+  FormGroup, Label, Input,
+  Button,
+} from 'reactstrap';
+import AuthAdmin from '../../service/AdminService'
+import Cookie from '../../service/CookieService'
+import Router from 'next/router'
+
 
 const Landing = styled(Container)`
   padding : 50px;
 `
-class AdminLogin extends React.Component{
-    render(){
-        return(
-          <Container fluid>
-          <Landing>
-            <h2>ADMIN</h2>
-            <Form className="form">
-              <Col>
-                <FormGroup>
-                  <Label>ID</Label>
-                  <Input
-                    type="email"
-                    name="email"
-                    id="exampleEmail"
-                    placeholder="email@mail.com"
-                  />
-                </FormGroup>
-              </Col>
-              <Col>
-                <FormGroup>
-                  <Label for="examplePassword">Password</Label>
-                  <Input
-                  type="password"
-                  id="examplePassword"
-                  placeholder="********"
-                />
-              </FormGroup>
+
+const changetoAdminPage = async () => {
+  if (Cookie.gettokenJWTCookie()) {
+    console.log('Hi !!!')
+    Router.push({
+      pathname: '/admincontrol'
+    })
+  }
+}
+class AdminLogin extends React.Component {
+  state = {
+    username: '',
+    password: ''
+  }
+
+  componentDidMount = () => {
+    changetoAdminPage()
+  }
+
+  getAuthAdmin = async() => {
+    console.log(this.state.username, this.state.password)
+    await AuthAdmin.loginAdmin({ 'username': this.state.username, 'password': this.state.password })
+  }
+
+  onChangeUsername = (e) => {
+    e.preventDefault()
+    this.setState({
+      username: e.target.value,
+    })
+  }
+
+  onChangePassword = (e) => {
+    e.preventDefault()
+    this.setState({
+      password: e.target.value,
+    })
+  }
+
+  render() {
+    return (
+      <Container fluid>
+        <Landing>
+          <h2>ADMIN</h2>
+          {/* <form onSubmit={this.getAuthAdmin}> */}
+            <Col>
+              <Label>ID</Label>
+              <Input
+                type="text"
+                placeholder="Username"
+                onChange={this.onChangeUsername}
+              />
             </Col>
-            <Button>Sign In</Button>
-            </Form>
+            <Col>
+              <Label for="examplePassword">Password</Label>
+              <Input
+                type="password"
+                placeholder="********"
+                onChange={this.onChangePassword}
+              />
+            </Col>
+            {/* <input type='submit' value='Login' /> */}
+            <Button onClick={this.getAuthAdmin}>Login</Button>
+          {/* </form> */}
         </Landing>
       </Container>
-        )
-    }
+    )
+  }
 }
 
 export default AdminLogin;
