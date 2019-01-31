@@ -15,6 +15,7 @@ const Popup = styled.div`
   margin: auto;
   background-color: rgba(0, 0, 0, 0.5);
 `;
+
 const PuopupInner = styled.div`
   position: absolute;
   left: 10%;
