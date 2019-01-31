@@ -36,7 +36,7 @@ const changetoRegisterPage = async () => {
 class LoginFaceBook extends React.Component {
   state = {
     round: 0,
-    showLoginBtn : false
+    showLoginBtn : 'hidden'
   }
 
   componentDidMount() {
@@ -49,7 +49,7 @@ class LoginFaceBook extends React.Component {
       if(newRound === 1 || newRound === 2){
         this.setState({
           round : newRound,
-          showLoginBtn : true
+          showLoginBtn : 'initial'
         })
       }
       console.log(this.state.round)

@@ -66,6 +66,16 @@ class Result extends React.Component {
 		await this.calculateSumFacebook()
 	}
 
+	setDataScore = async competitor =>{
+		
+		for(let index=0;index<6;index++){
+
+		}
+		this.setState({
+
+		})
+	}
+
 	// 	setDataCompetitor = async competiotr => {
 	//     for (let index = 0; index < competiotr.length; index++) {
 	//       competiotr_data.push({
@@ -102,29 +112,35 @@ class Result extends React.Component {
 	//คำนวณผลรวมคะแนน Facebook ของแต่ละคน
 	calculateSumFacebook = async () => {
 		console.log("Calculate Sum Facebook Func")
+		let scoreX = this.state.score
 		for (let index = 0; index < this.state.score.length; index++) {
-			let sum = this.state.score[index].like + (this.state.score[index].share * 3)
-			this.state.score[index] = {
-				...this.state.score[index],
+			let sum = scoreX[index].like + (scoreX[index].share * 3)
+			scoreX[index] = {
+				...scoreX[index],
 				sumFb: sum
 			}
-			console.log(`sumFB of ${index + 1} is ${this.state.score[index].sumFb}`)
+			console.log(`sumFB of ${index + 1} is ${scoreX[index].sumFb}`)
 		}
-
+		this.setState({
+			score: scoreX
+		})
 	}
 
 	//คำนวณผลรวมคะแนน website ของแต่ละคน
 	calculateSumWebsite = async () => {
 		console.log("Calculate Sum Website Func")
+		let scoreX = this.state.score
 		for (let index = 0; index < this.state.score.length; index++) {
-			let sum = this.state.score[index].round1 + this.state.score[index].round2
-			this.state.score[index] = {
-				...this.state.score[index],
+			let sum = scoreX[index].round1 + scoreX[index].round2
+			scoreX[index] = {
+				...scoreX[index],
 				sumWebsite: sum
 			}
-			console.log(`sumWeb of ${index + 1} is ${this.state.score[index].sumWebsite}`)
+			console.log(`sumWeb of ${index + 1} is ${scoreX[index].sumWebsite}`)
 		}
-		this.calculateTotalWebsite()
+		this.setState({
+			score: scoreX
+		})
 	}
 
 	//หาผลรวมคะแนนทั้งหมดของ Facebook
@@ -133,6 +149,9 @@ class Result extends React.Component {
 		for (let index = 0; index < this.state.score.length; index++) {
 			total = total + this.state.score[index].sumFb
 		}
+		this.setState({
+			totalFacebook : total
+		})
 		console.log("Total FB = " + total)
 	}
 
@@ -142,14 +161,41 @@ class Result extends React.Component {
 		for (let index = 0; index < this.state.score.length; index++) {
 			total = total + this.state.score[index].sumWebsite
 		}
+		this.setState({
+			totalWebsite : total
+		})
 		console.log("Total WB = " + total)
 	}
 
 	//Function หาคะแนนที่ได้ของบุคคล
 	calculateTotalPoint = (id) => {
-		const fbPoint = (30 * this.state.score[id].sumFb) / this.state.totalFacebook;
-		const webPoint = (60 * this.state.score[id].sumWebsite) / this.state.totalWebsite;
-		console.log("Total Score = " + (fbPoint + webPoint))
+		const fbP = (30 * this.state.score[id].sumFb) / this.state.totalFacebook;
+		const fbPoint = fbP.toFixed(2)
+		const webP = (70 * this.state.score[id].sumWebsite) / this.state.totalWebsite;
+		const webPoint = webP.toFixed(2)
+		const tP = (+fbPoint)+(+webPoint)
+		console.log(`tP of ${id} is ${fbPoint} + ${webPoint} =${tP}`)
+		return tP
+	}
+
+	//Function หาคะแนนทั้งหมดของปุ่ม Calculate
+	calculateAll = async () =>{
+		console.log("Calculate All")
+		await this.calculateTotalFacebook()
+		await this.calculateTotalWebsite()
+		let scoreX = this.state.score
+		for (let index = 0; index < this.state.score.length; index++) {
+			let totalScore = this.calculateTotalPoint(index)
+			scoreX[index] = {
+				...scoreX[index],
+				totalScore: totalScore
+			}
+			console.log(`Score of ${index + 1} is ${scoreX[index].totalScore}`)
+		}
+		this.setState({
+			score: scoreX
+		})
+		console.log(`Finish`)
 	}
 
 
@@ -161,7 +207,8 @@ class Result extends React.Component {
 				</Col>
 				<Section xs="6" className="mb-2">
 					<TitlePanel name="Website" buttonName="FETCH" onClick={this.fetchWebsiteData} />
-					<Table>
+					<div className="table-responsive">
+					<Table className="table">
 						<thead>
 							<th>Name</th>
 							<th>University</th>
@@ -172,7 +219,7 @@ class Result extends React.Component {
 						{
 							this.state.score.map((data, i) => (
 								<tr>
-									<td>{data.id}</td>
+									<td>{i}</td>
 									<td>{data.id}</td>
 									<td>{data.round1}</td>
 									<td>{data.round2}</td>
@@ -181,11 +228,13 @@ class Result extends React.Component {
 							))
 						}
 					</Table>
+					</div>
 				</Section>
 
 				<Section xs="5" className="mb-2">
 					<TitlePanel name="Facebook IT3K" buttonName="FETCH" onClick={this.fetchFBData} />
-					<Table>
+					<div className="table-responsive">
+					<Table className="table">
 						<thead>
 							<th>Name</th>
 							<th>University</th>
@@ -205,16 +254,22 @@ class Result extends React.Component {
 							))
 						}
 					</Table>
+					</div>
 					<FacebookModal buttonLabel="EDIT DATA" />
 				</Section>
 				<Section xs="11" className="mb-2">
-					<TitlePanel name="PopularVote" buttonName="Calculate" />
+					<TitlePanel name="PopularVote" buttonName="Calculate" onClick={this.calculateAll}/>
 					<Paragraph >สัดส่วนการให้คะแนน : 30% จาก Facebook และ 70% จาก Website</Paragraph>
 					<Button onClick={this.calculateTotalFacebook}>ShowTotalFB</Button>
 					<Button onClick={this.calculateTotalWebsite}>ShowTotalWebsite</Button>
 					<Row>
-						<Card xs='3' className='mx-4'>
-						</Card>
+					{
+							this.state.score.map((data) => (
+								<Card xs='3' className='mx-4'>
+									{data.id}{' '}{data.totalScore}
+								</Card>
+							))
+						}
 					</Row>
 				</Section>
 			</Row>

@@ -20,7 +20,7 @@ const Landing = styled(Container)`
 class Vote extends React.Component {
   state = {
     count: 0,
-    id: 0,
+    id: 1,
     name: '',
     path: '',
     round: null
@@ -40,7 +40,7 @@ class Vote extends React.Component {
     })
   }
 
-  changePath = async (count) => {
+  changePath = async () => {
     await socket.on('pathName', (path) => {
       console.log('Path : ', path)
       this.setState({
