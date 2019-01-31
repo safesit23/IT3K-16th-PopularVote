@@ -277,9 +277,7 @@ class Result extends React.Component {
 									<Col xs='4' className='d-flex justify-content-center align-items-center bd-highlight'>
 										<TitleBl>{data.totalScore} %</TitleBl>
 									</Col>
-									<PicInCard xs='2' img={i+1}>
-
-									</PicInCard>
+									<PicInCard xs='2' img={i+1} />
 								</Row>
 								</Card>
 							))
