@@ -230,6 +230,7 @@ class Result extends React.Component {
 							))
 						}
 					</Table>
+					<Paragraph>Total Point : {this.state.totalWebsite}</Paragraph>
 					</div>
 				</Section>
 
