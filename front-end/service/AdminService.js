@@ -21,6 +21,37 @@ const AdminService = {
 
     }
   },
+  sendFBScore: async (facebook) => {
+    console.log(facebook)
+    try{
+      await api.put('/sendFacebookScore',{
+        'facebook' : facebook
+      })
+    }catch (error) {
+        console.log('Error : ',error)
+    }
+  },
+
+  getFBScore: async () => {
+    console.log('get FBScore')
+    try{
+      let data = await api.get('/facebookScore')
+      return data
+    }catch (error) {
+        console.log('Error : ',error)
+    }
+  },
+
+  getWebScore: async () => {
+    console.log('get WebScore')
+    try{
+      let data = await api.get('/websiteScore')
+      return data
+    }catch (error) {
+        console.log('Error : ',error)
+    }
+  }
+
 }
 
 export default AdminService
