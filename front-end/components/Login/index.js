@@ -14,7 +14,7 @@ const socket = socketIOClient(ENV.PATH_SOCKET);
 
 const Bg = styled.div`
   background: ${BgColor.backgroundnew};
-  height: 100vh;
+  height: 90vh;
 `;
 
 
@@ -50,7 +50,7 @@ class Login extends React.Component {
             </Row>
           </Container>
         </Container>
-        <FooterTest mtop='-50%' />
+        <FooterTest mtop='-66%' />
       </Bg>
     );
   }

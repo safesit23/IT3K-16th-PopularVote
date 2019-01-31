@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import styled from "styled-components";
-import { TitleBl, Caption, Body, Paragraph } from "../Core/Text";
+import { TitleBl, Caption, Body, Paragraph, Confirm } from "../Core/Text";
 import Router from "next/router";
 
 const Popup = styled.div`
@@ -37,12 +37,13 @@ const CloseButton = styled.button`
 const ConfirmBtn = styled.button`
   background-color: transparent;
   border: 0px;
+  color: #A01A7D;
   :hover {
-    background-color: #311847;
-    width: 100%;
-    border: 0px;
     color: #ffffff;
-    height: 6vh;
+    background-color: #311847;
+    width: 80%;
+    border: 0px;
+    height: 4.00vh;
     bottom: 0;
   }
 `;
@@ -92,7 +93,7 @@ class PopupConfirm extends React.Component {
                 id={this.props.id}
                 onClick={() => this.changePath()}
               >
-                <Body color="#A01A7D">ยืนยัน</Body>
+                <Confirm>ยืนยัน</Confirm>
               </ConfirmBtn>
             </Col>
           </Row>
