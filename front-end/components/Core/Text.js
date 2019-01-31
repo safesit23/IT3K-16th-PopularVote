@@ -32,7 +32,7 @@ export const IT3K = styled.h1`
 `
 
 export const Title = styled.h4`
-  font-family: 'AgencyGP', sans-serif;
+  font-family: 'Kanit', sans-serif;
   font-size: ${config.title};
   color: ${props => props.color || "black"};
 `
