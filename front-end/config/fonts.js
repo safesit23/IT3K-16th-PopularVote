@@ -1,5 +1,6 @@
 export default {
   IT3K:'100px',
+  number: '280px',
   web: '72px',
   headline: '36px',
   title: '20px',
