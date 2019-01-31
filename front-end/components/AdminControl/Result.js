@@ -4,8 +4,7 @@ import { Container, Row, Col, Table } from 'reactstrap'
 import Button from '../Core/Button'
 import FacebookModal from './FbScoreModal'
 import { Headline, Title, Subtitle, Paragraph } from '../Core/Text'
-import FbScoreService from '../../service/FacebookScoreService'
-import WebsiteScoreService from '../../service/WebScoreService'
+import AdminService from '../../service/AdminService'
 import CompetitorService from '../../service/CompetitorService'
 
 const Section = styled(Col)`
@@ -58,41 +57,56 @@ class Result extends React.Component {
 	}
 
 	async componentDidMount() {
-		//     const dataCompetitor = await CompetitorService.getCompetitor()
-		//     console.log('competiotr : ', dataCompetitor.data)
-		// 		await this.setDataCompetitor(dataCompetitor.data)
-		// this.getResult()
+		const dataCompetitor = await CompetitorService.getCompetitor()
+		const dataWebsite = await AdminService.getWebScore()
+		const dataFacebook = await AdminService.getFBScore()
+		console.log('=>competitor : ', dataCompetitor)
+		console.log('=>Web : ',dataWebsite)
+		console.log('=>FB : ',dataFacebook)
+		await this.setDataCompetitor(dataCompetitor.data)
+		await this.setDataScore(dataWebsite.data, dataFacebook.data)
+		this.getResult()
 		await this.calculateSumWebsite()
 		await this.calculateSumFacebook()
 	}
 
-	setDataScore = async competitor =>{
-		
-		for(let index=0;index<6;index++){
-
+	setDataScore = async (dataWebsite, dataFacebook) =>{
+		let score_data = []
+		for(let index=0;index<dataWebsite.length;index++){
+			score_data.push({
+				id: dataWebsite[index].id,
+				round1: dataWebsite[index].round1,
+				round2: dataWebsite[index].round2,
+				sumWebsite: 0,
+				like: dataFacebook[index].like,
+				share: dataFacebook[index].share,
+				sumFb: 0,
+				totalScore: 0
+			})
 		}
 		this.setState({
-
+			score: score_data
 		})
 	}
 
-	// 	setDataCompetitor = async competiotr => {
-	//     for (let index = 0; index < competiotr.length; index++) {
-	//       competiotr_data.push({
-	//         id: competiotr[index].idCompetitor,
-	//         name: competiotr[index].name,
-	//         nickname: competiotr[index].nickname,
-	//         university: competiotr[index].university,
-	//       })
-	//     }
-	//     this.setState({
-	//       competitor: competiotr_data
-	//     })
-	//   }
+		setDataCompetitor = async (competitor) => {
+			let competitor_data = []
+	    for (let index = 0; index < competitor.length; index++) {
+	      competitor_data.push({
+	        id: competitor[index].idCompetitor,
+	        name: competitor[index].name,
+	        nickname: competitor[index].nickname,
+	        university: competitor[index].university,
+	      })
+	    }
+	    this.setState({
+	      competitor: competitor_data
+	    })
+	  }
 
 	getResult = async () => {
-		let dataFacebook = await FbScoreService.getFBScore()
-		let dataWebsite = await WebsiteScoreService.getWebScore()
+		let dataFacebook = await AdminService.getFBScore()
+		let dataWebsite = await AdminService.getWebScore()
 		await this.setState({
 			// website: dataWebsite.data
 		})
