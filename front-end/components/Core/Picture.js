@@ -11,7 +11,7 @@ const Image = styled.img`
 `
 
 const Picture = (props) => (
-    <Image positon={props.pic} widthPic={props.widthPic} src={`/static/img/IMG_00${props.pic}.jpg`} />
+    <Image positon={props.pic} widthPic={props.widthPic} src={`/static/img/IMG_00${props.pic}`} />
 )
 
 export default Picture

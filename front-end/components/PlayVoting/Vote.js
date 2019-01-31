@@ -82,7 +82,7 @@ class Vote extends React.Component {
         <Container>
           <Row>
             <Col className="mt-4 pl-5 pr-5" >
-              <Pic pic={this.state.id} />
+              <Pic pic={`${this.state.id}.jpg`} />
             </Col>
           </Row>
         </Container>
