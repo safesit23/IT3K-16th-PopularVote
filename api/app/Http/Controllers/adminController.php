@@ -17,6 +17,12 @@ class adminController extends Controller
         return Competitor::all(['idCompetitor', 'like', 'share']);
     }
 
+    public function getFacebookScore(){
+
+        return Competitor::all(['idCompetitor', 'like', 'share']);
+
+    }
+
     public function WebsiteScore(Request $req)
     {
         //return Competitor::count();
