@@ -32,7 +32,7 @@ class AdminLogin extends React.Component {
     changetoAdminPage()
   }
 
-  getAuthAdmin = async() => {
+  getAuthAdmin = async () => {
     console.log(this.state.username, this.state.password)
     await AuthAdmin.loginAdmin({ 'username': this.state.username, 'password': this.state.password })
   }
@@ -57,25 +57,23 @@ class AdminLogin extends React.Component {
         <Landing>
           <h2>ADMIN</h2>
           {/* <form onSubmit={this.getAuthAdmin}> */}
-            <Col>
-              <Label>ID</Label>
-              <Input
-                type="text"
-                placeholder="Username"
-                onChange={this.onChangeUsername}
-              />
-            </Col>
-            <Col>
-              <Label for="examplePassword">Password</Label>
-              <Input
-                type="password"
-                placeholder="********"
-                onChange={this.onChangePassword}
-              />
-            </Col>
-            {/* <input type='submit' value='Login' /> */}
-            <Button onClick={this.getAuthAdmin}>Login</Button>
-          {/* </form> */}
+          <Col>
+            <Label>ID</Label>
+            <Input
+              type="text"
+              placeholder="Username"
+              onChange={this.onChangeUsername}
+            />
+          </Col>
+          <Col>
+            <Label for="examplePassword">Password</Label>
+            <Input
+              type="password"
+              placeholder="********"
+              onChange={this.onChangePassword}
+            />
+          </Col>
+          <Button onClick={this.getAuthAdmin}>Login</Button>
         </Landing>
       </Container>
     )
