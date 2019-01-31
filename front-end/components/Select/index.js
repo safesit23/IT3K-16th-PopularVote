@@ -88,6 +88,7 @@ class Index extends React.Component {
                       onClick={() => this.togglePopup(data.id, data.name)}
                     >
                       <CardVote 
+                        key={i}
                         name={data.name}
                         nickname={data.nickname}
                         university={data.university}

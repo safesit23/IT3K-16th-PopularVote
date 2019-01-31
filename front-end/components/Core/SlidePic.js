@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-import { Container, Row } from 'reactstrap'
+import { Container, Row,Col } from 'reactstrap'
 import styled from 'styled-components'
 import Pic from '../Core/Picture';
 import Popup from '../Select/PopupConfirm'
@@ -27,19 +27,23 @@ class DynamicSlides extends Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      arrows: false
+      arrows: false,
+      autoplay: true,
+      speed: 500,
     };
     return (
       <Container fluid>
         <Slider className="mt-3" {...settings} >
           {this.state.slides.map((slide) => {
             return (
-              <Container>
-              <Row className="d-flex justify-content-center" >
-                <Button >
-                  <Pic pic={slide} widthPic='100%'/>
-                </Button>
-              </Row>
+              <Container fluid>
+                <Row className="d-flex justify-content-center" >
+                  <Col>
+                    <Button >
+                      <Pic pic={slide} widthPic='100%' />
+                    </Button>
+                  </Col>
+                </Row>
               </Container>
             );
           })}
