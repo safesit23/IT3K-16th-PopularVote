@@ -48,7 +48,7 @@ class Count extends React.Component {
         <Row className="d-flex justify-content-center">
           <NumberWh>{this.state.count}</NumberWh>
         </Row>
-        <FooterTest />
+        <FooterTest mtop='-58%' />
       </Bg>
     );
   }

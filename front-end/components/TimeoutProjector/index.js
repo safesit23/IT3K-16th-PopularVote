@@ -1,12 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Container, Row, Col } from 'reactstrap'
+import { Row } from 'reactstrap'
 import { Timeout } from '../Core/Text'
 import BgColor from '../../config/colors'
+import FooterTest from '../Core/Footer'
 
-const Bg = styled(Container)`
-  background-color : ${BgColor.background};
+const Bg = styled.div`
+  background: ${BgColor.backgroundnew};
   height: 100vh;
+  padding-top: 270px;
 `
 
 class Time extends React.Component {
@@ -14,8 +16,9 @@ class Time extends React.Component {
     return (
       <Bg>
         <Row className="d-flex justify-content-center">
-          <Timeout className="font-weight-bold">หมดเวลา</Timeout>
+          <Timeout color="white" className="font-weight-bold">หมดเวลา!</Timeout>
         </Row>
+          <FooterTest mtop='-53%'/>
       </Bg>
     )
   }

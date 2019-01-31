@@ -52,7 +52,7 @@ class Waiting extends React.Component {
 						}
 					</Row>
 					<Row className="text-center">
-						<Headline  color="white">
+						<Headline color="white">
 							it3k.in.th
 						</Headline>
 					</Row>
