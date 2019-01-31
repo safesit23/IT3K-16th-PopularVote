@@ -11,19 +11,22 @@ class adminController extends Controller
 {
     public function FacebookScore(Request $req)
     {
+        
         foreach ($req->facebook as $facebookScore) {
             Competitor::find($facebookScore['id'])->update($facebookScore);
         }
-        return Competitor::all(['idCompetitor', 'like', 'share']);
+
+        return response()->json(Competitor::all(['idCompetitor', 'like', 'share']), 200);
+        
     }
 
     public function getFacebookScore(){
 
-        return Competitor::all(['idCompetitor', 'like', 'share']);
+        return response()->json(Competitor::all(['idCompetitor', 'like', 'share']), 200);
 
     }
 
-    public function WebsiteScore(Request $req)
+    public function WebsiteScore()
     {
         //return Competitor::count();
         $all = Competitor::all(['idCompetitor']);
