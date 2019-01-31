@@ -17,16 +17,17 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token,Authorization');
 header('Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS');
 
-
-
-/* ========  Admin  ======== */
-Route::post('admin/login','adminLoginController@Login');
+/* ========  Other Route  ======== */
 Route::group(['middleware' => ['checkAuth']], function () {
   Route::get('competitor', 'CompetitorController@getCompetitor');
+});
+
+/* ========  Admin Route  ======== */
+Route::post('admin/login','adminLoginController@Login');
+Route::group(['middleware' => ['adminAuth']], function () {
   Route::put('admin/sendfacebookScore','adminController@FacebookScore');
   Route::get('admin/websiteScore','adminController@WebsiteScore');
 });
-
 
 /* ========  User  ======== */
 Route::post('login', 'AuthenController@login');
