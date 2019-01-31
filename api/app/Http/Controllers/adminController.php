@@ -2,21 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Competitor;
+use Illuminate\Http\Request;
 
 class adminController extends Controller
 {
     public function FacebookScore(Request $req)
     {
-
         foreach ($req->facebook as $facebookScore) {
-            $x = (object)$facebookScore;
-            Competitor::find($x->id)->update($facebookScore);
+            Competitor::find($facebookScore['id'])->update($facebookScore);
         }
         return Competitor::all();
-
-
     }
 
     public function WebsiteScore(Request $req)
