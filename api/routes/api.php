@@ -28,6 +28,7 @@ Route::group(['middleware' => ['adminAuth']], function () {
   Route::put('admin/sendFacebookScore','adminController@FacebookScore');
   Route::get('admin/facebookScore','adminController@getFacebookScore');
   Route::get('admin/websiteScore','adminController@WebsiteScore');
+  Route::get('competitor', 'CompetitorController@getCompetitor');
 });
 
 /* ========  User  ======== */
