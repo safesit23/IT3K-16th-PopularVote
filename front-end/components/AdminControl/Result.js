@@ -6,7 +6,6 @@ import FacebookModal from './FbScoreModal'
 import { Headline, Paragraph,SubCaption, TitleBl } from '../Core/Text'
 import AdminService from '../../service/AdminService'
 import CompetitorService from '../../service/CompetitorService'
-import Picture from '../Core/Picture'
 
 const Section = styled(Col)`
 	margin-left : 10px;
@@ -92,13 +91,16 @@ class Result extends React.Component {
 	    })
 	  }
 
-	fetchFBData = () => {
+	fetchData = async () => {
+		const dataWebsite = await AdminService.getWebScore()
+		console.log('=>Web : ',dataWebsite)
+		const dataFacebook = await AdminService.getFBScore()
+		console.log('=>FB : ',dataFacebook)
+		await this.setDataScore(dataWebsite.data, dataFacebook.data)
 		this.calculateSumFacebook()
-	}
-
-	fetchWebsiteData = () => {
 		this.calculateSumWebsite()
 	}
+
 
 	//คำนวณผลรวมคะแนน Facebook ของแต่ละคน
 	calculateSumFacebook = async () => {
