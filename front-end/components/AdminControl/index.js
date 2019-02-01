@@ -32,6 +32,7 @@ const options = [
 	{ label: 'Count', value: 'countprojector' },
 	{ label: 'Vote', value: 'playprojector' },
 	{ label: 'Time Out', value: 'timeoutprojector' },
+	{ label: 'Result', value: 'resultprojector' },
 ];
 
 class AdminControl extends React.Component {
@@ -46,6 +47,7 @@ class AdminControl extends React.Component {
 		waitPage : 0,
 		votePage : 0,
 		resultPage : 0,
+		score:[]
 	}
 	
 	componentDidMount() {
@@ -120,6 +122,9 @@ class AdminControl extends React.Component {
 		console.log('Projector Path : ', projectorPath)
 		if (projectorPath != '') {
 			socket.emit('projectorPath', projectorPath)
+			if(projectorPath === 'resultprojector'){
+				socket.emit('scoreResult', this.state.score)
+			}
 		}
 	}
 
@@ -162,6 +167,11 @@ class AdminControl extends React.Component {
 				pathname : '/adminlogin'
 			})
 		}
+	}
+	handlesetScore= (scorecome)=>{
+		this.setState({
+			score: scorecome,
+		});
 	}
 
 	render() {
@@ -217,7 +227,7 @@ class AdminControl extends React.Component {
 						<Paragraph></Paragraph>
 					</Section>
 				</Row>
-				<Result />
+				<Result handlesetScore={this.handlesetScore}/>
 			</Container>
 		)
 	}

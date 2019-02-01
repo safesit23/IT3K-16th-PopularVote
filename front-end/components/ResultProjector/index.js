@@ -29,15 +29,22 @@ const socket = socketIOClient(ENV.PATH_SOCKET);
 
 class Result extends React.Component {
   state = {
-    positions: [1, 2, 3, 4, 5, 6]
+    positions: [1, 2, 3, 4, 5, 6],
+    score:[]
   };
-  changePath =  () => {
+  changePath =  async() => {
      socket.on("pathProjector", path => {
       Router.push({
         pathname: `${ENV.PATH_BASIC}/${path}`
       });
       console.log("Cilent Path Project : ", path);
     });
+   await socket.on('scoreCompetion',res =>{
+      this.setState({
+        score:res
+      })
+    })
+
   };
 
   componentDidMount() {
@@ -64,7 +71,7 @@ class Result extends React.Component {
                 <Col md="2" />
                 <Col>
                   <Row>
-                    {this.state.positions.map(() => {
+                    {this.state.score.map((data) => {
                       return (
                         <Col className="text-center" md="4">
                           <img
@@ -77,7 +84,7 @@ class Result extends React.Component {
                             className="pl-3 pt-2"
                             martop="-80px"
                           >
-                            15%
+                           {data.totalScore}%
                           </HeadlineWh>
                         </Col>
                       );
