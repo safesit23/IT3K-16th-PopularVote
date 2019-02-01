@@ -56,11 +56,6 @@ class TopicProjector extends React.Component {
           </Row>
           <Row>
             <Col>
-              <WebWh className="d-flex justify-content-center">it3k.in.th</WebWh>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
           
               <WebWh className="d-flex justify-content-center mt-5">
          
