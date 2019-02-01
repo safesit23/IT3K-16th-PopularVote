@@ -13,7 +13,7 @@ import FooterTest from "../Core/Footer";
 const Bg = styled.div`
   background: ${BgColor.backgroundnew};
   height: 100vh;
-  padding-top: 30px;
+  padding-top: 10px;
 `;
 
 const socket = socketIOClient(ENV.PATH_SOCKET);
@@ -39,8 +39,12 @@ class Result extends React.Component {
     return (
       <Bg>
         <Container>
-          <Row className="d-flex justify-content-center">
-            <Logo />
+          <Row className="p-4">
+            <Col />
+            <Col className="text-center">
+              <Logo />
+            </Col>
+            <Col />
           </Row>
           <Row className="d-flex justify-content-center">
             <HeadlineWh color="white">Popular Vote</HeadlineWh>
@@ -48,15 +52,15 @@ class Result extends React.Component {
           <Row>
             {this.state.positions.map(data => {
               return (
-                <Col className="p-1">
-                  <Pic pic={data} key={data} widthPic="80%" />
+                <Col className="p-1 text-center" md="4">
+                  <Pic pic={`${data}.jpg`} widthPic="40%" />
                   <HeadlineWh className="pl-3 pt-2">คะแนน%</HeadlineWh>
                 </Col>
               );
             })}
           </Row>
         </Container>
-        <FooterTest mtop="-57%" />
+        <FooterTest mtop="-72%" />
       </Bg>
     );
   }
