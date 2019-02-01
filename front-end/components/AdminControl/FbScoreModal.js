@@ -1,18 +1,20 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Table} from 'reactstrap';
 import { InputNumber, Select } from 'antd';
+import { FormGroup, Label, Input } from 'reactstrap';
 import { Headline, Paragraph,SubCaption, TitleBl } from '../Core/Text';
 import AdminService from '../../service/AdminService'
 import CompetitorService from '../../service/CompetitorService'
 
 const Option = Select.Option;
 
+let competitorModal = [];
 class FacebookScoreModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       modal: false,
-      competitor: this.props.competitor,
+      competitorModal: {},
       facebook:{
         id: 0,
         like: 0,
@@ -24,24 +26,25 @@ class FacebookScoreModal extends React.Component {
 
   async componentDidMount() {
 		const competitorFB = await CompetitorService.getCompetitorByAdmin()
-		console.log('=>FBModal-competitor : ', this.state.competitor)
-		// await this.setDataCompetitor(dataCompetitor.data)
+		console.log('=>FBModal-competitor : ', competitorFB.data)
+		await this.setDataCompetitor(competitorFB.data)
   }
-  
-  // setDataCompetitor = async (competitor) => {
-  //   let competitor_data = []
-  //   for (let index = 0; index < competitor.length; index++) {
-  //     competitor_data.push({
-  //       id: competitor[index].idCompetitor,
-  //       nickname: competitor[index].nickname,
-  //       university: competitor[index].university,
-  //     })
-  //   }
-  //   this.setState({
-  //     competitor: competitor_data
-  //   })
-  //   console.log('=>FBModal-State : ', this.state.competitor)
-  // }
+
+  setDataCompetitor = async (competitor) => {
+    let competitor_data = []
+    for (let index = 0; index < competitor.length; index++) {
+      competitor_data.push({
+        id: competitor[index].idCompetitor,
+        nickname: competitor[index].nickname,
+        university: competitor[index].university,
+      })
+    }
+    this.setState({
+      competitorModal: competitor_data
+    })
+    competitorModal =  competitor_data
+    console.log('=>FBModal-State : ', this.state.competitorModal)
+  }
 
   onChangeId = (e) => {
     e.preventDefault()
@@ -72,7 +75,7 @@ class FacebookScoreModal extends React.Component {
   }
 
   sendFBScore = async ()=>{
-    await FbScoreService.sendFBScore(this.state.facebook)
+    await AdminService.sendFBScore(this.state.facebook)
   }
 
   render() {
@@ -90,17 +93,15 @@ class FacebookScoreModal extends React.Component {
 						</thead>
 						<tr>
 							<td>
-              <Select style={{ width: 200 }} onChange={this.onChangeId}>
-              {/* {
-                this.state.competitor.map((data) => (
-                  <Option value={data.idCompetitor}>{data.nickname}, {data.university}</Option>
-                ))
-              } */}
-							  <Option value="jack">Jack</Option>
-							  <Option value="lucy">Lucy</Option>
-							  <Option value="disabled" disabled>Disabled</Option>
-      				  <Option value="Yiminghe">yiminghe</Option>
-    			    </Select>
+              <FormGroup>
+                <Input type="select" name="select">
+                {competitorModal.map((data,i) => {
+                  return (
+                    <option key={i}>{data.nickname}, {data.university}</option>
+                  )
+                })}
+                </Input>
+              </FormGroup>
               </td>
 							<td><InputNumber min={0} onChange={this.onChangeLike}/></td>
 							<td><InputNumber min={0} onChange={this.onChangeShare}/></td>
