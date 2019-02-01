@@ -11,9 +11,9 @@ import Cookie from '../../service/CookieService'
 import Router from 'next/router'
 
 const Section = styled(Col)`
-	margin-left : 10px;
 	background-color : ${props => props.color || "#F9F9F9"};
-	padding : 10px;
+	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.24);
+	border-radius: 9px;
 `
 
 const RadioGroup = Radio.Group;
@@ -175,8 +175,8 @@ class AdminControl extends React.Component {
 						<Button onClick={this.logout}>LOGOUT</Button>
 					</Col>
 				</Row>
-				<Row className="pl-4">
-					<Section xs="6" color="#F9F9F9">
+				<Row className="p-4">
+					<Section xs="12" lg="5" className="box mx-2 pt-3" color="#F9F9F9">
 						<Title>SETTING</Title>
 						<form onSubmit={this.getRound}>
 							<h5>Round</h5>
@@ -187,7 +187,7 @@ class AdminControl extends React.Component {
 							<input type="submit" value="Change round" />
 						</form>
 						<hr />
-						<form onSubmit={this.getPath}>
+						<form onSubmit={this.getPath} className="pb-2">
 							<h5>Path</h5>
 							EMERGENCY>> Change Path : {' '}
 							<RadioGroup options={pathname} onChange={this.onChange} value={this.state.value} />
@@ -204,13 +204,17 @@ class AdminControl extends React.Component {
 							<input type="submit" value="Change Path" />
 						</form>
 					</Section>
-					<Section xs="5">
+					<Section xs="6" lg="3" className="box mx-2 pt-3" >
 						<Title>USER</Title>
 						<Paragraph >Login page : {this.state.loginPage} </Paragraph>
 						<Paragraph >Select page :  {this.state.selectPage}</Paragraph>
 						<Paragraph >Waiting	 page :  {this.state.waitPage}</Paragraph>
 						<Paragraph >Vote page :  {this.state.votePage}</Paragraph>
 						<Paragraph >Result	 page :  {this.state.resultPage}</Paragraph>
+					</Section>
+					<Section xs="6" lg="3" className="box mx-2 pt-3" >
+						<Title>HOW TO USE</Title>
+						<Paragraph></Paragraph>
 					</Section>
 				</Row>
 				<Result />
