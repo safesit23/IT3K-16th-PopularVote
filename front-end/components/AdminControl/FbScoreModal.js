@@ -1,12 +1,9 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Table} from 'reactstrap';
-import { InputNumber, Select } from 'antd';
-import { FormGroup, Label, Input } from 'reactstrap';
-import { Headline, Paragraph,SubCaption, TitleBl } from '../Core/Text';
+import { FormGroup, Input } from 'reactstrap';
 import AdminService from '../../service/AdminService'
 import CompetitorService from '../../service/CompetitorService'
 
-const Option = Select.Option;
 
 let competitorModal = [];
 class FacebookScoreModal extends React.Component {
@@ -48,34 +45,53 @@ class FacebookScoreModal extends React.Component {
 
   onChangeId = (e) => {
     e.preventDefault()
+    let fb = this.state.facebook
+    fb = {
+      ...fb,
+      id: e.target.value
+    }
+    console.log('------fb is',e.target.value)
     this.setState({
-			id: e.target.value,
-		});
+			facebook: fb
+    });
   }
-  
+
   onChangeLike = (e) => {
     e.preventDefault()
+    let fb = this.state.facebook
+    fb = {
+      ...fb,
+      like: e.target.value
+    }
+    console.log('------fb is',fb)
     this.setState({
-			like: e.target.value,
-		});
+			facebook: fb
+    });
   }
-  
+
   onChangeShare = (e) => {
     e.preventDefault()
+    let fb = this.state.facebook
+    fb = {
+      ...fb,
+      share: e.target.value
+    }
+    console.log('------fb is',fb)
     this.setState({
-			share: e.target.value,
-		});
+			facebook: fb
+    });
 	}
 
   toggle= ()=> {
-    this.sendFBScore()
     this.setState({
       modal: !this.state.modal
     });
   }
 
   sendFBScore = async ()=>{
+    console.log('sendFBScore:',this.state.facebook)
     await AdminService.sendFBScore(this.state.facebook)
+    this.toggle()
   }
 
   render() {
@@ -94,22 +110,22 @@ class FacebookScoreModal extends React.Component {
 						<tr>
 							<td>
               <FormGroup>
-                <Input type="select" name="select">
+                <Input type="select" name="select" onChange={this.onChangeId}>
                 {competitorModal.map((data,i) => {
                   return (
-                    <option key={i}>{data.nickname}, {data.university}</option>
+                    <option key={i} value={data.id} >{data.nickname}, {data.university}</option>
                   )
                 })}
                 </Input>
               </FormGroup>
               </td>
-							<td><InputNumber min={0} onChange={this.onChangeLike}/></td>
-							<td><InputNumber min={0} onChange={this.onChangeShare}/></td>
+							<td><Input min={0} onChange={this.onChangeLike}/></td>
+							<td><Input min={0} onChange={this.onChangeShare}/></td>
 						</tr>
 					</Table>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.toggle}>SAVE</Button>
+            <Button color="primary" onClick={this.sendFBScore}>SAVE</Button>
           </ModalFooter>
         </Modal>
       </div>
