@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Row, Col } from "reactstrap";
 import BgColor from "../../config/colors";
 import { BodyWhite } from "../Core/Text";
-import { Button as AntButton, message } from "antd";
 import Info from "./PopupInfo";
 
 const Bg = styled.nav`
