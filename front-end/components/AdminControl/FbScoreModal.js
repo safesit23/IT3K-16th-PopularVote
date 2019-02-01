@@ -13,7 +13,7 @@ class FacebookScoreModal extends React.Component {
       modal: false,
       competitorModal: {},
       facebook:{
-        id: 1,
+        id: 0,
         like: 0,
         share: 0,
       }
@@ -50,7 +50,7 @@ class FacebookScoreModal extends React.Component {
       ...fb,
       id: e.target.value
     }
-    console.log('------fb is',fb)
+    console.log('------fb is',e.target.value)
     this.setState({
 			facebook: fb
     });
@@ -110,10 +110,10 @@ class FacebookScoreModal extends React.Component {
 						<tr>
 							<td>
               <FormGroup>
-                <Input type="select" name="select">
+                <Input type="select" name="select" onChange={this.onChangeId}>
                 {competitorModal.map((data,i) => {
                   return (
-                    <option key={i} value={data.id} onChange={this.onChangeId}>{data.nickname}, {data.university}</option>
+                    <option key={i} value={data.id} >{data.nickname}, {data.university}</option>
                   )
                 })}
                 </Input>
