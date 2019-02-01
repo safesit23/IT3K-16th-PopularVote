@@ -4,15 +4,17 @@ import { Container, Row, Col } from "reactstrap";
 import socketIOClient from "socket.io-client";
 import Router from "next/router";
 import ENV from "../../config/envConfig";
-import BgColor from "../../config/colors";
 import Pic from "../Core/Picture";
-import { Headline, WebWh,Title} from "../Core/Text";
+import { Headline} from "../Core/Text";
 import FooterTest from "../Core/Footer";
 import CompetitorService from "../../service/CompetitorService";
 
 const Bg = styled.div`
-  background: ${BgColor.backgroundnew};
   height: 100%;
+  width : 100%;
+  left: 0;
+  bottom: 0;
+  position: fixed;
 `;
 
 let competiotr_data = [];
@@ -56,21 +58,20 @@ class Waiting extends React.Component {
     return (
       <Bg>
         <Container>
-          <Row className="d-flex justify-content-center pb-5">
-            <Headline className="mt-5" color="white">เลือกผู้ที่ต้องการโหวต</Headline>
+          <Row className="d-flex justify-content-center">
+            <Headline className="mt-5" color="white">มาโหวตกันเถอะ</Headline>
+          </Row>
+          <Row className="d-flex justify-content-center pb-3">
+            <Headline color="white">vote.it3k.in.th</Headline>
           </Row>
           <Row>
             {competiotr_data.map(data => {
               return (
                 <Col className="p-1">
                   <Pic pic={`${data.id}.jpg`} key={data} widthPic="100%" />
-                  <Title color="white" className="text-center pt-3">{data.name}</Title>
                 </Col>
               );
             })}
-          </Row>
-          <Row className="d-flex justify-content-center pt-3">
-            <WebWh color="white">vote.it3k.in.th</WebWh>
           </Row>
         </Container>
 		    <FooterTest mtop='-70%'/>
