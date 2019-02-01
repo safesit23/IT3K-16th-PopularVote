@@ -5,23 +5,22 @@ import LoginFaceBook from "./LoginFaceBook";
 import Gallery from "../Core/SlidePic";
 import { TitleWh } from "../Core/Text";
 import Logo from "../Core/logohead";
-import BgColor from "../../config/colors";
-import ENV from '../../config/envConfig'
-import socketIOClient from 'socket.io-client'
-import FooterTest from '../Core/Footer'
+import Footer from '../Core/Footer'
 
 
-const Bg = styled.div`
-  background: ${BgColor.backgroundnew};
-  height: 90vh;
+const Landing = styled.div`
+  height: 100vh;
+  width : 100%;
+  left: 0;
+  bottom: 0;
+  position: sticky;
 `;
 
 
 class Login extends React.Component {
   render() {
     return (
-      <Bg>
-        <Container fluid>
+        <Landing fluid>
           <Container>
             <Col className="text-center">
               <Logo />
@@ -38,9 +37,8 @@ class Login extends React.Component {
             </Col>
             </Row>
           </Container>
-        </Container>
-        <FooterTest mtop='-66%' />
-      </Bg>
+          <Footer />
+        </Landing>
     );
   }
 }
