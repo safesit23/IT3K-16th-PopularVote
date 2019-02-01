@@ -40,7 +40,7 @@ class PopupConfirm extends React.Component {
             className="align-self-end float-right mr-2"
             onClick={this.props.closePopup}
           />
-          <TitleBl className="text-center mt-4">คำแนะนำการใช้งานระบบ</TitleBl>
+          <TitleBl className="text-center mt-4 mb-3">คำแนะนำการใช้งานระบบ</TitleBl>
           <Row className="text-left ml-4 mr-4">
             <Body color="rgba(0, 0, 0, 0.541327)" className="pl-1">
               1. เข้าสู่ระบบด้วย Facebook
