@@ -62,8 +62,6 @@ class PopupConfirm extends React.Component {
   };
 
   render() {
-    console.log(this.state.path, "path name");
-    console.log(this.props.id);
     return (
       <Popup>
         <PuopupInner>

@@ -20,15 +20,6 @@ const Bg = styled.div`
 
 class Login extends React.Component {
 
-  componentDidMount() {
-    this.countLogin()
-  }
-
-  countLogin = async () => {
-    let countLogin = 1
-    await socket.emit('countLogin', countLogin)
-  }
-
   render() {
     return (
       <Bg>

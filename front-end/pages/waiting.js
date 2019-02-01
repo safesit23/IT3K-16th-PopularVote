@@ -4,7 +4,7 @@ import Nav from "./../components/Core/Nav"
 import ENV from '../config/envConfig'
 import socketIOClient from 'socket.io-client'
 
-const socket = socketIOClient(ENV.PATH_SOCKET);
+const socket = socketIOClient(`${ENV.PATH_SOCKET}/waiting`);
 
 class WaitingPage extends React.Component {
 	componentDidMount () {
