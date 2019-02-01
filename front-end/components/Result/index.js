@@ -24,8 +24,8 @@ class Result extends React.Component {
   };
   componentDidMount = () => {
     const data = new URLSearchParams(window.location.search);
-    this.getDataCompetitor(data.get("id"));
     this.getResult();
+    this.getDataCompetitor(data.get("id"));
   };
 
   getResult = async () => {

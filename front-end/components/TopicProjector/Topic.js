@@ -2,7 +2,19 @@ import React from 'react'
 import { IT3K, WebWh, HeadlineWh,Title } from '../Core/Text'
 import { Container, Row, Col } from 'reactstrap'
 import Footer from '../Core/Footer'
-import styled from 'styled-components'
+import styled, {keyframes} from 'styled-components'
+
+const Blink = keyframes`
+  0% {
+    opacity: 1;
+  }
+  
+  100% {
+    opacity: 0;
+    transform: scale(1.2);
+    filter: blur(1px);
+  }
+`
 
 const Landing = styled(Container)`
   height: 100vh;
@@ -13,16 +25,16 @@ const Landing = styled(Container)`
 `
 const Sponser = styled.img`
   margin : 0px 20px;
-  // max-width : 250px;
-  // max-height : 100px;
   width : auto;
-  height : 50px;
+  height : 150px;
+  -webkit-filter: drop-shadow(5px 5px 15px rgba(0,0,0,0.24));
 `
 
 const Logo = styled.img`
-    width: 100%;
-    @media (min-width:320px) {
-        width: 25%;
+  &.overlay {
+    position: absolute; 
+    opacity: 0.6s;
+    animation: ${Blink} 2s infinite;
   }
 `
 
@@ -36,8 +48,9 @@ class TopicProjector extends React.Component {
       <Landing fluid>
         <Container>
           <Row>
-            <Col className="d-flex justify-content-center mt-5 animated pulse infinite slow">
+            <Col className="d-flex justify-content-center mt-5 ">
              <Logo className="mt-2" src="static/img/logoIT3K.svg" alt="Logo IT3K #16"></Logo>
+             <Logo className="mt-2 overlay" src="static/img/logoIT3K.svg" alt="Logo IT3K #16"></Logo>
             </Col>
           </Row>
           <Row>
@@ -59,10 +72,8 @@ class TopicProjector extends React.Component {
           
               <WebWh className="d-flex justify-content-center mt-5">
          
-              <Sponser src="static/img/sponsor1.png"></Sponser>
-              <Sponser src="static/img/sponsor2.png"></Sponser>
-              <Sponser src="static/img/sponsor3.png"></Sponser>
-              <Sponser src="static/img/sponsor4.png"></Sponser>
+
+              <Sponser src="static/img/sponsor.png"></Sponser>
         
 
                 {/* <img src="http://via.placeholder.com/200x200"></img> */}
