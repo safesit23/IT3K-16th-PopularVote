@@ -5,6 +5,7 @@ const Logo = styled.img`
     width: 100%;
     @media (min-width:320px) {
         width: 70px;
+        
     }
 `
 
