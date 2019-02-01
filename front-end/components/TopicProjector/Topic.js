@@ -28,7 +28,7 @@ class TopicProjector extends React.Component {
       <Landing fluid>
         <Container>
           <Row>
-            <Col className="d-flex justify-content-center mt-4">
+            <Col className="d-flex justify-content-center mt-4 animated pulse infinite slow">
              <Logo className="mt-2" src="static/img/logoIT3K.svg" alt="Logo IT3K #16"></Logo>
             </Col>
           </Row>
@@ -54,10 +54,10 @@ class TopicProjector extends React.Component {
           
               <WebWh className="d-flex justify-content-center">
          
-              <Sponser src="http://via.placeholder.com/300x200"></Sponser>
-              <Sponser src="http://via.placeholder.com/300x200"></Sponser>
-              <Sponser src="http://via.placeholder.com/300x200"></Sponser>
-              <Sponser src="http://via.placeholder.com/300x200"></Sponser>
+              <Sponser src="http://via.placeholder.com/200x120"></Sponser>
+              <Sponser src="http://via.placeholder.com/200x120"></Sponser>
+              <Sponser src="http://via.placeholder.com/200x120"></Sponser>
+              <Sponser src="http://via.placeholder.com/200x120"></Sponser>
         
 
                 {/* <img src="http://via.placeholder.com/200x200"></img> */}
