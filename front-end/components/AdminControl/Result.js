@@ -194,9 +194,10 @@ class Result extends React.Component {
 			}
 			console.log(`Score of ${index + 1} is ${scoreX[index].totalScore}`)
 		}
-		this.setState({
+	await this.setState({
 			score: scoreX
 		})
+		this.props.handlesetScore(scoreX)
 		console.log(`=======Finish========`)
 	}
 
