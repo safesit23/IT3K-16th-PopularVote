@@ -10,6 +10,7 @@ import Pic from "../Core/Picture";
 import Cookie from "../../service/CookieService";
 import Router from "next/router";
 import Footer from "../Core/Footer";
+import Link from 'next/link'
 
 const Bg = styled.div`
   background: ${BgColor.backgroundnew};
@@ -78,7 +79,7 @@ class Result extends React.Component {
             <Row className="mt-2 tl-4 d-flex justify-content-center">
             <Col className="col-3" />
               <Col>
-                <Pic pic={this.state.picId} widthPic="70%" />
+                <Pic pic={`${this.state.picId}.jpg`} widthPic="70%" />
               </Col>
             </Row>
             <Row>
@@ -87,9 +88,11 @@ class Result extends React.Component {
               </Col>
             </Row>
             <Row className="d-flex justify-content-center mb-3">
+              <Link href="/index">
               <ButtonBack block size="large">
                 กลับสู่หน้าหลัก
               </ButtonBack>
+              </Link>
             </Row>
           </Container>
         </Container>

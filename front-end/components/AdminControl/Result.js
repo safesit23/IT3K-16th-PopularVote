@@ -31,7 +31,7 @@ const Card = styled(Col)`
 `
 
 const PicInCard = styled(Col)`
-	background-image: url('/static/img/IMG_00${props => props.img|| "1"}.jpg');
+	background-image: url('/static/img/IMG_00${props => props.img|| "1"}.png');
 	background-size: cover;
 	background-repeat: repeat;
 `
@@ -45,7 +45,7 @@ class Result extends React.Component {
 	}
 
 	async componentDidMount() {
-		const dataCompetitor = await CompetitorService.getCompetitor()
+		const dataCompetitor = await CompetitorService.getCompetitorByAdmin()
 		console.log('=>competitor : ', dataCompetitor)
 		await this.setDataCompetitor(dataCompetitor.data)
 		const dataWebsite = await AdminService.getWebScore()
@@ -278,10 +278,10 @@ class Result extends React.Component {
 											{this.state.competitor[i].university}
 										</SubCaption>
 									</Col>
-									<Col xs='4' className='d-flex justify-content-center align-items-center bd-highlight'>
+									<Col xs='3' className='d-flex justify-content-center align-items-center bd-highlight'>
 										<TitleBl>{data.totalScore} %</TitleBl>
 									</Col>
-									<PicInCard xs='2' img={i+1} />
+									<PicInCard xs='3' img={`${i+1}${i+1}`} />
 								</Row>
 								</Card>
 							))

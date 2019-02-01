@@ -30,7 +30,6 @@ class Index extends React.Component {
 
   async componentDidMount() {
     const data = await CompetitorService.getCompetitor();
-    console.log("competiotr : ", data.data);
     await this.setDataCompetitor(data.data);
   }
 
@@ -41,7 +40,6 @@ class Index extends React.Component {
   }
 
   togglePopup = async (id, name) => {
-    console.log(id, name);
     this.setState({
       showPopup: !this.state.showPopup,
       id: id,
@@ -91,7 +89,7 @@ class Index extends React.Component {
                         name={data.name}
                         nickname={data.nickname}
                         university={data.university}
-                        id={data.id}
+                        id={`${data.id}${data.id}.png`}
                       />
                     </Button>
                   );
