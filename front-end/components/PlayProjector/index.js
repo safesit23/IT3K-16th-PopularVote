@@ -32,7 +32,7 @@ class Play extends React.Component {
   };
 
   changePathToVote = async () => {
-    await socket.emit("changePath", "playvoting");
+     socket.emit("changePath", "playvoting");
   };
 
   increase = () => {
@@ -53,7 +53,7 @@ class Play extends React.Component {
   }
 
   changePathToResult = async () => {
-    await socket.emit("changePath", "result");
+     socket.emit("changePath", "result");
   };
   render() {
     return (

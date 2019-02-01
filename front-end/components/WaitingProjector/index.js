@@ -25,8 +25,8 @@ class Waiting extends React.Component {
   state = {
     positions: [1, 2, 3, 4, 5, 6]
   };
-  changePath = async () => {
-    await socket.on("pathProjector", path => {
+  changePath =  () => {
+     socket.on("pathProjector", path => {
       Router.push({
         pathname: `${ENV.PATH_BASIC}/${path}`
       });

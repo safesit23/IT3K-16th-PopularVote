@@ -44,8 +44,8 @@ class LoginFaceBook extends React.Component {
     this.getRound()
   }
 
-  getRound = async () => {
-    await socket.on('round', (newRound) => {
+  getRound =  () => {
+     socket.on('round', (newRound) => {
       if(newRound === 1 || newRound === 2){
         this.setState({
           round : newRound,
