@@ -2,10 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import BgColor from "../../config/colors";
 import Router from "next/router";
-import { Container, Row, Col } from "reactstrap";
+import { Row } from "reactstrap";
 import { NumberWh } from "../Core/Text";
 import FooterTest from "../Core/Footer";
 import ENV from "../../config/envConfig";
+import socketIOClient from "socket.io-client";
+
+const socket = socketIOClient(ENV.PATH_SOCKET);
 
 const Bg = styled.div`
   background: ${BgColor.backgroundnew};
@@ -40,6 +43,15 @@ class Count extends React.Component {
 
   componentDidMount() {
     this.startTime();
+  }
+
+    
+  changePathToVote = async () => {
+    await socket.emit("changePath", "playvoting");
+  };
+  
+  componentWillUnmount = () =>{
+    this.changePathToVote()
   }
 
   render() {

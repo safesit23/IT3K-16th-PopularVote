@@ -3,8 +3,6 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
 const port = 9000
-let count = 0;
-// count += 1;
 let countLoginPage = 0; 
 let countSelectPage = 0; 
 let countPageWait = 0;
