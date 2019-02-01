@@ -176,7 +176,7 @@ class AdminControl extends React.Component {
 					</Col>
 				</Row>
 				<Row className="pl-4">
-					<Section xs="6" color="#FFEEE4">
+					<Section xs="6" color="#F9F9F9">
 						<Title>SETTING</Title>
 						<form onSubmit={this.getRound}>
 							<h5>Round</h5>
@@ -189,16 +189,18 @@ class AdminControl extends React.Component {
 						<hr />
 						<form onSubmit={this.getPath}>
 							<h5>Path</h5>
-							Change Path : <br />
+							EMERGENCY>> Change Path : {' '}
 							<RadioGroup options={pathname} onChange={this.onChange} value={this.state.value} />
+							{'     | '}Path user : {this.state.value}
 							<br />
+							<Paragraph className="mt-3">
 							Change Path Projector : <br />
 							<RadioGroup options={options} onChange={this.onChange2} value={this.state.value2} />
 							<br />
-							Path user : {this.state.value}
-							<br />
+							</Paragraph>
+							<Paragraph className="mt-3">
 							Path projector : {this.state.value2}
-							<br />
+							</Paragraph>
 							<input type="submit" value="Change Path" />
 						</form>
 					</Section>
