@@ -62,9 +62,18 @@ io.on('connection', function (socket) {
     io.sockets.emit('pathName', pathName);
     io.sockets.emit('pathNameResult', pathName);
   });
-  socket.on('projectorPath', (pathNameProj) => {
-    console.log('Path Projector : ', pathNameProj);
-    io.sockets.emit('pathProjector', pathNameProj);
+  socket.on('projectorPath',async (pathNameProj) => {
+    if (pathNameProj==='resultprojector') {
+      socket.on('scoreResult', async (score)=>{
+         io.sockets.emit('pathProjector', pathNameProj);
+         io.sockets.emit('scoreCompetion',score)
+      console.log('Path Projector : ', pathNameProj);
+      })
+     }else{
+      console.log('Path Projector : ', pathNameProj);
+      io.sockets.emit('pathProjector', pathNameProj);
+     }
+    
   })
   socket.on('getRound', (round) => {
     console.log('Round : ', round)
