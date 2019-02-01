@@ -8,11 +8,8 @@ import ENV from '../../config/envConfig'
 import socketIOClient from 'socket.io-client'
 
 const socket = socketIOClient(ENV.PATH_SOCKET)
-
 let round;
-
-const data = []
-
+let data = []
 const responseFacebook = async (response) => {
   let round = localStorage.getItem('round')
   data.push({
