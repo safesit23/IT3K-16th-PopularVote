@@ -13,6 +13,7 @@ export const HeadlineWh = styled.h1`
   font-family: 'Kanit', sans-serif;
   font-size: ${props => props.size || config.headline};
   font-weight: bold;
+  margin-top: ${props => props.martop || ""};
   color: ${props => props.color || "white"};
 `
 
