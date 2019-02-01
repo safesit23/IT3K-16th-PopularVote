@@ -9,7 +9,7 @@ class CardVote extends React.Component {
       <div>
         <Card>
           <Row>
-            <Col xs="8" className="text-left mr-0 mt-2">
+            <Col xs="6" className="text-left mr-0 mt-2">
               <Row>
                 <Caption className="ml-4 mt-2">{this.props.university}</Caption>
               </Row>
@@ -22,7 +22,7 @@ class CardVote extends React.Component {
                 </SubCaption>
               </Row>
             </Col>
-            <Col xs="4">
+            <Col xs="6">
               <Pic pic={this.props.id} width="100%" />
             </Col>
           </Row>

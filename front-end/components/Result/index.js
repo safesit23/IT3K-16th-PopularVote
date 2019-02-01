@@ -5,17 +5,17 @@ import styled from "styled-components";
 import Logo from "../Core/logohead";
 import BgColor from "../../config/colors";
 import { TitleWh } from "../Core/Text";
-import { ButtonBack } from '../Core/Button'
-import Pic from '../Core/Picture'
-import Cookie from '../../service/CookieService'
-import Router from 'next/router'
-import Footer from '../Core/Footer'
+import { ButtonBack } from "../Core/Button";
+import Pic from "../Core/Picture";
+import Cookie from "../../service/CookieService";
+import Router from "next/router";
+import Footer from "../Core/Footer";
+import Link from 'next/link'
 
 const Bg = styled.div`
   background: ${BgColor.backgroundnew};
-  height: 100%;
+  height: 92vh;
 `;
-
 
 class Result extends React.Component {
   state = {
@@ -23,8 +23,8 @@ class Result extends React.Component {
     picId: 0
   };
   componentDidMount = () => {
-    const data = new URLSearchParams(window.location.search)
-    this.getDataCompetitor(data.get('id'))
+    const data = new URLSearchParams(window.location.search);
+    this.getDataCompetitor(data.get("id"));
     this.getResult();
   };
 
@@ -34,32 +34,32 @@ class Result extends React.Component {
       await this.setState({
         count: data.data.count
       });
-      console.log('test : ', data)
-      this.clearCookie()
+      console.log("test : ", data);
+      this.clearCookie();
     } else {
       Router.replace({
-        pathname: '/'
-      })
+        pathname: "/"
+      });
     }
   };
 
-  getDataCompetitor = async (id) => {
+  getDataCompetitor = async id => {
     if (Cookie.gettokenJWTCookie()) {
       this.setState({
         picId: id
-      })
+      });
     } else {
       Router.replace({
-        pathname: '/'
-      })
+        pathname: "/"
+      });
     }
-  }
+  };
 
   clearCookie = async () => {
     if (Cookie.gettokenJWTCookie()) {
-      Cookie.removeJWTAndEmailCookie()
+      Cookie.removeJWTAndEmailCookie();
     }
-  }
+  };
 
   render() {
     return (
@@ -76,9 +76,10 @@ class Result extends React.Component {
                 <TitleWh>ระบบโหวต ดาว - เดือน</TitleWh>
               </Col>
             </Row>
-            <Row className="d-flex justify-content-center mt-2" >
+            <Row className="mt-2 tl-4 d-flex justify-content-center">
+            <Col className="col-2" />
               <Col>
-                <Pic pic={this.state.picId} widthPic="100%" />
+                <Pic pic={`${this.state.picId}.jpg`} widthPic="70%" />
               </Col>
             </Row>
             <Row>
@@ -87,11 +88,15 @@ class Result extends React.Component {
               </Col>
             </Row>
             <Row className="d-flex justify-content-center mb-3">
-              <ButtonBack block size="large">กลับสู่หน้าหลัก</ButtonBack>
+              <Link href="/index">
+              <ButtonBack block size="large">
+                กลับสู่หน้าหลัก
+              </ButtonBack>
+              </Link>
             </Row>
           </Container>
         </Container>
-        <Footer />  
+        <Footer mtop="-45%" />
       </Bg>
     );
   }

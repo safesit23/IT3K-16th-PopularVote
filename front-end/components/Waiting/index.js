@@ -11,6 +11,7 @@ import Footer from '../Core/Footer'
 const Bg = styled.div`
   background: ${BgColor.backgroundnew};
   height: 90vh;
+  padding-top: 50%;
 `;
 const socket = socketIOClient(ENV.PATH_SOCKET);
 
@@ -65,7 +66,7 @@ class Waiting extends React.Component {
             </Container>
           </Container>
         </Bg>
-        <Footer mtop="-70%" />
+        <Footer mtop="-76%" />
       </React.Fragment>
     );
   }

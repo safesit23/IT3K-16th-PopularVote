@@ -3,9 +3,8 @@ import styled from 'styled-components'
 import { Container, Row, Col, Table } from 'reactstrap'
 import Button from '../Core/Button'
 import FacebookModal from './FbScoreModal'
-import { Headline, Title, Subtitle, Paragraph } from '../Core/Text'
-import FbScoreService from '../../service/FacebookScoreService'
-import WebsiteScoreService from '../../service/WebScoreService'
+import { Headline, Paragraph,SubCaption, TitleBl } from '../Core/Text'
+import AdminService from '../../service/AdminService'
 import CompetitorService from '../../service/CompetitorService'
 
 const Section = styled(Col)`
@@ -17,7 +16,7 @@ const Section = styled(Col)`
 const TitlePanel = (props) => (
 	<Row>
 		<Col className="d-flex align-items-center">
-			<Title>{props.name}</Title>
+			<TitleBl>{props.name}</TitleBl>
 		</Col>
 		<Col className="d-flex align-items-center justify-content-end">
 			<Button onClick={props.onClick}>{props.buttonName}</Button>
@@ -31,90 +30,84 @@ const Card = styled(Col)`
 	border-radius: 9px;
 `
 
+const PicInCard = styled(Col)`
+	background-image: url('/static/img/IMG_00${props => props.img|| "1"}.png');
+	background-size: cover;
+	background-repeat: repeat;
+`
+
 class Result extends React.Component {
 	state = {
 		competitor: {},
-		score: [{
-			id: 1,
-			round1: 1100,
-			round2: 1000,
-			sumWebsite: 0,
-			like: 100,
-			share: 10,
-			sumFb: 0,
-			totalScore: 0
-		}, {
-			id: 2,
-			round1: 2200,
-			round2: 2000,
-			sumWebsite: 0,
-			like: 200,
-			share: 20,
-			sumFb: 0,
-			totalScore: 0
-		}],
+		score: [],
 		totalFacebook: 0,
 		totalWebsite: 0
 	}
 
 	async componentDidMount() {
-		//     const dataCompetitor = await CompetitorService.getCompetitor()
-		//     console.log('competiotr : ', dataCompetitor.data)
-		// 		await this.setDataCompetitor(dataCompetitor.data)
-		// this.getResult()
+		const dataCompetitor = await CompetitorService.getCompetitorByAdmin()
+		console.log('=>competitor : ', dataCompetitor)
+		await this.setDataCompetitor(dataCompetitor.data)
+		const dataWebsite = await AdminService.getWebScore()
+		console.log('=>Web : ',dataWebsite)
+		const dataFacebook = await AdminService.getFBScore()
+		console.log('=>FB : ',dataFacebook)
+		await this.setDataScore(dataWebsite.data, dataFacebook.data)
 		await this.calculateSumWebsite()
 		await this.calculateSumFacebook()
 	}
 
-	setDataScore = async competitor =>{
-		
-		for(let index=0;index<6;index++){
-
+	setDataScore = async (dataWebsite, dataFacebook) =>{
+		let score_data = []
+		for(let index=0;index<dataWebsite.length;index++){
+			score_data.push({
+				id: dataWebsite[index].idCompetitor,
+				round1: dataWebsite[index].round_1,
+				round2: dataWebsite[index].round_2,
+				sumWebsite: 0,
+				like: dataFacebook[index].like,
+				share: dataFacebook[index].share,
+				sumFb: 0,
+				totalScore: 0
+			})
 		}
 		this.setState({
-
+			score: score_data
 		})
 	}
 
-	// 	setDataCompetitor = async competiotr => {
-	//     for (let index = 0; index < competiotr.length; index++) {
-	//       competiotr_data.push({
-	//         id: competiotr[index].idCompetitor,
-	//         name: competiotr[index].name,
-	//         nickname: competiotr[index].nickname,
-	//         university: competiotr[index].university,
-	//       })
-	//     }
-	//     this.setState({
-	//       competitor: competiotr_data
-	//     })
-	//   }
+		setDataCompetitor = async (competitor) => {
+			let competitor_data = []
+	    for (let index = 0; index < competitor.length; index++) {
+	      competitor_data.push({
+	        id: competitor[index].idCompetitor,
+	        name: competitor[index].name,
+	        nickname: competitor[index].nickname,
+	        university: competitor[index].university,
+	      })
+	    }
+	    this.setState({
+	      competitor: competitor_data
+	    })
+	  }
 
-	getResult = async () => {
-		let dataFacebook = await FbScoreService.getFBScore()
-		let dataWebsite = await WebsiteScoreService.getWebScore()
-		await this.setState({
-			// website: dataWebsite.data
-		})
-		// console.log('=====', dataWebsite)
-	}
-
-	fetchFBData = () => {
+	fetchData = async () => {
+		const dataWebsite = await AdminService.getWebScore()
+		console.log('=>Web : ',dataWebsite)
+		const dataFacebook = await AdminService.getFBScore()
+		console.log('=>FB : ',dataFacebook)
+		await this.setDataScore(dataWebsite.data, dataFacebook.data)
 		this.calculateSumFacebook()
-		alert("Fetch Data from FB")
+		this.calculateSumWebsite()
 	}
 
-	fetchWebsiteData = () => {
-		this.calculateSumWebsite()
-		alert("Fetch Data from Website")
-	}
 
 	//คำนวณผลรวมคะแนน Facebook ของแต่ละคน
 	calculateSumFacebook = async () => {
 		console.log("Calculate Sum Facebook Func")
 		let scoreX = this.state.score
 		for (let index = 0; index < this.state.score.length; index++) {
-			let sum = scoreX[index].like + (scoreX[index].share * 3)
+			let sum = (+scoreX[index].like) + (+scoreX[index].share * 3)
 			scoreX[index] = {
 				...scoreX[index],
 				sumFb: sum
@@ -131,7 +124,7 @@ class Result extends React.Component {
 		console.log("Calculate Sum Website Func")
 		let scoreX = this.state.score
 		for (let index = 0; index < this.state.score.length; index++) {
-			let sum = scoreX[index].round1 + scoreX[index].round2
+			let sum = (+scoreX[index].round1) + (+scoreX[index].round2)
 			scoreX[index] = {
 				...scoreX[index],
 				sumWebsite: sum
@@ -169,12 +162,21 @@ class Result extends React.Component {
 
 	//Function หาคะแนนที่ได้ของบุคคล
 	calculateTotalPoint = (id) => {
-		const fbP = (30 * this.state.score[id].sumFb) / this.state.totalFacebook;
-		const fbPoint = fbP.toFixed(2)
-		const webP = (70 * this.state.score[id].sumWebsite) / this.state.totalWebsite;
-		const webPoint = webP.toFixed(2)
+		let fbP, fbPoint, webP, webPoint
+		if(this.state.score[id].sumFb!=0){
+			fbP = (30 * this.state.score[id].sumFb) / this.state.totalFacebook;
+			fbPoint = fbP.toFixed(2)
+		}else{
+			fbPoint = 0
+		}
+		if(this.state.score[id].sumWebsite!=0){
+			webP = (70 * this.state.score[id].sumWebsite) / this.state.totalWebsite;
+			webPoint = webP.toFixed(2)
+		}else{
+			webPoint = 0
+		}
 		const tP = (+fbPoint)+(+webPoint)
-		console.log(`tP of ${id} is ${fbPoint} + ${webPoint} =${tP}`)
+		console.log(`tP of ${this.state.competitor[id].nickname} is ${fbPoint} + ${webPoint} =${tP}`)
 		return tP
 	}
 
@@ -195,7 +197,7 @@ class Result extends React.Component {
 		this.setState({
 			score: scoreX
 		})
-		console.log(`Finish`)
+		console.log(`=======Finish========`)
 	}
 
 
@@ -205,8 +207,8 @@ class Result extends React.Component {
 				<Col xs="12" className="mb-2">
 					<Headline>Result</Headline>
 				</Col>
-				<Section xs="6" className="mb-2">
-					<TitlePanel name="Website" buttonName="FETCH" onClick={this.fetchWebsiteData} />
+				<Section xs="10" lg="6" className="mb-2">
+					<TitlePanel name="Website" buttonName="FETCH" onClick={this.fetchData} />
 					<div className="table-responsive">
 					<Table className="table">
 						<thead>
@@ -219,8 +221,8 @@ class Result extends React.Component {
 						{
 							this.state.score.map((data, i) => (
 								<tr>
-									<td>{i}</td>
-									<td>{data.id}</td>
+									<td>{this.state.competitor[i].nickname}</td>
+									<td>{this.state.competitor[i].university}</td>
 									<td>{data.round1}</td>
 									<td>{data.round2}</td>
 									<td>{data.sumWebsite}</td>
@@ -228,11 +230,12 @@ class Result extends React.Component {
 							))
 						}
 					</Table>
+					<Paragraph>Total Point : {this.state.totalWebsite}</Paragraph>
 					</div>
 				</Section>
 
-				<Section xs="5" className="mb-2">
-					<TitlePanel name="Facebook IT3K" buttonName="FETCH" onClick={this.fetchFBData} />
+				<Section xs="10" lg="5" className="mb-2">
+					<TitlePanel name="Facebook IT3K" buttonName="FETCH" onClick={this.fetchData} />
 					<div className="table-responsive">
 					<Table className="table">
 						<thead>
@@ -245,8 +248,8 @@ class Result extends React.Component {
 						{
 							this.state.score.map((data, i) => (
 								<tr>
-									<td>{data.id}</td>
-									<td>{data.id}</td>
+									<td>{this.state.competitor[i].nickname}</td>
+									<td>{this.state.competitor[i].university}</td>
 									<td>{data.like}</td>
 									<td>{data.share}</td>
 									<td>{data.sumFb}</td>
@@ -255,18 +258,31 @@ class Result extends React.Component {
 						}
 					</Table>
 					</div>
-					<FacebookModal buttonLabel="EDIT DATA" />
+					<div className="d-flex bd-highlight">
+						<Paragraph className="mr-auto p-2 bd-highlight">Total Point : {this.state.totalFacebook}</Paragraph>
+						<FacebookModal className="p-2 bd-highlight d-flex align-items-center" sendData={this.state.competitor} buttonLabel="EDIT DATA" />
+					</div>
 				</Section>
 				<Section xs="11" className="mb-2">
 					<TitlePanel name="PopularVote" buttonName="Calculate" onClick={this.calculateAll}/>
 					<Paragraph >สัดส่วนการให้คะแนน : 30% จาก Facebook และ 70% จาก Website</Paragraph>
-					<Button onClick={this.calculateTotalFacebook}>ShowTotalFB</Button>
-					<Button onClick={this.calculateTotalWebsite}>ShowTotalWebsite</Button>
-					<Row>
+					<Row className='d-flex justify-content-center'>
 					{
-							this.state.score.map((data) => (
-								<Card xs='3' className='mx-4'>
-									{data.id}{' '}{data.totalScore}
+							this.state.score.map((data,i) => (
+								<Card xs='5' lg='3' className='my-1 mx-2'>
+								<Row className='d-flex bd-highlight'>
+									<Col xs='6' className='py-2 bd-highlight'>
+										<Paragraph>{this.state.competitor[i].nickname}</Paragraph>
+										<SubCaption>
+											{this.state.competitor[i].name}<br />
+											{this.state.competitor[i].university}
+										</SubCaption>
+									</Col>
+									<Col xs='3' className='d-flex justify-content-center align-items-center bd-highlight'>
+										<TitleBl>{data.totalScore} %</TitleBl>
+									</Col>
+									<PicInCard xs='3' img={`${i+1}${i+1}`} />
+								</Row>
 								</Card>
 							))
 						}

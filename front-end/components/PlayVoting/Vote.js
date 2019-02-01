@@ -14,7 +14,7 @@ const socket = socketIOClient(ENV.PATH_SOCKET)
 
 const Landing = styled(Container)`
   background-color:${BgColor.bgColor};
-  height: 100vh;
+  height: 100%;
 `
 
 class Vote extends React.Component {
@@ -27,10 +27,10 @@ class Vote extends React.Component {
   }
 
   vote = () => {
-    // window.navigator.vibrate(200)
     this.setState({
       count: this.state.count + 1,
     })
+    window.navigator.vibrate(200)
   }
 
   getNameAndId(id, name) {
@@ -42,26 +42,16 @@ class Vote extends React.Component {
 
   changePath = async () => {
     await socket.on('pathName', (path) => {
-      console.log('Path : ', path)
       this.setState({
         path: path
       })
     })
   }
 
-  getRound = () => {
-    socket.on('round', (newRound) => {
-      this.setState({
-        round: newRound
-      })
-    });
-  }
-
   componentDidMount() {
     const id = new URLSearchParams(window.location.search)
     this.getNameAndId(id.get('id'), id.get('name'))
-    this.changePath(this.state.count)
-    this.getRound()
+    this.changePath()
   }
 
 
@@ -83,7 +73,7 @@ class Vote extends React.Component {
         <Container>
           <Row>
             <Col className="mt-4 pl-5 pr-5" >
-              <Pic pic={this.state.id} />
+              <Pic pic={`${this.state.id}.jpg`} />
             </Col>
           </Row>
         </Container>

@@ -25,8 +25,10 @@ header('Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS');
 /* ========  Admin Route  ======== */
 Route::post('admin/login','adminLoginController@Login');
 Route::group(['middleware' => ['adminAuth']], function () {
-  Route::put('admin/sendfacebookScore','adminController@FacebookScore');
-  Route::get('admin/websiteScore','adminController@WebsiteScore');
+  Route::put('admin/sendFacebookScore','adminController@FacebookScore');
+  Route::get('admin/facebookScore','adminController@getFacebookScore');
+  Route::get('admin/websiteScore','adminController@getWebsiteScore');
+  Route::get('admin/competitor', 'CompetitorController@getCompetitor');
 });
 
 /* ========  User  ======== */

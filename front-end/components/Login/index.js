@@ -14,20 +14,11 @@ const socket = socketIOClient(ENV.PATH_SOCKET);
 
 const Bg = styled.div`
   background: ${BgColor.backgroundnew};
-  height: 100vh;
+  height: 90vh;
 `;
 
 
 class Login extends React.Component {
-
-  componentDidMount() {
-    this.countLogin()
-  }
-
-  countLogin = async () => {
-    let countLogin = 1
-    await socket.emit('countLogin', countLogin)
-  }
 
   render() {
     return (
@@ -38,13 +29,19 @@ class Login extends React.Component {
               <Logo />
             </Col>
             <TitleWh className="text-center">ระบบโหวต ดาว - เดือน</TitleWh>
-            <Gallery />
-            <Row className="d-flex justify-content-center mt-3">
+            <Row>
+              <Col>
+                <Gallery />
+              </Col>
+            </Row>
+            <Row className="d-flex justify-content-center mt-5">
+            <Col>
               <LoginFaceBook />
+            </Col>
             </Row>
           </Container>
         </Container>
-        <FooterTest />
+        <FooterTest mtop='-66%' />
       </Bg>
     );
   }

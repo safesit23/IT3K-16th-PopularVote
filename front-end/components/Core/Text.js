@@ -11,8 +11,9 @@ export const Headline = styled.h1`
 
 export const HeadlineWh = styled.h1`
   font-family: 'Kanit', sans-serif;
-  font-size: ${config.headline};
+  font-size: ${props => props.size || config.headline};
   font-weight: bold;
+  margin-top: ${props => props.martop || ""};
   color: ${props => props.color || "white"};
 `
 
@@ -32,7 +33,7 @@ export const IT3K = styled.h1`
 `
 
 export const Title = styled.h4`
-  font-family: 'AgencyGP', sans-serif;
+  font-family: 'Kanit', sans-serif;
   font-size: ${config.title};
   color: ${props => props.color || "black"};
 `
@@ -53,6 +54,7 @@ export const NumberWh = styled.h4`
   font-family: 'Kanit', sans-serif;
   font-size: ${config.number};
   color: ${props => props.color || "white"};
+  margin-bottom: 0px;
 `
 
 export const Subtitle = styled.p`
@@ -91,6 +93,11 @@ export const Body = styled.p`
   font-family: 'Kanit', sans-serif;
   font-size: ${config.body};
   color: ${props => props.color || "black"};
+`
+
+export const Confirm = styled.p`
+  font-family: 'Kanit', sans-serif;
+  font-size: ${config.body};
 `
 
 export const BodyWhite = styled.p`

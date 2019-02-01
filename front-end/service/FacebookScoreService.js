@@ -5,7 +5,7 @@ const FbScoreService = {
   sendFBScore: async (facebook) => {
     console.log(facebook)
     try{
-      await api.put('/sendfacebookScore',{
+      await api.put('/sendfacebookscore',{
         'facebook' : facebook
       })
     }catch (error) {
@@ -15,7 +15,7 @@ const FbScoreService = {
 
   getFBScore: async () => {
     try{
-      let data = await api.get('/facebookcore')
+      let data = await api.get('/facebookscore')
       return data
     }catch (error) {
         console.log('Error : ',error)
