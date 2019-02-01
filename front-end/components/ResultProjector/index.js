@@ -60,7 +60,7 @@ class Result extends React.Component {
             })}
           </Row>
         </Container>
-        <FooterTest mtop="-72%" />
+        <FooterTest mtop="-69%" />
       </Bg>
     );
   }

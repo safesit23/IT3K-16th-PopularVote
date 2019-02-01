@@ -32,7 +32,7 @@ class TopicProjector extends React.Component {
 		return (
 			<Bg>
 				<Topic />
-				<FooterTest mtop='-67%'/>
+				<FooterTest mtop='-72%'/>
 			</Bg>
 		)
 	}
