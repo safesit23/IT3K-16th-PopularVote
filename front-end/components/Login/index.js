@@ -10,7 +10,6 @@ import ENV from '../../config/envConfig'
 import socketIOClient from 'socket.io-client'
 import FooterTest from '../Core/Footer'
 
-const socket = socketIOClient(ENV.PATH_SOCKET);
 
 const Bg = styled.div`
   background: ${BgColor.backgroundnew};
@@ -19,7 +18,6 @@ const Bg = styled.div`
 
 
 class Login extends React.Component {
-
   render() {
     return (
       <Bg>
