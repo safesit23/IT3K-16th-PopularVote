@@ -29,9 +29,9 @@ class Result extends React.Component {
   };
 
   getResult = async () => {
-    let data = await ResultService.getResult();
+    let data =  ResultService.getResult();
     if (Cookie.gettokenJWTCookie()) {
-      await this.setState({
+       this.setState({
         count: data.data.count
       });
       console.log("test : ", data);

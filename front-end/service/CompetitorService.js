@@ -7,7 +7,7 @@ const CompetitorService = {
       let data = await api.get('/competitor')
       return data
     }catch (error) {
-        console.log('Error : ',error)
+      return null
     }
   },getCompetitorByAdmin: async () => {
     try{

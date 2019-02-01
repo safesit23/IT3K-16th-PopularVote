@@ -8,11 +8,8 @@ import ENV from '../../config/envConfig'
 import socketIOClient from 'socket.io-client'
 
 const socket = socketIOClient(ENV.PATH_SOCKET)
-
 let round;
-
-const data = []
-
+let data = []
 const responseFacebook = async (response) => {
   let round = localStorage.getItem('round')
   data.push({
@@ -44,8 +41,8 @@ class LoginFaceBook extends React.Component {
     this.getRound()
   }
 
-  getRound = async () => {
-    await socket.on('round', (newRound) => {
+  getRound =  () => {
+     socket.on('round', (newRound) => {
       if(newRound === 1 || newRound === 2){
         this.setState({
           round : newRound,

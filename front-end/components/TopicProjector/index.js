@@ -35,8 +35,8 @@ animation: AnimationName 3.5s ease infinite;
 const socket = socketIOClient(ENV.PATH_SOCKET)
 class TopicProjector extends React.Component {
 
-	changePath = async () => {
-		await socket.on('pathProjector', (path) => {
+	changePath =  () => {
+		 socket.on('pathProjector', (path) => {
 			Router.push({
 				pathname: `${ENV.PATH_BASIC}/${path}`,
 			})

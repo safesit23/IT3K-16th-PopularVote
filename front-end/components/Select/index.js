@@ -8,6 +8,8 @@ import CardVote from "../Core/Card";
 import Popup from "./PopupConfirm";
 import CompetitorService from "../../service/CompetitorService";
 import FooterTest from '../Core/Footer'
+import Router from 'next/router'
+
 
 const Bg = styled.div`
   background: ${BgColor.backgroundnew};
@@ -30,7 +32,13 @@ class Index extends React.Component {
 
   async componentDidMount() {
     const data = await CompetitorService.getCompetitor();
-    await this.setDataCompetitor(data.data);
+    if(data){
+      await this.setDataCompetitor(data.data);
+    }else{
+      Router.push({
+        pathname: '/index'
+      })
+    }
   }
 
   showPopup() {

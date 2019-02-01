@@ -28,18 +28,15 @@ class Waiting extends React.Component {
     console.log(id.get("id"), id.get("name"));
   }
 
-  changePath = async () => {
-    await socket.on("pathName", path => {
+  changePath =  () => {
+     socket.on("pathName", path => {
       if (path != '') {
-        this.setState({
-          path: path
-        });
+        console.log(path);
         Router.push({
           pathname: `${ENV.PATH_BASIC}/${path}`,
           query: { id: `${this.state.id}`, name: `${this.state.name}` }
         });
       }
-      console.log(path);
     });
   };
 

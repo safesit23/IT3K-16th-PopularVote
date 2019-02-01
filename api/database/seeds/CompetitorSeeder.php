@@ -49,7 +49,7 @@ class CompetitorSeeder extends Seeder
             'share' => "0"
             ],
             [
-            'name' => 'นาวสาวเบญจพร เงินศรีตระกูล',
+            'name' => 'นางสาวเบญจพร เงินศรีตระกูล',
             'nickname' => 'เม',
             'university' => "ลาดกระบัง",
             'like' => "0",
