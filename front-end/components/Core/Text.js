@@ -53,6 +53,7 @@ export const NumberWh = styled.h4`
   font-family: 'Kanit', sans-serif;
   font-size: ${config.number};
   color: ${props => props.color || "white"};
+  margin-bottom: 0px;
 `
 
 export const Subtitle = styled.p`
