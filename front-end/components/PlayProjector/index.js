@@ -66,7 +66,7 @@ class Play extends React.Component {
         </Row>
         <Row className="d-flex justify-content-center">
           <Card>
-            <WebWh color="#5F597B">กดปุ่ม PRESS เพื่อให้คะแนน</WebWh>
+            <WebWh web="64px" color="#5F597B">กดปุ่ม PRESS รัวๆๆๆ</WebWh>
           </Card>
         </Row>
         <Footer />
