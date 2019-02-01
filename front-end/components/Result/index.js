@@ -77,7 +77,7 @@ class Result extends React.Component {
               </Col>
             </Row>
             <Row className="mt-2 tl-4 d-flex justify-content-center">
-            <Col className="col-3" />
+            <Col className="col-2" />
               <Col>
                 <Pic pic={`${this.state.picId}.jpg`} widthPic="70%" />
               </Col>

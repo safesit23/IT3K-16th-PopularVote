@@ -258,7 +258,10 @@ class Result extends React.Component {
 						}
 					</Table>
 					</div>
-					<FacebookModal buttonLabel="EDIT DATA" />
+					<div className="d-flex bd-highlight">
+						<Paragraph className="mr-auto p-2 bd-highlight">Total Point : {this.state.totalFacebook}</Paragraph>
+						<FacebookModal className="p-2 bd-highlight d-flex align-items-center" sendData={this.state.competitor} buttonLabel="EDIT DATA" />
+					</div>
 				</Section>
 				<Section xs="11" className="mb-2">
 					<TitlePanel name="PopularVote" buttonName="Calculate" onClick={this.calculateAll}/>
