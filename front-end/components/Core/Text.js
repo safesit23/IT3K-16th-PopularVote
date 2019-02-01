@@ -22,6 +22,9 @@ export const WebWh = styled.h1`
   font-size: ${config.web};
   font-weight: bold;
   color: ${props => props.color || "white"};
+  @media (max-width:750px) {
+    font-size: 50px;
+	}
 `
 
 export const IT3K = styled.h1`
