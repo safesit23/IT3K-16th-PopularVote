@@ -1,20 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 import { Row, Card } from "reactstrap";
-import { Progress, Button } from "antd";
 import ENV from "../../config/envConfig";
 import { NumberWh, WebWh } from "../Core/Text";
 import socketIOClient from "socket.io-client";
 import Router from "next/router";
 import BgColor from "../../config/colors";
-import FooterTest from "../Core/Footer";
+import Footer from "../Core/Footer";
 
 const socket = socketIOClient(ENV.PATH_SOCKET);
 
 const Bg = styled.div`
-  background: ${BgColor.backgroundnew};
-  height: 100vh;
-  padding-top: 40px;
+  height: 100%;
+  width : 100%;
+  left: 0;
+  bottom: 0;
+  position: fixed;
+  padding-top: 20px;
 `;
 
 let intervalTime;
@@ -56,18 +58,18 @@ class Play extends React.Component {
   render() {
     return (
       <Bg>
-        <Row className="d-flex justify-content-center">
+        <Row className="d-flex justify-content-center mt-4">
           <WebWh>เหลือเวลาอีก</WebWh>
         </Row>
-        <Row className="d-flex justify-content-center">
+        <Row className="d-flex justify-content-center mb-4">
           <NumberWh>{this.state.count}</NumberWh>
         </Row>
         <Row className="d-flex justify-content-center">
-          <Card className="p-3">
+          <Card>
             <WebWh color="#5F597B">กดปุ่ม PRESS เพื่อให้คะแนน</WebWh>
           </Card>
         </Row>
-        <FooterTest mtop='-70%'/>
+        <Footer />
       </Bg>
     );
   }
