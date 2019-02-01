@@ -18,9 +18,9 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token,Authori
 header('Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS');
 
 /* ========  Other Route  ======== */
-Route::group(['middleware' => ['checkAuth']], function () {
+// Route::group(['middleware' => ['checkAuth']], function () {
   Route::get('competitor', 'CompetitorController@getCompetitor');
-});
+// });
 
 /* ========  Admin Route  ======== */
 Route::post('admin/login','adminLoginController@Login');
