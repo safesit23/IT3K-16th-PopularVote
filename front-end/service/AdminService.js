@@ -26,7 +26,7 @@ const AdminService = {
     console.log(facebook)
     try{
       await api2.put('/admin/sendFacebookScore',{
-        'facebook' : facebook
+        'facebook' : [facebook]
       })
     }catch (error) {
         console.log('Error : ',error)
