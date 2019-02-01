@@ -5,14 +5,16 @@ import { Container, Row, Col } from "reactstrap";
 import socketIOClient from "socket.io-client";
 import Router from "next/router";
 import ENV from "../../config/envConfig";
-import BgColor from "../../config/colors";
 import Pic from "../Core/Picture";
 import { HeadlineWh } from "../Core/Text";
-import FooterTest from "../Core/Footer";
+import Footer from "../Core/Footer";
 
 const Bg = styled.div`
-  background: ${BgColor.backgroundnew};
-  height: 100vh;
+  height: 100%;
+  width : 100%;
+  left: 0;
+  bottom: 0;
+  position: fixed;
   padding-top: 10px;
 `;
 
@@ -60,7 +62,7 @@ class Result extends React.Component {
             })}
           </Row>
         </Container>
-        <FooterTest mtop="-69%" />
+        <Footer />
       </Bg>
     );
   }
