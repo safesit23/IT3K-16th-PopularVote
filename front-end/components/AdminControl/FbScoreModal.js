@@ -111,9 +111,10 @@ class FacebookScoreModal extends React.Component {
 							<td>
               <FormGroup>
                 <Input type="select" name="select" onChange={this.onChangeId}>
+                  <option>select</option>
                 {competitorModal.map((data,i) => {
                   return (
-                    <option key={i} value={data.id} >{data.nickname}, {data.university}</option>
+                    <option key={i} value={data.id} >{i+1}. {data.nickname}, {data.university}</option>
                   )
                 })}
                 </Input>
