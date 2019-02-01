@@ -21,10 +21,9 @@ const Button = styled.button`
   border: 0;
 `;
 
-let competiotr_data = [];
 class Index extends React.Component {
   state = {
-    competitor: {},
+    competitor: [],
     showPopup: false,
     name: "",
     id: 0
@@ -56,16 +55,16 @@ class Index extends React.Component {
   };
 
   setDataCompetitor = async competiotr => {
-    for (let index = 0; index < competiotr.length; index++) {
-      competiotr_data.push({
-        id: competiotr[index].idCompetitor,
-        name: competiotr[index].name,
-        nickname: competiotr[index].nickname,
-        university: competiotr[index].university
-      });
-    }
+    // for (let index = 0; index < competiotr.length; index++) {
+    //   competiotr_data.push({
+    //     id: competiotr[index].idCompetitor,
+    //     name: competiotr[index].name,
+    //     nickname: competiotr[index].nickname,
+    //     university: competiotr[index].university
+    //   });
+    // }
     this.setState({
-      competitor: competiotr_data
+      competitor: competiotr
     });
   };
 
@@ -88,16 +87,16 @@ class Index extends React.Component {
             </Row>
             <Row>
               <Col>
-                {competiotr_data.map((data,i) => {
+                {this.state.competitor.map((data,i) => {
                   return (
                     <Button key={i}
-                      onClick={() => this.togglePopup(data.id, data.name)}
+                      onClick={() => this.togglePopup(data.idCompetitor, data.name)}
                     >
                       <CardVote 
                         name={data.name}
                         nickname={data.nickname}
                         university={data.university}
-                        id={`${data.id}${data.id}.png`}
+                        id={`${data.idCompetitor}${data.idCompetitor}.png`}
                       />
                     </Button>
                   );
