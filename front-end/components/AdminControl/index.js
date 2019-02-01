@@ -233,7 +233,8 @@ class AdminControl extends React.Component {
 							4. Chang Path: Couting (นับ 321)<br />
 							. ถอยหลัง 10 วิ (AUTO)<br />
 							. หมดเวลา 10 วิ (AUTO)<br />
-							5. Chang Path: ResultProjector<br />
+							5.1 กด Fetch แล้วกด Calculate 
+							5.2 Chang Path: ResultProjector<br />
 							6. เลือก Topic Projector<br />
 						</Paragraph>
 					</Section>
