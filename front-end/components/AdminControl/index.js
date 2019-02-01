@@ -186,7 +186,7 @@ class AdminControl extends React.Component {
 					</Col>
 				</Row>
 				<Row className="p-4">
-					<Section xs="12" lg="5" className="box mx-2 pt-3" color="#F9F9F9">
+					<Section xs="12" lg="5" className="box mx-2 pt-3 mb-2" color="#F9F9F9">
 						<Title>SETTING</Title>
 						<form onSubmit={this.getRound}>
 							<h5>Round</h5>
@@ -214,7 +214,7 @@ class AdminControl extends React.Component {
 							<input type="submit" value="Change Path" />
 						</form>
 					</Section>
-					<Section xs="6" lg="3" className="box mx-2 pt-3" >
+					<Section xs="6" lg="3" className="box mx-2 pt-3 mb-2" >
 						<Title>USER</Title>
 						<Paragraph >Login page : {this.state.loginPage} </Paragraph>
 						<Paragraph >Select page :  {this.state.selectPage}</Paragraph>
@@ -222,9 +222,20 @@ class AdminControl extends React.Component {
 						<Paragraph >Vote page :  {this.state.votePage}</Paragraph>
 						<Paragraph >Result	 page :  {this.state.resultPage}</Paragraph>
 					</Section>
-					<Section xs="6" lg="3" className="box mx-2 pt-3" >
-						<Title>HOW TO USE</Title>
-						<Paragraph></Paragraph>
+					<Section xs="6" lg="3" className="box mx-2 pt-3 mb-2" >
+						<Title className="mb-2">SET</Title>
+						Projector เข้า <a href="https://vote.it3k.in.th/topicprojector" target="_blank">vote.it3k.in.th/topicprojector</a>
+						<Title className="mt-2">HOW TO USE</Title>
+						<Paragraph>
+							1. เลือก Round ['1','2'] เพื่อเปิดปุ่ม FB <br />
+							2. เลือก Chang Path: Voting<br />
+							3. รอ MC พูด<br />
+							4. Chang Path: Couting (นับ 321)<br />
+							. ถอยหลัง 10 วิ (AUTO)<br />
+							. หมดเวลา 10 วิ (AUTO)<br />
+							5. Chang Path: ResultProjector<br />
+							6. เลือก Topic Projector<br />
+						</Paragraph>
 					</Section>
 				</Row>
 				<Result handlesetScore={this.handlesetScore}/>
