@@ -43,7 +43,7 @@ class PopupConfirm extends React.Component {
           <TitleBl className="text-center mt-4">คำแนะนำการใช้งานระบบ</TitleBl>
           <Row className="text-left ml-4 mr-4">
             <Body color="rgba(0, 0, 0, 0.541327)" className="pl-1">
-              1. เข้าสู้ระบบด้วย Facebook
+              1. เข้าสู่ระบบด้วย Facebook
             </Body>
           </Row>
           <Row className="text-left ml-4 mr-4">
