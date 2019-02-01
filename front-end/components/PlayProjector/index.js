@@ -23,7 +23,7 @@ let intervalTime;
 class Play extends React.Component {
   state = {
     percent: 10,
-    count: 15
+    count: 10
   };
 
   componentDidMount = () => {
