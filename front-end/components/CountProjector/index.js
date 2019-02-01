@@ -1,19 +1,21 @@
 import React from "react";
 import styled from "styled-components";
-import BgColor from "../../config/colors";
 import Router from "next/router";
 import { Row } from "reactstrap";
 import { NumberWh } from "../Core/Text";
-import FooterTest from "../Core/Footer";
+import Footer from "../Core/Footer";
 import ENV from "../../config/envConfig";
 import socketIOClient from "socket.io-client";
 
 const socket = socketIOClient(ENV.PATH_SOCKET);
 
 const Bg = styled.div`
-  background: ${BgColor.backgroundnew};
+  background-color: #C49AAB;
   height: 100vh;
-  padding-top: 130px;
+  width : 100%;
+  left: 0;
+  bottom: 0;
+  position: fixed;
 `;
 
 let intervalTime;
@@ -56,11 +58,11 @@ class Count extends React.Component {
 
   render() {
     return (
-      <Bg>
-        <Row className="d-flex justify-content-center">
+      <Bg className="pt-5">
+        <Row className="d-flex justify-content-center align-items-center mt-5">
           <NumberWh>{this.state.count}</NumberWh>
         </Row>
-        <FooterTest mtop='-58%' />
+        <Footer />
       </Bg>
     );
   }
