@@ -50,11 +50,11 @@ class AdminControl extends React.Component {
 	
 	componentDidMount() {
 		if(Cookie.gettokenJWTCookie()){
-			this.getCount()
 			this.getCountLogin()
 			this.getCountSelect()
 			this.getCountWait()
 			this.getCountPageVote()
+			this.getCountPageResult()
 		}else{
 			Router.push({
 				pathname: '/adminlogin'
@@ -102,13 +102,6 @@ class AdminControl extends React.Component {
 		})
 	} 
 
-	getCount = async () => {
-		await socket.on('countUser', (user) => {
-			this.setState({
-				user: user
-			})
-		})
-	}
 
 	getPath = (e) => {
 		e.preventDefault()
@@ -211,7 +204,6 @@ class AdminControl extends React.Component {
 					</Section>
 					<Section xs="5">
 						<Title>USER</Title>
-						<Paragraph >Current User : {this.state.user}</Paragraph>
 						<Paragraph >Login page : {this.state.loginPage} </Paragraph>
 						<Paragraph >Select page :  {this.state.selectPage}</Paragraph>
 						<Paragraph >Waiting	 page :  {this.state.waitPage}</Paragraph>

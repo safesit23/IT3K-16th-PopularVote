@@ -48,19 +48,10 @@ class Vote extends React.Component {
     })
   }
 
-  getRound = () => {
-    socket.on('round', (newRound) => {
-      this.setState({
-        round: newRound
-      })
-    });
-  }
-
   componentDidMount() {
     const id = new URLSearchParams(window.location.search)
     this.getNameAndId(id.get('id'), id.get('name'))
-    this.changePath(this.state.count)
-    this.getRound()
+    this.changePath()
   }
 
 
