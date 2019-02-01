@@ -18,7 +18,7 @@ const SendResult = {
     console.log('get count ')
     try{
       let data = await api.get('/roundResult')
-      return data.data
+      return data
     }catch (error) {
         console.log('Error : ',error)
     }
