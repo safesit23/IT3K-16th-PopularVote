@@ -30,7 +30,7 @@ const BorderWh = styled.div`
   width: 93%;
   position: fixed;
   border: 3px solid white;
-  margin-top: 40px;
+  margin-top: 30px;
 `;
 
 const socket = socketIOClient(ENV.PATH_SOCKET);
