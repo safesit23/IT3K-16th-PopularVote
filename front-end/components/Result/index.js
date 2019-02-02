@@ -86,7 +86,7 @@ class Result extends React.Component {
             </Row>
             <Row>
               <Col className="d-flex justify-content-center mt-2 mb-2">
-                <TitleWh>คะแนนของคุณคือ {this.state.count} คะแนน</TitleWh>
+                <TitleWh>ขอบคุณที่มาร่วมลงคะแนนเสียงนะครับ 💖 </TitleWh>
               </Col>
             </Row>
             <Row className="d-flex justify-content-center mb-3">
