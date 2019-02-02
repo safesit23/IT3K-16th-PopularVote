@@ -85,23 +85,25 @@ class Index extends React.Component {
                 </SubtitleWh>
               </Col>
             </Row>
-            <Row>
-              <Col>
+            <Row className="pb-5">
                 {this.state.competitor.map((data,i) => {
                   return (
-                    <Button key={i}
-                      onClick={() => this.togglePopup(data.idCompetitor, data.name)}
-                    >
-                      <CardVote 
-                        name={data.name}
-                        nickname={data.nickname}
-                        university={data.university}
-                        id={`${data.idCompetitor}${data.idCompetitor}.png`}
-                      />
-                    </Button>
+                    <Col xs={12} lg={6} className="py-1">
+                      <Button
+                        className="w-100"
+                        key={i}
+                        onClick={() => this.togglePopup(data.idCompetitor, data.name)}
+                      >
+                        <CardVote 
+                          name={data.name}
+                          nickname={data.nickname}
+                          university={data.university}
+                          id={`${data.idCompetitor}${data.idCompetitor}.png`}
+                        />
+                      </Button>
+                    </Col>
                   );
                 })}
-              </Col>
             </Row>
             {this.state.showPopup ? (
               <Popup

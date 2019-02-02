@@ -72,7 +72,7 @@ class AdminLogin extends React.Component {
               onChange={this.onChangePassword}
             />
           </Col>
-          <Button onClick={this.getAuthAdmin}>Login</Button>
+          <Button className="mt-3" onClick={this.getAuthAdmin}>Login</Button>
         </Landing>
       </Container>
     )

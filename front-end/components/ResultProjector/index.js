@@ -17,12 +17,20 @@ const Bg = styled.div`
   padding-top: 10px;
 `;
 
+const Img = styled.img`
+  height: 180px;
+  width: auto;
+  @media(max-width: 767px){
+    height: 160px;
+  }
+`
+
 const BorderWh = styled.div`
   height: 88%;
   width: 93%;
   position: fixed;
   border: 3px solid white;
-  margin-top: 40px;
+  margin-top: 30px;
 `;
 
 const socket = socketIOClient(ENV.PATH_SOCKET);
@@ -56,7 +64,7 @@ class Result extends React.Component {
       <Bg className="d-flex justify-content-center">
         <BorderWh>
           <Container>
-            <Row className="p-4">
+            <Row className="p-1">
               <Col />
               <Col className="text-center">
                 <Logo />
@@ -67,32 +75,16 @@ class Result extends React.Component {
               <HeadlineWh color="white">Popular Vote</HeadlineWh>
             </Row>
             <Row>
-              <Row>
-                <Col md="2" />
-                <Col>
-                  <Row>
                     {this.state.score.map((data) => {
                       return (
-                        <Col className="text-center" md="4">
-                          <img
-                            src="../../static/img/person_w.png"
-                            width="60%"
-                            className="m-4"
-                          />
-                          <HeadlineWh
-                            color="#F3BBAB"
-                            className="pl-3 pt-2"
-                            martop="-80px"
-                          >
+                        <Col className="text-center" xs='4' md='4'>
+                          <Img src="../../static/img/person_w.png"className="mb-4 ml-4 mr-4" />
+                          <HeadlineWh color="#F3BBAB" className="pl-2 pt-2" martop="-80px">
                            {data.totalScore}%
                           </HeadlineWh>
                         </Col>
                       );
                     })}
-                  </Row>
-                </Col>
-                <Col md="2" />
-              </Row>
             </Row>
           </Container>
         </BorderWh>
