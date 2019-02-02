@@ -72,19 +72,21 @@ class Vote extends React.Component {
       <Landing fluid>
         <Container>
           <Row>
-            <Col className="mt-4 pl-5 pr-5" >
-              <Pic pic={`${this.state.id}.jpg`} />
+          <Col className="text-center">
+              <Pic widthPic="70%" pic={`${this.state.id}.jpg`} />
             </Col>
           </Row>
-        </Container>
+          <Row>
         <Col className="text-center mt-4">
           <TitleWh count={this.state.count}>คะแนนของคุณคือ {this.state.count} คะแนน</TitleWh>
         </Col>
+          </Row>
         <Row>
           <Col className="d-flex justify-content-center">
             <ButtonVote onClick={() => this.vote()}>PRESS</ButtonVote>
           </Col>
         </Row>
+        </Container>
       </Landing>
     )
   }

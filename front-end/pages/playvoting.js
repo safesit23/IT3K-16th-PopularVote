@@ -17,10 +17,9 @@ class Vote extends React.Component {
   }
   render () {
     return (
-      <div>
-        <Nav/>
+      <React.Fragment>
         <Voting />
-      </div>
+      </React.Fragment>
     )
   }
 }
