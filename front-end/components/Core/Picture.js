@@ -8,18 +8,6 @@ const Image = styled.img`
 	@media (min-width:320px) {
 		width: ${props => props.widthPic};
     }
-	@media (min-width:500px) {
-		width: 50%;
-    }
-	@media (min-width:750px) {
-		width: 40%;
-    }
-    @media (min-width:1000px) {
-		width: 30%;
-    }
-    @media (min-width:1200px) {
-		width: 20%;
-    }
 `
 
 const Picture = (props) => (

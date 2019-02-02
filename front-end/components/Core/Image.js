@@ -2,17 +2,17 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Image = styled.img`
-	width: 90%;
 	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 	border-radius: 4px;
-	@media (min-width:700px) {
-		width: 50%;
+	width: 20%;
+	@media (max-width:320px) {
+		width: ${props => props.widthPic};
     }
-    @media (min-width:1000px) {
-		width: 30%;
+	@media (max-width:500px) {
+		width: 60%;
     }
-    @media (min-width:1200px) {
-		width: 20%;
+	@media (max-width:768px) {
+		width: 55%;
     }
 `
 
